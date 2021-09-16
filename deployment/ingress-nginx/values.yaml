@@ -6,6 +6,8 @@
 # See templates/_helpers.tpl
 # nameOverride:
 # fullnameOverride:
+ingress:
+  enabled: true
 
 controller:
   name: controller
