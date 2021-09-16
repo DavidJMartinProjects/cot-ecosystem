@@ -18,6 +18,7 @@ public class CotController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public String getGreeting() {
+        log.info("GET request to {}.", API_BASE_PATH);
         return "welcome to api-gateway service.";
     }
 
