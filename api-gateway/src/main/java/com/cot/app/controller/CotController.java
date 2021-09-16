@@ -15,9 +15,15 @@ public class CotController {
     public static final String API_BASE_PATH = "/api";
     public static final String STATUS_PATH = "/status";
 
-    @GetMapping(STATUS_PATH)
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public String getGreeting() {
+        return "welcome to api-gateway service.";
+    }
+
+    @GetMapping(STATUS_PATH)
+    @ResponseStatus(HttpStatus.OK)
+    public String getStatus() {
         log.info("GET request to {}.", STATUS_PATH);
         return "api-gateway api is online.";
     }
