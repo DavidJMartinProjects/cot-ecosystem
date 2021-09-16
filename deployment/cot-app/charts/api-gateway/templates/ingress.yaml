@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-controller
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: cot.com
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: api-gateway
+              servicePort: 81

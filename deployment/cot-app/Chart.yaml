@@ -27,3 +27,9 @@ annotations:
     - Support for Ingress object v1 and drop support for v1beta1
     - Update to go 1.17
     - Fix some bugs
+
+dependencies:
+  - name: api-gateway
+    repository: file://subcharts/api-gateway
+    version: 0.0.1
+
