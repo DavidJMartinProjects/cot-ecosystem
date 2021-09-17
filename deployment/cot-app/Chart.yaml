@@ -32,5 +32,9 @@ dependencies:
   - name: api-gateway
     repository: file://subcharts/api-gateway
     version: 0.0.1
-    condition: api-gateway.enabled
+
+  - name: keycloak
+    repository: file://subcharts/keycloak
+    version: 0.0.1
+
 
