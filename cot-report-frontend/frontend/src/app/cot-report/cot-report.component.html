@@ -1,6 +1,6 @@
 <div class="row">
     <div class="card center">
-      <div class="div justify-content-center">
+      <div class="div justify-content-center my-radio-group">
         <mat-radio-group aria-label="Select an option" class="my-radio-group" [(ngModel)]="selection"
           (change)="handleChange(selection)">
           <label>AUD <mat-radio-button value="AUD" [checked]='true'></mat-radio-button></label>
@@ -37,7 +37,7 @@
             <td>{{group.longPositions}} ( <i [ngStyle]="{'color':group.changeLong < 0 ? 'red' : 'green' }">{{group.changeLong}}</i> )</td>
             <td>{{group.shortPositions}} ( <i [ngStyle]="{'color':group.changeShort < 0 ? 'red' : 'green' }">{{group.changeShort}}</i> )</td>
             <td>{{group.percentageLong}} ( <i [ngStyle]="{'color':group.percentageLongChange < 0 ? 'red' : 'green' }">{{group.percentageLongChange}}</i> )</td>
-            <td>{{group.percentageShort}} ( <i [ngStyle]="{'color':group.percentageShort < 0 ? 'red' : 'green' }">{{group.percentageShort}}</i> )</td>
+            <td>{{group.percentageShort}} ( <i [ngStyle]="{'color':group.percentageShort < 0 ? 'red' : 'green' }">{{group.percentageShortChange}}</i> )</td>
             <td>{{group.netPositions}} ( <i [ngStyle]="{'color':group.netPositionsChange < 0 ? 'red' : 'green' }">{{group.netPositionsChange}}</i> )</td>
             <td *ngIf="group.netPositionsChange < 0"><span class='arrow-down'></span></td>
             <td *ngIf="group.netPositionsChange > 0"><span class='arrow-up'></span></td>

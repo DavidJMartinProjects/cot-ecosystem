@@ -1,6 +1,6 @@
 .card {
     padding: 2em;
-    width: 75%;
+    width: 65%;
 }
 
 .table {
@@ -16,6 +16,10 @@ th, td { text-align: center; }
     display: inline-block;  
     margin-bottom: 2em;
 }  
+
+.my-radio-group {
+    padding-bottom: .5em;
+}
 
 .center {
     display: block;

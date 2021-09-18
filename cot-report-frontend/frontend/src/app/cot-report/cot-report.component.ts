@@ -20,7 +20,6 @@ export class CotReportComponent implements OnInit {
     //get request from web api
     console.log('GET http://cot.com/api/reports/cot?symbol=AUD')
     this.http.get(`http://cot.com/api/reports/cot?symbol=AUD`).subscribe((data: any) => {      
-      this.showSpinner = false;
       // this.showLogoutButton = true;
       this.data = data;
       setTimeout(() => {
@@ -34,8 +33,7 @@ export class CotReportComponent implements OnInit {
           "fixedHeader": false
         });
       }, 10);
-
-      
+      this.showSpinner = false;
     }, (error: any) => console.error(error));
   }
 
