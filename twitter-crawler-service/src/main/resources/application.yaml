@@ -1,0 +1,10 @@
+server:
+  port: 80
+
+twitter-crawler-service:
+  twitter-keywords:
+    - Java
+    - Microservices
+    - Cloud Native
+    - SpringBoot
+    - Kafka
