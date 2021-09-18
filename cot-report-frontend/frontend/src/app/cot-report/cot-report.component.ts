@@ -33,7 +33,7 @@ export class CotReportComponent implements OnInit {
           "ordering": false,
           "fixedHeader": false
         });
-      }, 3000);
+      }, 10);
 
       
     }, (error: any) => console.error(error));

@@ -24,9 +24,7 @@
           <tr>
             <th>Report Date</th>
             <th>Longs</th>
-            <th></th>
             <th>Shorts</th>
-            <th></th>
             <th>% Long</th>
             <th>% Short</th>
             <th>Net Positions</th>
@@ -37,16 +35,12 @@
           <tr *ngFor="let group of data">
             <td>{{group.reportDate}}</td>
             <td>{{group.longPositions}} ( <i [ngStyle]="{'color':group.changeLong < 0 ? 'red' : 'green' }">{{group.changeLong}}</i> )</td>
-            <td *ngIf="group.changeLong < 0"><span class='arrow-down'></span></td>
-            <td *ngIf="group.changeLong > 0"><span class='arrow-up'></span></td>
-            <td>{{group.shortPositions}} ({{group.changeShort}})</td>
-            <td *ngIf="group.changeShort < 0"><span class='arrow-down'></span></td>
-            <td *ngIf="group.changeShort > 0"><span class='arrow-up'></span></td>
-            <td>{{group.percentageLong}} ({{group.percentageLongChange}})</td>
-            <td>{{group.percentageShort}} ({{group.percentageShortChange}})</td>
-            <td>{{group.netPositions}}</td>
-            <td *ngIf="group.netPositions < 0"><span class='arrow-down'></span></td>
-            <td *ngIf="group.netPositions > 0"><span class='arrow-up'></span></td>
+            <td>{{group.shortPositions}} ( <i [ngStyle]="{'color':group.changeShort < 0 ? 'red' : 'green' }">{{group.changeShort}}</i> )</td>
+            <td>{{group.percentageLong}} ( <i [ngStyle]="{'color':group.percentageLongChange < 0 ? 'red' : 'green' }">{{group.percentageLongChange}}</i> )</td>
+            <td>{{group.percentageShort}} ( <i [ngStyle]="{'color':group.percentageShort < 0 ? 'red' : 'green' }">{{group.percentageShort}}</i> )</td>
+            <td>{{group.netPositions}} ( <i [ngStyle]="{'color':group.netPositionsChange < 0 ? 'red' : 'green' }">{{group.netPositionsChange}}</i> )</td>
+            <td *ngIf="group.netPositionsChange < 0"><span class='arrow-down'></span></td>
+            <td *ngIf="group.netPositionsChange > 0"><span class='arrow-up'></span></td>
           </tr>
         </tbody>
       </table>

@@ -41,6 +41,11 @@ public class DataProcessor {
 
                 reportDtos.get(index - 1).setPercentageLongChange(longChange);
                 reportDtos.get(index - 1).setPercentageShortChange(shortChange);
+
+                double netChange = reportDtos.get(index - 1).getNetPositions()
+                        - reportDtos.get(index).getNetPositions();
+                log.info("netChange: {}", netChange);
+                reportDtos.get(index - 1).setNetPositionsChange(netChange);
             }
             dbOperation.save(reportDtos);
 

@@ -40,5 +40,6 @@ public class ReportEntity implements Serializable {
     private String percentageShortChange;
 
     private String netPositions;
+    private String netPositionsChange;
 
 }

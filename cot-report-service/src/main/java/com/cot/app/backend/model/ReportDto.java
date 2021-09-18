@@ -35,6 +35,7 @@ public class ReportDto implements Serializable {
     private String percentageShortChange;
 
     private double netPositions;
+    private double netPositionsChange;
 
     public void setInstrument(String instrument) {
         extractBlacklistedFields(instrument);
