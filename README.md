@@ -1,3 +1,5 @@
+- # COT Report app
+
 - build the frontend image
 - ```>> docker build -t davidjmartin/cot-report-frontend:latest```
 
@@ -14,3 +16,7 @@
 
 - access front end via
 - ```cot.com:3000```
+
+
+## example screenshot
+![Screenshot](readme/Capture.PNG)
