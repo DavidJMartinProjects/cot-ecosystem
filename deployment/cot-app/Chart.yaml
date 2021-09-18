@@ -20,8 +20,13 @@ dependencies:
     repository: file://subcharts/ingress
     version: 0.0.1
 
-  - name: ingress
+  - name: cot-report-service
     repository: file://subcharts/cot-report-service
     version: 0.0.1
+
+  - name: cot-report-frontend
+    repository: file://subcharts/cot-report-frontend
+    version: 0.0.1
+
 
 

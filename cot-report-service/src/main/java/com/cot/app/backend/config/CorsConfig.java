@@ -32,10 +32,13 @@ public class CorsConfig {
         corsConfiguration.setAllowedOrigins(
             Arrays.asList(
                 "http://localhost:4200",
+                "http://localhost:3000",
                 "http://localhost:80",
+                "http://localhost:81",
                 "https://localhost/",
                 "http://localhost:8080",
-                "http://localhost:8081"
+                "http://localhost:8081",
+                "http://cot.com:3000"
             )
         );
         corsConfiguration.setAllowedHeaders(
