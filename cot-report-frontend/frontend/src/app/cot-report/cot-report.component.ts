@@ -7,7 +7,7 @@ declare var $: any;
 @Component({
   selector: 'app-cot-report',
   templateUrl: './cot-report.component.html',
-  styleUrls: ['./cot-report.component.css']
+  styleUrls: ['./cot-report.component.scss']
 })
 export class CotReportComponent implements OnInit {
 
@@ -19,10 +19,10 @@ export class CotReportComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {
     //get request from web api
     console.log('GET http://cot.com/api/reports/cot?symbol=AUD')
-    this.http.get(`http://cot.com/api/reports/cot?symbol=AUD`).subscribe((data: any) => {
-      this.data = data;
+    this.http.get(`http://cot.com/api/reports/cot?symbol=AUD`).subscribe((data: any) => {      
       this.showSpinner = false;
-      this.showLogoutButton = true;
+      // this.showLogoutButton = true;
+      this.data = data;
       setTimeout(() => {
         $('#datatableexample').DataTable({
           "bPaginate": false,
@@ -33,7 +33,7 @@ export class CotReportComponent implements OnInit {
           "ordering": false,
           "fixedHeader": false
         });
-      }, 1);
+      }, 3000);
 
       
     }, (error: any) => console.error(error));
