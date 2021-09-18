@@ -23,7 +23,7 @@ public class DataProcessor {
     @Autowired
     private ReportRepository reportRepository;
 
-    private DecimalFormat df = new DecimalFormat("0.00##");
+    private DecimalFormat df = new DecimalFormat("0.#");
 
     public void processData() {
         List<ReportDto> reportDtos;
