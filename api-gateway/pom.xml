@@ -18,8 +18,12 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -38,22 +42,6 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <executions>
-<!--                    &lt;!&ndash; Remove existing image from local repo &ndash;&gt;-->
-<!--                    <execution>-->
-<!--                        <id>docker-clean</id>-->
-<!--                        <phase>install</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>exec</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <executable>docker</executable>-->
-<!--                            <workingDirectory>${project.basedir}</workingDirectory>-->
-<!--                            <arguments>-->
-<!--                                <argument>rmi</argument>-->
-<!--                                <argument>${project.artifactId}:${project.version}</argument>-->
-<!--                            </arguments>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
                     <execution>
                         <id>docker-build</id>
                         <phase>install</phase>
@@ -73,7 +61,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 

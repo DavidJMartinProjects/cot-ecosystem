@@ -1,2 +1,16 @@
 server:
   port: 81
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: cot-report-service
+          uri: http://cot-report-service:80
+          predicates:
+            - Path=/api/reports**/*
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
