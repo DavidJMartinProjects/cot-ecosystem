@@ -19,5 +19,6 @@ public enum SupportedSymbol {
     MXN,
     ZAR,
     BTC,
-    NZD
+    NZD,
+    USD
 }

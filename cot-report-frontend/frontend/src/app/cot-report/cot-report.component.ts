@@ -12,14 +12,14 @@ declare var $: any;
 export class CotReportComponent implements OnInit {
 
   data: any;
-  selection: string = 'AUD';
+  defaultSelection: string = 'USD';
   showSpinner = true;
   showLogoutButton = false;
 
   constructor(private http: HttpClient, private router: Router) {
     //get request from web api
-    console.log('GET http://cot.com/api/reports/cot?symbol=AUD')
-    this.http.get(`http://cot.com/api/reports/cot?symbol=AUD`).subscribe((data: any) => {      
+    console.log('GET http://cot.com/api/reports/cot?symbol=' + this.defaultSelection)
+    this.http.get(`http://cot.com/api/reports/cot?symbol=` + this.defaultSelection).subscribe((data: any) => {      
       // this.showLogoutButton = true;
       this.data = data;
       setTimeout(() => {

@@ -1,15 +1,16 @@
 <div class="row">
     <div class="card center">
       <div class="div justify-content-center my-radio-group">
-        <mat-radio-group aria-label="Select an option" class="my-radio-group" [(ngModel)]="selection"
-          (change)="handleChange(selection)">
-          <label>AUD <mat-radio-button value="AUD" [checked]='true'></mat-radio-button></label>
+        <mat-radio-group aria-label="Select an option" class="my-radio-group" [(ngModel)]="defaultSelection"
+          (change)="handleChange(defaultSelection)">
+          <label>USD <mat-radio-button value="USD" [checked]='true'></mat-radio-button></label>
           <label>EUR <mat-radio-button value="EUR" class=""></mat-radio-button></label>
           <label>GBP <mat-radio-button value="GBP" class=""></mat-radio-button></label>
+          <label>AUD <mat-radio-button value="AUD" class=""></mat-radio-button></label>          
+          <label>JPY <mat-radio-button value="JPY" class=""></mat-radio-button></label>
           <label>CHF <mat-radio-button value="CHF" class=""></mat-radio-button></label>
           <label>CAD <mat-radio-button value="CAD" class=""></mat-radio-button></label>
-          <label>NZD <mat-radio-button value="NZD" class=""></mat-radio-button></label>
-          <label>JPY <mat-radio-button value="JPY" class=""></mat-radio-button></label>
+          <label>NZD <mat-radio-button value="NZD" class=""></mat-radio-button></label>          
           <label>MXN <mat-radio-button value="MXN" class=""></mat-radio-button></label>
           <label>ZAR <mat-radio-button value="ZAR" class=""></mat-radio-button></label>
           <label>BTC <mat-radio-button value="BTC" class=""></mat-radio-button></label>
