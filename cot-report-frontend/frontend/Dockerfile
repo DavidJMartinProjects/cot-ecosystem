@@ -4,8 +4,9 @@ FROM node:12-alpine as builder
 
 WORKDIR /usr/src/app
 COPY . ./
-RUN npm install
-RUN npm run ng build  --prod
+#RUN npm install
+#RUN npm run ng build  --prod
+RUN yarn && yarn build
 
 # Stage 2 - Deploy with NGNIX
 FROM nginx:1.15.2-alpine

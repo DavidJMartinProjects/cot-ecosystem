@@ -3,8 +3,27 @@ server:
 
 twitter-crawler-service:
   twitter-keywords:
-    - Java
-    - Microservices
-    - Cloud Native
-    - SpringBoot
-    - Kafka
+    - '$EURUSD'
+    - '$AUDUSD'
+    - '$GBPUSD'
+    - '$NZDUSD'
+    - '$AUDNZD'
+    - '$XAUUSD'
+    - '$USDCHF'
+    - '$CADJPY'
+    - '$GBPJPY'
+    - '$DXY'
+    - '#EURUSD'
+    - '#AUDUSD'
+    - '#GBPUSD'
+    - '#NZDUSD'
+    - '#AUDNZD'
+    - '#XAUUSD'
+    - '#USDCHF'
+    - '#CADJPY'
+    - '#GBPJPY'
+    - '#DXY'
+
+
+
+
