@@ -1,7 +1,7 @@
 package com.cot.app.listener;
 
 import com.cot.app.models.Tweet;
-import com.cot.app.producer.TweetProducer;
+import com.cot.app.kafka.producer.TweetProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

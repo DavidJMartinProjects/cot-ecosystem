@@ -13,6 +13,7 @@ spring:
       bootstrap-servers: kafka.confluent.svc.cluster.local:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    bootstrap-servers: kafka.confluent.svc.cluster.local:9092
 
 twitter-crawler-service:
   twitter-keywords:
@@ -39,6 +40,8 @@ twitter-crawler-service:
     - Crypto
     - BTC
     - Metallica
+    - SpaceX
+
 
 
 
