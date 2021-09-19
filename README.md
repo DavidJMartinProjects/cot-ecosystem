@@ -23,3 +23,4 @@
 
 # Confluent Kafka
 https://docs.confluent.io/operator/current/co-quickstart.html
+https://stackoverflow.com/questions/59565537/how-to-query-directly-from-a-kafka-topic
