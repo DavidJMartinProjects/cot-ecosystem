@@ -1,6 +1,19 @@
 server:
   port: 80
 
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: kafka.confluent.svc.cluster.local:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: kafka.confluent.svc.cluster.local:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
 twitter-crawler-service:
   twitter-keywords:
     - '$EURUSD'
@@ -23,6 +36,9 @@ twitter-crawler-service:
     - '#CADJPY'
     - '#GBPJPY'
     - '#DXY'
+    - Crypto
+    - BTC
+    - Metallica
 
 
 

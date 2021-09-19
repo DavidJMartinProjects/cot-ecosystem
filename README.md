@@ -20,3 +20,6 @@
 
 ## example screenshot
 ![Screenshot](readme/Capture.PNG)
+
+# Confluent Kafka
+https://docs.confluent.io/operator/current/co-quickstart.html
