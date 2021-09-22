@@ -76,3 +76,14 @@ th, td { text-align: center; }
     /* margin-right: auto;     */
     margin-top: 1em;
 }
+
+::ng-deep .ngx-charts {
+    stroke:black;
+    border: 1;
+    float: right;
+  }
+
+  .chart-container {
+    padding-left: 25%;
+    padding-right: 10px;
+}

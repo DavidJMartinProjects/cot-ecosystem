@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CotReportComponent } from './cot-report/cot-report.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const routes: Routes = [
   { path: 'cot-report', component: CotReportComponent }
@@ -26,7 +27,9 @@ const routes: Routes = [
     BrowserModule,     
     FormsModule,
     MatProgressSpinnerModule,  
-    HttpClientModule,      
+    HttpClientModule, 
+    BrowserAnimationsModule, 
+    NgxChartsModule,   
     RouterModule.forRoot(routes), BrowserAnimationsModule
   ],
   providers: [],

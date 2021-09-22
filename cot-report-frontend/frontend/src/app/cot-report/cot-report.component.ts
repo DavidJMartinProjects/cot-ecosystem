@@ -11,17 +11,23 @@ declare var $: any;
 })
 export class CotReportComponent implements OnInit {
 
-  data: any;
   defaultSelection: string = 'USD';
+  tableData: any;
+  chartData: any;
   showSpinner = true;
   showLogoutButton = false;
+  view: [number, number] = [600, 250];
 
   constructor(private http: HttpClient, private router: Router) {
     //get request from web api
     console.log('GET http://cot.com/api/reports/cot?symbol=' + this.defaultSelection)
     this.http.get(`http://cot.com/api/reports/cot?symbol=` + this.defaultSelection).subscribe((data: any) => {      
       // this.showLogoutButton = true;
-      this.data = data;
+      this.tableData = data;
+      this.chartData = [
+        { name: "longs", value: this.tableData[0].longPositions },
+        { name: "shorts", value: this.tableData[0].shortPositions }
+      ];
       setTimeout(() => {
         $('#datatableexample').DataTable({
           "bPaginate": false,
@@ -38,18 +44,25 @@ export class CotReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   getSymbolData(theSymbol: string) {
     console.log('GET http://cot.com/api/reports/cot?symbol=' + theSymbol)
     this.http.get('http://cot.com/api/reports/cot?symbol=' + theSymbol).subscribe((data: any) => {
-      this.data = data;
+    // update tableData   
+    this.tableData = data;   
+    // update chart data     
+      this.chartData = [
+        { name: "longs", value: this.tableData[0].longPositions },
+        { name: "shorts", value: this.tableData[0].shortPositions }
+      ];
     }, (error: any) => console.error(error));
-
   }
 
   handleChange(theSymbol: string) {    
     this.getSymbolData(theSymbol);
   }
+
 
 }
