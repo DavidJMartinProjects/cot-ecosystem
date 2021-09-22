@@ -70,6 +70,7 @@
           </td>
           <td *ngIf="group.netPositionsChange < 0"><span class='arrow-down'></span></td>
           <td *ngIf="group.netPositionsChange > 0"><span class='arrow-up'></span></td>
+          <td *ngIf="group.netPositionsChange == 0"><span class='arrow-up'></span></td>
         </tr>
       </tbody>
     </table>

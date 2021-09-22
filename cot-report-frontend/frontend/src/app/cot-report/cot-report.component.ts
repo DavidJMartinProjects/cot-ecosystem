@@ -14,31 +14,39 @@ export class CotReportComponent implements OnInit {
   defaultSelection: string = 'USD';
   tableData: any;
   chartData: any;
+  seriesData: any;
   showSpinner = true;
   showLogoutButton = false;
   view: [number, number] = [600, 250];
+  // dtOptions: DataTables.Settings = {};
 
   constructor(private http: HttpClient, private router: Router) {
-    //get request from web api
     console.log('GET http://cot.com/api/reports/cot?symbol=' + this.defaultSelection)
     this.http.get(`http://cot.com/api/reports/cot?symbol=` + this.defaultSelection).subscribe((data: any) => {      
       // this.showLogoutButton = true;
+
       this.tableData = data;
-      this.chartData = [
+ 
+      this.chartData = [        
+        { name: "shorts", value: this.tableData[0].shortPositions },
         { name: "longs", value: this.tableData[0].longPositions },
-        { name: "shorts", value: this.tableData[0].shortPositions }
       ];
+
       setTimeout(() => {
         $('#datatableexample').DataTable({
-          "bPaginate": false,
-          "bLengthChange": false,
+          "bPaginate": true,
+          "bLengthChange": true,
+          "lengthMenu": [6, 10, 20],
           "bFilter": false,
-          "bInfo": false,
+          "bInfo": true,
           "bAutoWidth": false,
           "ordering": false,
-          "fixedHeader": false
+          "fixedHeader": false,
+          "iDisplayLength": 6,
+          "pageLength": 6
         });
       }, 10);
+
       this.showSpinner = false;
     }, (error: any) => console.error(error));
   }
@@ -46,18 +54,43 @@ export class CotReportComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  
   getSymbolData(theSymbol: string) {
+    $('#datatableexample').hide();
     console.log('GET http://cot.com/api/reports/cot?symbol=' + theSymbol)
     this.http.get('http://cot.com/api/reports/cot?symbol=' + theSymbol).subscribe((data: any) => {
+
     // update tableData   
-    this.tableData = data;   
+ 
+
+    $('#datatableexample').DataTable().destroy();
+    this.tableData = data;
+
+    setTimeout(() => {
+      $('#datatableexample').DataTable({
+        "bPaginate": true,
+        "bLengthChange": true,
+        "lengthMenu": [6, 10, 20],
+        "bFilter": false,
+        "bInfo": true,
+        "bAutoWidth": false,
+        "ordering": false,
+        "fixedHeader": false,
+        "iDisplayLength": 6,
+        "pageLength": 6
+      });
+    }, 1);
+
+    this.showSpinner = false;
+    $('#datatableexample').show();
+
     // update chart data     
       this.chartData = [
-        { name: "longs", value: this.tableData[0].longPositions },
-        { name: "shorts", value: this.tableData[0].shortPositions }
+        { name: "shorts", value: this.tableData[0].shortPositions },
+        { name: "longs", value: this.tableData[0].longPositions }
       ];
-    }, (error: any) => console.error(error));
+    }, (error: any) => console.error(error));    
+
   }
 
   handleChange(theSymbol: string) {    
