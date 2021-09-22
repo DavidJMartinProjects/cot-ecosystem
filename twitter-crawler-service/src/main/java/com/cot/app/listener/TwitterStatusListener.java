@@ -25,7 +25,7 @@ public class TwitterStatusListener extends StatusAdapter {
             .build();
 
         log.info("latest tweet: {}", tweet);
-        tweetProducer.sendMessage(tweet);
+//        tweetProducer.sendMessage(tweet);
 
     }
 

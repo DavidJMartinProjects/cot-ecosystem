@@ -31,10 +31,20 @@
       </div>
       <div class="col-md-6 justify-content-right">
         <!-- <div class="card justify-content-center" style="width:100%"> -->
-          <div class="chart-container">
-            <ngx-charts-advanced-pie-chart [results]="chartData" [view]="view" [gradient]="true" [view]=view>
-            </ngx-charts-advanced-pie-chart>
-          </div>
+          <ngx-charts-line-chart
+          [view]="view"
+          [results]="multi"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [autoScale]="autoScale"
+          [animations]="false">
+        </ngx-charts-line-chart>
         <!-- </div> -->
       </div>
     </div>

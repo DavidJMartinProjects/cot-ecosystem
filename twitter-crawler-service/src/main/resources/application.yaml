@@ -37,10 +37,17 @@ twitter-crawler-service:
     - '#CADJPY'
     - '#GBPJPY'
     - '#DXY'
-    - Crypto
-    - BTC
-    - Metallica
-    - SpaceX
+    - EURUSD
+    - AUDUSD
+    - GBPUSD
+    - NZDUSD
+    - AUDNZD
+    - XAUUSD
+    - USDCHF
+    - CADJPY
+    - GBPJPY
+    - DXY
+
 
 
 
