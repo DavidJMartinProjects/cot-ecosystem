@@ -26,11 +26,11 @@ export class CotReportComponent implements OnInit {
   showXAxis = false;
   showYAxis = true;
   gradient = true;
-  showLegend = true;
+  showLegend = false;
   xAxisLabel = 'Time';
   showYAxisLabel = true;
   showXAxisLabel = true;
-  yAxisLabel = 'Position Size';
+  yAxisLabel = 'Net Positions';
   autoScale = true;
   legendTitle = 'Positions';
  
@@ -51,6 +51,11 @@ export class CotReportComponent implements OnInit {
     }, (error: any) => console.error(error));
 
   }
+
+  ngOnInit(): void {
+  }
+
+
   private buildPieChartData(data: any) {
     this.chartData = [
       { name: "shorts", value: data[0].shortPositions },
@@ -61,33 +66,18 @@ export class CotReportComponent implements OnInit {
   private buildLineChartData(data: any) {
     this.multi = [    
       {
-        "name": "Long",
-        "series": this.getLongPositionsData(data)
-      },
-      {
-        "name": "Short",
-        "series": this.getShortPositionsData(data)
+        "name": "Open Positions",
+        "series": this.getOpenPositions(data)
       }
     ];
   }
 
-  getShortPositionsData(data: any) {
+  getOpenPositions(data: any) {
     const array: { name: any; value: any; }[] = [];
-    data.forEach((report: { reportDate: any; shortPositions: any; }) => {
-      array.push({ name: report.reportDate, value: report.shortPositions });
+    data.forEach((report: { reportDate: any; netPositions: any; }) => {
+      array.push({ name: report.reportDate, value: report.netPositions });
     });
     return array.reverse();
-  }
-
-  getLongPositionsData(data: any) {
-    const array: { name: any; value: any; }[] = [];
-    data.forEach((report: { reportDate: any; longPositions: any; }) => {
-      array.push({ name: report.reportDate, value: report.longPositions });
-    });
-    return array.reverse();
-  }
-
-  ngOnInit(): void {
   }
 
   getSymbolData(theSymbol: string) {
@@ -104,26 +94,10 @@ export class CotReportComponent implements OnInit {
       this.showSpinner = false;
       $('#datatableexample').show();
 
-      // update pie chart data      
-      this.chartData = [
-        { name: "shorts", value: this.tableData[0].shortPositions },
-        { name: "longs", value: this.tableData[0].longPositions }
-      ];
-
-      this.multi = [
-        {
-          "name": "Longs",
-          "series": this.getLongPositionsData(data)
-        },
-        {
-          "name": "Shorts",
-          "series": this.getShortPositionsData(data)
-        }
-      ];
-
+      this.buildPieChartData(data);
+      this.buildLineChartData(data);
     }, (error: any) => console.error(error));
 
-    // update line chart data
 
 
   }
