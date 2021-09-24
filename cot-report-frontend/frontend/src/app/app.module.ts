@@ -6,6 +6,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio'
 import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { CotReportComponent } from './cot-report/cot-report.component';
@@ -29,7 +30,8 @@ const routes: Routes = [
     MatProgressSpinnerModule,  
     HttpClientModule, 
     BrowserAnimationsModule, 
-    NgxChartsModule,   
+    NgxChartsModule,
+    MatCardModule,   
     RouterModule.forRoot(routes), BrowserAnimationsModule
   ],
   providers: [],

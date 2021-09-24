@@ -17,19 +17,21 @@ export class CotReportComponent implements OnInit {
   seriesData: any;
   showSpinner = true;
   showLogoutButton = false;
-  view: [number, number] = [600, 250];
+  view: [number, number] = [500, 250];
+  lineChartSize: [number, number] = [470, 210];
   // dtOptions: DataTables.Settings = {};
 
   // line chart options
   showXAxis = false;
   showYAxis = true;
-  gradient = false;
+  gradient = true;
   showLegend = true;
-  showXAxisLabel = true;
   xAxisLabel = 'Time';
   showYAxisLabel = true;
+  showXAxisLabel = true;
   yAxisLabel = 'Position Size';
   autoScale = true;
+  legendTitle = 'Positions';
 
   multi: any[] | undefined;
 
@@ -38,37 +40,42 @@ export class CotReportComponent implements OnInit {
     this.http.get(`http://cot.com/api/reports/cot?symbol=` + this.defaultSelection).subscribe((data: any) => {
       // this.showLogoutButton = true;
       this.tableData = data;
-      this.chartData = [
-        { name: "shorts", value: this.tableData[0].shortPositions },
-        { name: "longs", value: this.tableData[0].longPositions },
-      ];
+      this.buildPieChartData(data);
       setTimeout(() => {
         this.buildDataTable();
       }, 10);
 
-      console.log(data);
-
-      this.multi = [
-        {
-          "name": "Long",
-          "series": this.getLongPositionsData(data)
-        },
-        {
-          "name": "Short",
-          "series": this.getShortPositionsData(data)
-        }
-      ];
-
+      this.buildLineChartData(data);
       this.showSpinner = false;
     }, (error: any) => console.error(error));
 
   }
+  private buildPieChartData(data: any) {
+    this.chartData = [
+      { name: "shorts", value: data[0].shortPositions },
+      { name: "longs", value: data[0].longPositions },
+    ];
+  }
+
+  private buildLineChartData(data: any) {
+    this.multi = [
+      {
+        "name": "Short",
+        "series": this.getShortPositionsData(data)
+      },
+      {
+        "name": "Long",
+        "series": this.getLongPositionsData(data)
+      }
+    ];
+  }
+
   getShortPositionsData(data: any) {
     const array: { name: any; value: any; }[] = [];
     data.forEach((report: { reportDate: any; shortPositions: any; }) => {
       array.push({ name: report.reportDate, value: report.shortPositions });
     });
-    return array;
+    return array.reverse();
   }
 
   getLongPositionsData(data: any) {
@@ -76,7 +83,7 @@ export class CotReportComponent implements OnInit {
     data.forEach((report: { reportDate: any; longPositions: any; }) => {
       array.push({ name: report.reportDate, value: report.longPositions });
     });
-    return array;
+    return array.reverse();
   }
 
   ngOnInit(): void {

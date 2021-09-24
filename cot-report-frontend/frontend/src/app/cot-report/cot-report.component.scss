@@ -83,7 +83,12 @@ th, td { text-align: center; }
     float: right;
   }
 
-  .chart-container {
+.chart-container {
     padding-left: 15%;
     padding-right: 10px;
 }
+
+ngx-charts-legend {
+    display: block !important;
+}
+
