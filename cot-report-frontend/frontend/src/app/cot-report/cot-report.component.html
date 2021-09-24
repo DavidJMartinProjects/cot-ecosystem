@@ -15,39 +15,48 @@
         <label>ZAR <mat-radio-button value="ZAR" class=""></mat-radio-button></label>
         <label>BTC <mat-radio-button value="BTC" class=""></mat-radio-button></label>
         <label>GOLD <mat-radio-button value="ZAR" class=""></mat-radio-button></label>
-        <!-- <label>CHF <input type="radio" name="currency"  id="chf_currency" checked="checked" onChange="currencyChanged()" /></label> -->
-        <!-- <button class ="my-x" (click)="logout()">logout</button> -->
       </mat-radio-group>
     </div>
 
-    <div class="row mb-2 mx-auto">
-      <div class="col-md-6 mx-auto">
-        <!-- <div class="card mx-auto"> -->
-          <div class="chart-container image-container .center-chart">
-            <ngx-charts-advanced-pie-chart [animations]="true" [results]="chartData" [view]="view" [gradient]="true" [view]=view>
-            </ngx-charts-advanced-pie-chart>
-          </div>
-        <!-- </div> -->
+    <div class="row">
+      <div class="col-md-2 mx-auto">        
+        <div class="chart-container image-container .center-chart">
+          <ngx-charts-advanced-pie-chart [animations]="true" [results]="chartData" [view]="view" [gradient]="true"
+            [view]=view>
+          </ngx-charts-advanced-pie-chart>
+        </div>        
       </div>
-      <div class="col-md-6 justify-content-right mx-auto">
-        <!-- <div class="card justify-content-center" style="width:100%"> -->
-          <div class="linechart-container center-chart image-container">
-            <ngx-charts-line-chart            
-            [results]="multi"
-            [gradient]="gradient"
-            [xAxis]="showXAxis"
-            [yAxis]="showYAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="true"
-            [showYAxisLabel]="true"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [autoScale]="autoScale"
-            [view]="lineChartSize"
-            [animations]="true">
+      <div class="col-md-2 justify-content-right mx-auto">        
+        <div class="linechart-container center-chart image-container">
+          <ngx-charts-line-chart [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+            [legend]="showLegend" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" [view]="lineChartSize" [animations]="true">
           </ngx-charts-line-chart>
-        </div>
-        <!-- </div> -->
+        </div>        
+      </div>
+      <div class="col-md-2 mx-auto">        
+        <div class="chart-container image-container .center-chart">
+          <!-- <ngx-charts-advanced-pie-chart [animations]="true" [results]="positionChangeData" [view]="view" [gradient]="true"
+            [view]=view>
+          </ngx-charts-advanced-pie-chart> -->
+          <!-- <ngx-charts-pie-grid
+  [view]="view"  
+  [results]="positionChangeData">
+</ngx-charts-pie-grid> -->
+  <ngx-charts-bar-vertical-stacked
+    [view]="view"    
+    [results]="chartData"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [animations]="true">
+  </ngx-charts-bar-vertical-stacked>
+        </div>        
       </div>
     </div>
 

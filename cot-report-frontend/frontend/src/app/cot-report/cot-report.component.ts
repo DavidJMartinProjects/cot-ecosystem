@@ -15,11 +15,12 @@ export class CotReportComponent implements OnInit {
   defaultSelection: string = 'USD';
   tableData: any;
   chartData: any;
+  positionChangeData: any;
   seriesData: any;
   showSpinner = true;
   showLogoutButton = false;
-  view: [number, number] = [500, 250];
-  lineChartSize: [number, number] = [450, 210];
+  view: [number, number] = [350, 250];
+  lineChartSize: [number, number] = [330, 210];
   // dtOptions: DataTables.Settings = {};
 
   // line chart options
@@ -33,9 +34,11 @@ export class CotReportComponent implements OnInit {
   yAxisLabel = 'Institutional Positions';
   autoScale = true;
   legendTitle = 'Positions';
+
+  
  
   multi: any[] | undefined;
-
+  
   constructor(private http: HttpClient, private router: Router) {
     console.log('GET http://cot.com/api/reports/cot?symbol=' + this.defaultSelection)
     this.http.get(`http://cot.com/api/reports/cot?symbol=` + this.defaultSelection).subscribe((data: any) => {
@@ -47,14 +50,20 @@ export class CotReportComponent implements OnInit {
       }, 10);
 
       this.buildLineChartData(data);
+      this.buildChangeData(data);
       this.showSpinner = false;
     }, (error: any) => console.error(error));
-
   }
 
   ngOnInit(): void {
   }
-
+  
+  buildChangeData(data: any) {
+    this.positionChangeData = [
+      { name: "% change buys", value: data[0].percentageLongChange },
+      { name: "% change sells", value: data[0].percentageShortChange },
+    ];    
+  }
 
   private buildPieChartData(data: any) {
     this.chartData = [
@@ -96,10 +105,8 @@ export class CotReportComponent implements OnInit {
 
       this.buildPieChartData(data);
       this.buildLineChartData(data);
+      this.buildChangeData(data);
     }, (error: any) => console.error(error));
-
-
-
   }
 
   private buildDataTable() {
@@ -120,6 +127,5 @@ export class CotReportComponent implements OnInit {
   handleChange(theSymbol: string) {
     this.getSymbolData(theSymbol);
   }
-
 
 }
