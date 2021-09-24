@@ -19,7 +19,7 @@ export class CotReportComponent implements OnInit {
   showSpinner = true;
   showLogoutButton = false;
   view: [number, number] = [500, 250];
-  lineChartSize: [number, number] = [480, 210];
+  lineChartSize: [number, number] = [450, 210];
   // dtOptions: DataTables.Settings = {};
 
   // line chart options
@@ -30,7 +30,7 @@ export class CotReportComponent implements OnInit {
   xAxisLabel = 'Time';
   showYAxisLabel = true;
   showXAxisLabel = true;
-  yAxisLabel = 'Net Positions';
+  yAxisLabel = 'Institutional Positions';
   autoScale = true;
   legendTitle = 'Positions';
  
