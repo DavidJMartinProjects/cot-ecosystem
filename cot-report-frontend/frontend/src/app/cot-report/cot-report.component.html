@@ -29,22 +29,24 @@
           </div>
         <!-- </div> -->
       </div>
-      <div class="col-md-6 justify-content-right">
+      <div class="col-md-6 justify-content-right mx-auto">
         <!-- <div class="card justify-content-center" style="width:100%"> -->
-          <ngx-charts-line-chart
-          [view]="view"
-          [results]="multi"
-          [gradient]="gradient"
-          [xAxis]="showXAxis"
-          [yAxis]="showYAxis"
-          [legend]="showLegend"
-          [showXAxisLabel]="showXAxisLabel"
-          [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel"
-          [yAxisLabel]="yAxisLabel"
-          [autoScale]="autoScale"
-          [animations]="true">
-        </ngx-charts-line-chart>
+          <div class="linechart-container center-chart image-container">
+            <ngx-charts-line-chart            
+            [results]="multi"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [autoScale]="autoScale"
+            [view]="lineChartSize"
+            [animations]="true">
+          </ngx-charts-line-chart>
+        </div>
         <!-- </div> -->
       </div>
     </div>

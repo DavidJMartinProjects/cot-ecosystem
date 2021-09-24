@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { Color, ScaleType } from '@swimlane/ngx-charts';
 
 declare var $: any;
 
@@ -18,7 +19,7 @@ export class CotReportComponent implements OnInit {
   showSpinner = true;
   showLogoutButton = false;
   view: [number, number] = [500, 250];
-  lineChartSize: [number, number] = [470, 210];
+  lineChartSize: [number, number] = [480, 210];
   // dtOptions: DataTables.Settings = {};
 
   // line chart options
@@ -32,7 +33,7 @@ export class CotReportComponent implements OnInit {
   yAxisLabel = 'Position Size';
   autoScale = true;
   legendTitle = 'Positions';
-
+ 
   multi: any[] | undefined;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -58,14 +59,14 @@ export class CotReportComponent implements OnInit {
   }
 
   private buildLineChartData(data: any) {
-    this.multi = [
-      {
-        "name": "Short",
-        "series": this.getShortPositionsData(data)
-      },
+    this.multi = [    
       {
         "name": "Long",
         "series": this.getLongPositionsData(data)
+      },
+      {
+        "name": "Short",
+        "series": this.getShortPositionsData(data)
       }
     ];
   }

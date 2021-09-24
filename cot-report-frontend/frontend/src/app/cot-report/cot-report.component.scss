@@ -92,3 +92,21 @@ ngx-charts-legend {
     display: block !important;
 }
 
+.center-chart {
+    display: flex;
+    height: 100%;
+    // background-color: #ff1124;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
