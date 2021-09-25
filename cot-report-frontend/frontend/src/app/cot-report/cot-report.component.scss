@@ -33,10 +33,7 @@ th, td { text-align: center; }
     height: 95px; 
     padding: 1em; 
     border: 0;
-
 }
-
-/* .input[type="radio"]{margin:4em; padding: 4em} */
 
 .my-radio-group {
     display: flex;
@@ -78,15 +75,14 @@ th, td { text-align: center; }
 .logout-button {
     display: block;
     margin-left: auto;
-    /* margin-right: auto;     */
     margin-top: 1em;
 }
 
-// ::ng-deep .ngx-charts {
-//     stroke:black;
-//     border: 1;
-//     float: right;
-//   }
+::ng-deep .ngx-charts {
+    stroke:black;
+    border: 1;
+    float: right;
+  }
 
 .chart-container {
     padding-left: 45%;
@@ -98,8 +94,7 @@ ngx-charts-legend {
 
 .center-chart {
     display: flex;
-    height: 100%;
-    // background-color: #ff1124;
+    height: 100%;    
     justify-content: center;
     align-items: center;
 }

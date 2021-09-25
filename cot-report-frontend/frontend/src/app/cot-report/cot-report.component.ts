@@ -21,6 +21,7 @@ export class CotReportComponent implements OnInit {
   showLogoutButton = false;
   view: [number, number] = [350, 250];
   lineChartSize: [number, number] = [330, 210];
+  changeChartSize: [number, number] = [130, 180];
   // dtOptions: DataTables.Settings = {};
 
   // line chart options
@@ -34,9 +35,8 @@ export class CotReportComponent implements OnInit {
   yAxisLabel = 'Institutional Positions';
   autoScale = true;
   legendTitle = 'Positions';
+  changeLabel = '% change'
 
-  
- 
   multi: any[] | undefined;
   
   constructor(private http: HttpClient, private router: Router) {
@@ -60,9 +60,20 @@ export class CotReportComponent implements OnInit {
   
   buildChangeData(data: any) {
     this.positionChangeData = [
-      { name: "% change buys", value: data[0].percentageLongChange },
-      { name: "% change sells", value: data[0].percentageShortChange },
-    ];    
+      {
+        "name": "% change ",
+        "series": [
+          {
+            "name": "sells",
+            "value": Number(data[0].percentageShortChange)
+          },
+          {
+            "name": "buys",
+            "value": Number(data[0].percentageLongChange)
+          }
+        ]
+      }
+    ]
   }
 
   private buildPieChartData(data: any) {
