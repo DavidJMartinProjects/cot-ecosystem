@@ -113,14 +113,14 @@ export class CotReportComponent implements OnInit {
     $('#datatableexample').DataTable({
       "bPaginate": true,
       "bLengthChange": true,
-      "lengthMenu": [6, 10, 20],
+      "lengthMenu": [8, 10, 20],
       "bFilter": false,
       "bInfo": true,
       "bAutoWidth": false,
       "ordering": false,
       "fixedHeader": false,
-      "iDisplayLength": 6,
-      "pageLength": 6
+      "iDisplayLength": 8,
+      "pageLength": 8
     });
   }
 
