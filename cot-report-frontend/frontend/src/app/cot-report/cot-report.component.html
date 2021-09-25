@@ -35,10 +35,10 @@
         </div>
       </div>
       <div class="col-md-2 mx-auto">
-        <div class="chart-container image-container .center-chart">
+        <div class="linechart-container center-chart image-container">
           <ngx-charts-bar-vertical-stacked [view]="changeChartSize" [results]="positionChangeData" [gradient]="false"
-            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="changeLabel" [yAxisLabel]="changeLabel" [animations]="true">
+            [xAxis]="true" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="false"
+            [showYAxisLabel]="false" [xAxisLabel]="changeLabel" [yAxisLabel]="changeLabel" [animations]="true">
           </ngx-charts-bar-vertical-stacked>
         </div>
       </div>
