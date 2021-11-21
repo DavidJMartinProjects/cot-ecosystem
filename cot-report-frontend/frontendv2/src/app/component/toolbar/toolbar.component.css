@@ -1,0 +1,25 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.my-logo {
+    width: 19%;
+    height: 60px;
+    margin-bottom: 1em;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    bottom: 0%;
+    transform: translateX(-50%);
+}  
+
+.title-center {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+mat-toolbar {
+    background: white;
+    color: black;
+    position: relative;
+}
