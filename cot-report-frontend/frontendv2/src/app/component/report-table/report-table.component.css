@@ -1,8 +1,10 @@
-/* .card {
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.card {
     padding: 2em;
     width: 65%;
 }
-*/
+
 .center {
     display: block;
     margin-left: auto;
@@ -30,3 +32,24 @@
     margin-left: 16px;    
 }
 
+table {    
+    width: 100%;  
+    margin: 1em;
+}
+
+img {
+    margin: 5px;
+}
+
+.filter-menu {
+    padding-top: .5em;
+}
+
+.custom-btn {
+    background-color: #002b5c;
+    color: white;
+}
+
+mat-table {
+    border-radius: 16px;  
+}

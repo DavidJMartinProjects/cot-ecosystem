@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 
 html, body { 
     height: 100%;
@@ -12,3 +12,16 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* 
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color:rgb(253, 6, 6); 
+  }
+  
+  .mat-radio-button.mat-accent .mat-radio-inner-circle{
+    color:rgb(253, 6, 6);
+    background-color:rgb(253, 6, 6);
+  }
+  
+  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+      background-color:rgb(255, 37, 37,.26);
+  } */
