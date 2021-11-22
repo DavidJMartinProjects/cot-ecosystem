@@ -15,10 +15,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     // since we're exporting these modules, add them to export
     exports: [
+        FormsModule,
         MatMenuModule,
         MatButtonModule,
         MatIconModule,
@@ -34,7 +37,9 @@ import { MatSelectModule } from '@angular/material/select';
         MatProgressSpinnerModule,
         MatFormFieldModule,
         MatExpansionModule,
-        MatSelectModule
+        MatSelectModule,
+        MatRadioModule
+        
     ]
 })
 export class MaterialModule { }

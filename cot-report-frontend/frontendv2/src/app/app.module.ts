@@ -9,20 +9,22 @@ import { MaterialModule } from './material.module';
 import { SideNavComponent } from './component/side-nav/side-nav.component';
 import { ReportTableComponent } from './component/report-table/report-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppSidenavComponent } from './component/app-sidenav/app-sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SideNavComponent,
-    ReportTableComponent
+    SideNavComponent,    
+    AppSidenavComponent,
+    ReportTableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,    
     MaterialModule,
-    NgbModule
+    NgbModule     
   ],
   providers: [],
   bootstrap: [AppComponent]

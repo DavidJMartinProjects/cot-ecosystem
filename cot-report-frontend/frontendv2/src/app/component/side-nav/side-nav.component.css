@@ -27,6 +27,7 @@ mat-sidenav {
     border-radius: 10px;
     padding: 16px;
     text-align: center;
+    /* z-index: -1 !important; */
 }
 
 .menu-button {

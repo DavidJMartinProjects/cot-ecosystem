@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportTableComponent implements OnInit {
 
+  selectedSymbol: string = 'USD';
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'JPY', 'CHF', 'CAD', 'NAD', 'MXN', 'ZAR', 'BTC'];
+  
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  handleChange(theSymbol: string) {
+    // this.getSymbolData(theSymbol);
+  }
+
 
 }

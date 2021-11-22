@@ -1,1 +1,5 @@
-<p>report-table works!</p>
+<mat-radio-group aria-labelledby="example-radio-group-label" class="my-radio-group" [(ngModel)]="selectedSymbol">
+  <mat-radio-button class="example-radio-button" *ngFor="let symbol of symbols" [value]="symbol">
+    {{symbol}}
+  </mat-radio-button>
+</mat-radio-group>

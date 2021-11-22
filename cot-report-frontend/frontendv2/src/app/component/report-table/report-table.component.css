@@ -1,0 +1,32 @@
+/* .card {
+    padding: 2em;
+    width: 65%;
+}
+*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 95px; 
+    padding: 1em; 
+    border: 0;
+}
+
+.my-radio-group {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+    margin-bottom: .2em;
+    border: 0; 
+    padding-bottom: 2em;
+}
+
+.mat-radio-button  {
+    margin-right: .5em;
+    
+} 
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;    
+}
+
