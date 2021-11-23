@@ -22,9 +22,17 @@
 }
 
 table {    
-    width: 60%;  
+    width: 70%;  
 }
 
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}
 img {
     margin: 5px;
 }

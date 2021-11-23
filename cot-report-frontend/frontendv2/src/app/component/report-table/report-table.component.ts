@@ -11,7 +11,7 @@ export class ReportTableComponent implements OnInit {
 
   dataList = new MatTableDataSource();
   selectedSymbol: string = 'USD';
-  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'JPY', 'CHF', 'CAD', 'CAD', 'MXN', 'ZAR', 'BTC'];
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'CAD', 'MXN', 'ZAR', 'BTC'];
   
   constructor(private http: HttpClient) { 
     this.getSymbolData(this.symbols[0]);
