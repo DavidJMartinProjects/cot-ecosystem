@@ -33,6 +33,7 @@ td, th {
 .mat-sort-header-container {
     justify-content: center !important;
 }
+
 img {
     margin: 5px;
 }
@@ -45,4 +46,13 @@ img {
     background-color: #002b5c;
     color: white;
 }
+
+.mat-row.hovered {
+    background: #eee;
+}
+  
+.mat-row.highlighted {
+    background: #999;
+}  
+  
 
