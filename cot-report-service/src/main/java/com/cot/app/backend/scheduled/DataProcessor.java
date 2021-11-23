@@ -33,18 +33,16 @@ public class DataProcessor {
             for (int index = reportDtos.size()-2; index > 0; index --) {
                 String longChange = df.format(Double.parseDouble(reportDtos.get(index - 1).getPercentageLong())
                         - Double.parseDouble(reportDtos.get(index).getPercentageLong()));
-                log.info("longChange: {}", longChange);
 
                 String shortChange = df.format(Double.parseDouble(reportDtos.get(index - 1).getPercentageShort())
                         - Double.parseDouble(reportDtos.get(index).getPercentageShort()));
-                log.info("shortChange: {}", shortChange);
 
                 reportDtos.get(index - 1).setPercentageLongChange(longChange);
                 reportDtos.get(index - 1).setPercentageShortChange(shortChange);
 
                 double netChange = reportDtos.get(index - 1).getNetPositions()
                         - reportDtos.get(index).getNetPositions();
-                log.info("netChange: {}", netChange);
+
                 reportDtos.get(index - 1).setNetPositionsChange(netChange);
             }
             dbOperation.save(reportDtos);

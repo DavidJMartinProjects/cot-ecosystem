@@ -36,11 +36,8 @@ public class ScheduledTask {
         log.info("processing data...");
         dataProcessor.processData();
 
-        log.info("cleaning work directory files.");
+//        log.info("cleaning work directory files.");
 //        org.apache.commons.io.FileUtils.cleanDirectory(new File(REPORT_DOWNLOAD_LOCATION));
-
-
-
         log.info("task completed successfully.");
     }
 

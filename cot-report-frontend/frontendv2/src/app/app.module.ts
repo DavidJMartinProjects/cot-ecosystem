@@ -10,6 +10,7 @@ import { SideNavComponent } from './component/side-nav/side-nav.component';
 import { ReportTableComponent } from './component/report-table/report-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppSidenavComponent } from './component/app-sidenav/app-sidenav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { AppSidenavComponent } from './component/app-sidenav/app-sidenav.compone
     SideNavComponent,    
     AppSidenavComponent,
     ReportTableComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,    
     MaterialModule,
-    NgbModule     
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

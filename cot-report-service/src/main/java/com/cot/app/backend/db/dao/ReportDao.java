@@ -28,7 +28,7 @@ public class ReportDao implements DbOperation<ReportDto> {
 
     @Override
     public List<ReportDto> findAll() {
-        log.info("fetching cot reports.");
+        log.debug("fetching cot reports.");
         return reportRepository.findAll()
             .stream()
             .map(entity -> mapper.toDto(entity, ReportDto.class))
@@ -37,7 +37,7 @@ public class ReportDao implements DbOperation<ReportDto> {
 
     @Override
     public List<ReportDto> findAll(String instrument) {
-        log.info("fetching cot reports for instrument: {}.", instrument);
+        log.debug("fetching cot reports for instrument: {}.", instrument);
         return reportRepository.findByInstrument(instrument)
             .stream()
             .map(entity -> mapper.toDto(entity, ReportDto.class))
@@ -46,20 +46,19 @@ public class ReportDao implements DbOperation<ReportDto> {
 
     @Override
     public void deleteAll() {
-        log.info("deleting all records");
+        log.debug("deleting all records");
         reportRepository.deleteAll();
     }
 
     @Override
     public void deleteBySymbol(SupportedSymbol symbol) {
-        log.info("deleting records by symbol: {}", symbol);
+        log.debug("deleting records by symbol: {}", symbol);
         reportRepository.deleteByInstrument(symbol.name());
-
     }
 
     @Override
     public List<ReportDto> save(List<ReportDto> reportDto) {
-        log.info("saving {} entities.", reportDto.size());
+        log.debug("saving {} entities.", reportDto.size());
         List<ReportEntity> reportEntities = mapper.toList(reportDto, ReportEntity.class);
         return mapper.toList(reportRepository.saveAll(reportEntities), ReportDto.class);
     }
