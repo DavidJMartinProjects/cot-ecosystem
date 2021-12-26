@@ -17,13 +17,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './card/card.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     ReportComponent,
-    CardComponent
+    CardComponent    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,10 @@ import { CardComponent } from './card/card.component';
     NgChartsModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule    
+    MatMenuModule,
+    MatRadioModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
