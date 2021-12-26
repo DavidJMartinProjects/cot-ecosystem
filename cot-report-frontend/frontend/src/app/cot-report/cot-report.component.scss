@@ -82,7 +82,11 @@ th, td { text-align: center; }
     stroke:black;
     border: 1;
     float: right;
-  }
+}
+  
+.advanced-pie-legend .legend-items-container .legend-items .legend-item .item-value {    
+    // margin-top: -6px !important;    
+}
 
 .chart-container {
     padding-left: 45%;
