@@ -10,11 +10,11 @@
   background: inherit;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+// .mat-toolbar .mat-primary {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }
 
 .title-center {
   flex: 1 1 auto;
@@ -54,9 +54,22 @@ mat-sidebar-container {
   transform: translateX(-50%);
 } 
 
-@media(max-width:800px){
+@media(max-width:900px){
   .my-logo{
-    width: 50%;
+    width: 55%;
+    height: 100%;
+    // margin-bottom: 1em;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    bottom: 0%;
+    transform: translateX(-50%);
+  }
+}
+
+@media(max-width:1200px){
+  .my-logo{
+    width: 55%;
     height: 100%;
     // margin-bottom: 1em;
     position: absolute;
@@ -79,10 +92,6 @@ mat-sidenav {
       height: calc(100vh - 95px);
 }
 
-// .sidenav-container {
-//   z-index: -1 !important;
-// }
-
 .content {
   height: calc(100vh - 98px);
   margin: 16px;
@@ -98,12 +107,6 @@ mat-sidenav {
   height: calc(100vh - 65px);
 }
 
-.mat-toolbar .mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
 mat-sidenav {
   margin: 16px;
   width: 200px;
@@ -113,7 +116,7 @@ mat-sidenav {
   border-radius: 10px;
   padding: 16px;
   text-align: center;
-  /* z-index: -1 !important; */
+  // z-index: -1 !important; 
 }
 
 .menu-button {
@@ -140,10 +143,6 @@ mat-icon {
     margin-right: 8px;
 }
 
-.mat-toolbar {
-  position: relative;
-  z-index: 2;
-}
 
 
 
