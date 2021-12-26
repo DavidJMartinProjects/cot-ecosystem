@@ -11,11 +11,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { NgChartsModule } from 'ng2-charts';
+import { ReportComponent } from './report/report.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    ReportComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,11 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    NgChartsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
