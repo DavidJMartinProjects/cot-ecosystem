@@ -67,6 +67,18 @@ mat-sidebar-container {
   }
 }
 
+
+.content {
+  height: calc(100vh - 98px);
+  margin: 16px;
+  margin-left: 32px;
+  /* display: flex; */
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
 @media(max-width:1200px){
   .my-logo{
     width: 55%;

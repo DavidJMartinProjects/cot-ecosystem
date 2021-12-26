@@ -16,27 +16,28 @@
     </mat-grid-tile>
     <!--Charts-->
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
-      <app-card title="Monthly Revenue">
+      <app-card title="positions overview">
         <div class="chart-container image-container .center-chart">
-          <ngx-charts-advanced-pie-chart [animations]="true" [results]="pieChartData" [gradient]="true">
+          <ngx-charts-advanced-pie-chart [animations]="true" [results]="pieChartData" 
+          [gradient]="true">
           </ngx-charts-advanced-pie-chart>
         </div>
       </app-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
-      <app-card title="Product Sales">
+      <app-card title="institutional positions">
         <div class="chart-container image-container .center-chart">
           <div class="linechart-container center-chart image-container">
             <ngx-charts-line-chart [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
               [legend]="showLegend" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
-              [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" [view]="lineChartSize" [animations]="true">
+              [yAxisLabel]="yAxisLabel"  [animations]="true">
             </ngx-charts-line-chart>
           </div>
         </div>
       </app-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
-      <app-card title="Sales by Traffic Source">
+      <app-card title="change">
         <div class="linechart-container center-chart image-container">
           <ngx-charts-bar-vertical-stacked [view]="changeChartSize" [results]="positionChangeData" [gradient]="false"
             [xAxis]="true" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="false"
@@ -47,7 +48,7 @@
     </mat-grid-tile>
     <!--Table-->
     <mat-grid-tile [colspan]="( cardLayout | async )!.table.cols" [rowspan]="( cardLayout | async )!.table.rows">
-      <!-- <app-card title="Card 9"> -->
+     
         <table mat-table [dataSource]="data" class="mat-elevation-z4">
 
           <ng-container matColumnDef="reportDate">

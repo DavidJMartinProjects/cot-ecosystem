@@ -51,7 +51,7 @@ export class ReportComponent {
   }
 
     multi: any[] | undefined;
-    lineChartSize: [number, number] = [330, 210];
+    // lineChartSize: [number, number] = [330, 210];
     // line chart options
     showXAxis = false;
     showYAxis = true;
