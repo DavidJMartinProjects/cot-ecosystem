@@ -18,6 +18,12 @@ mat-sidebar-container {
     height: calc(100vh - 65px);
 }
 
+.mat-toolbar .mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
 mat-sidenav {
     margin: 16px;
     width: 200px;

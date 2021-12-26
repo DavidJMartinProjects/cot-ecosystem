@@ -12,8 +12,8 @@ export class ReportTableComponent implements OnInit {
   dataList = new MatTableDataSource();
   selectedSymbol: string = 'USD';
   symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'CAD', 'MXN', 'ZAR', 'BTC'];
-  
-  constructor(private http: HttpClient) { 
+
+  constructor(private http: HttpClient) {
     this.getSymbolData(this.symbols[0]);
   }
 
@@ -26,7 +26,7 @@ export class ReportTableComponent implements OnInit {
 
   getSymbolData(symbol: string) {
     this.http
-      .get<any>('http://localhost:80/api/reports/cot?symbol=' + symbol)
+      .get<any>('http://my-example.com:80/api/reports/cot?symbol=' + symbol)
       .subscribe((response) => {
         console.log('GET: http://localhost:80/api/reports/cot?symbol=USD');
         this.dataList.data = response.slice(0, 11);
@@ -35,10 +35,10 @@ export class ReportTableComponent implements OnInit {
       })
   }
 
-  displayedColumns = 
-  [    
-    'reportDate', 
-    'longPositions', 
+  displayedColumns =
+  [
+    'reportDate',
+    'longPositions',
     'shortPositions',
     'percentageLong',
     'percentageShort',

@@ -1,0 +1,156 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.title-center {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+mat-toolbar {
+  background: white;
+  color: black;
+
+}
+.mat-toolbar {
+  position: relative;
+  z-index: 2;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  z-index: -1 !important;
+}
+
+mat-sidebar-container {
+  height: calc(100vh - 65px);
+}
+
+.my-logo {
+  width: 18%;
+  height: 100%;
+  // margin-bottom: 1em;
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  bottom: 0%;
+  transform: translateX(-50%);
+} 
+
+@media(max-width:800px){
+  .my-logo{
+    width: 50%;
+    height: 100%;
+    // margin-bottom: 1em;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    bottom: 0%;
+    transform: translateX(-50%);
+  }
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+      height: calc(100vh - 95px);
+}
+
+// .sidenav-container {
+//   z-index: -1 !important;
+// }
+
+.content {
+  height: calc(100vh - 98px);
+  margin: 16px;
+  margin-left: 32px;
+  /* display: flex; */
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+.mat-toolbar .mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-sidenav {
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  /* z-index: -1 !important; */
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+}
+
+mat-icon {
+    margin-right: 8px;
+}
+
+.mat-toolbar {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
