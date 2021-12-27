@@ -1,11 +1,13 @@
 package com.cot.app.backend.scheduled;
 
-import java.io.IOException;
-
+import com.cot.app.backend.swap.SwapDto;
+import com.cot.app.backend.swap.SwapService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.slf4j.Slf4j;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @author DavidJMartin
@@ -23,8 +25,11 @@ public class ScheduledTask {
     @Autowired
     private DataProcessor dataProcessor;
 
+    @Autowired
+    private SwapService swapService;
+
     public void importReport() throws IOException {
-        log.info("downloading latest cot report");
+        log.info("retrieving latest cot report");
         reportDownloader.downloadFile();
 
         log.info("unzipping cot report data");
@@ -38,7 +43,11 @@ public class ScheduledTask {
 
 //        log.info("cleaning work directory files.");
 //        org.apache.commons.io.FileUtils.cleanDirectory(new File(REPORT_DOWNLOAD_LOCATION));
-        log.info("task completed successfully.");
+        log.info("cot-report retrieved successfully.");
+
+        log.info("retrieving latest swap data.");
+        List<SwapDto> swaps = swapService.retrieveSwapData();
+        log.info("swap data retrieved successfully.");
     }
 
 }
