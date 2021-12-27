@@ -14,19 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static cot.swap.controller.SwapController.*;
+import static cot.swap.controller.SwapController.API_BASE_PATH;
 
 /**
  * @author davidjmartin
  */
 @RestController
-@RequestMapping(API_BASE_PATH + REPORTS_URL)
+@RequestMapping(API_BASE_PATH)
 @Slf4j
 @CrossOrigin
 public class SwapController {
 
     public static final String API_BASE_PATH = "/api";
-    public static final String REPORTS_URL = "/reports";
 
     private static final String SWAP_URL = "/swaps";
     private static final String POSITIVE_SWAP_URL = "/positive";
@@ -39,7 +38,7 @@ public class SwapController {
     @GetMapping(SWAP_URL)
     @ResponseStatus(HttpStatus.OK)
     public List<SwapDto> getSwapsBySymbol(@RequestParam(defaultValue = SYMBOL_DEFAULT_VALUE) String symbol) {
-        log.info("GET: {}?symbol={}", API_BASE_PATH + REPORTS_URL + SWAP_URL, symbol);
+        log.info("GET: {}?symbol={}", API_BASE_PATH + SWAP_URL, symbol);
         if(SYMBOL_DEFAULT_VALUE.equalsIgnoreCase(symbol)) {
             return swapService.fetchAllSwaps();
         }
@@ -49,7 +48,7 @@ public class SwapController {
     @GetMapping(SWAP_URL + POSITIVE_SWAP_URL)
     @ResponseStatus(HttpStatus.OK)
     public List<SwapDto> getPositiveSwaps() {
-        log.info("GET: {}", API_BASE_PATH + REPORTS_URL + SWAP_URL + POSITIVE_SWAP_URL);
+        log.info("GET: {}", API_BASE_PATH + SWAP_URL + POSITIVE_SWAP_URL);
         return swapService.fetchPositiveSwaps();
     }
 

@@ -21,7 +21,7 @@ import static com.cot.app.backend.controller.ReportController.REPORTS_URL;
  * @author DavidJMartin
  */
 @RestController
-@RequestMapping(API_BASE_PATH + REPORTS_URL)
+@RequestMapping(API_BASE_PATH)
 @Slf4j
 @CrossOrigin
 public class ReportController {
@@ -29,22 +29,13 @@ public class ReportController {
     public static final String API_BASE_PATH = "/api";
     public static final String REPORTS_URL = "/reports";
 
-    private static final String STATUS_URL = "/status";
-    public static final String COT_PATH = "/cot";
-
     @Autowired
     private ReportService reportService;
 
-    @GetMapping(STATUS_URL)
-    @ResponseStatus(HttpStatus.OK)
-    public String greeting() {
-        return "cot report service is online.";
-    }
-
-    @GetMapping(COT_PATH)
+    @GetMapping(REPORTS_URL)
     @ResponseStatus(HttpStatus.OK)
     public List<ReportDto> getReports(@RequestParam String symbol) {
-        log.info("GET: {}?symbol={}", API_BASE_PATH + REPORTS_URL + COT_PATH, symbol);
+        log.info("GET: {}?symbol={}", API_BASE_PATH + REPORTS_URL, symbol);
         return reportService.getReportsByInstrument(symbol);
     }
 

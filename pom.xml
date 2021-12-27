@@ -5,9 +5,9 @@
 
     <modules>
         <module>api-gateway</module>
-        <module>swap-service</module>
-        <module>cot-report-service</module>
-        <module>twitter-crawler-service</module>
+        <module>swap-rate-api</module>
+        <module>cot-report-api</module>
+        <module>twitter-crawler-api</module>
     </modules>
 
     <parent>
