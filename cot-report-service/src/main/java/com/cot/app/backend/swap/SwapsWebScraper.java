@@ -19,7 +19,7 @@ import java.util.Set;
 @Component
 public class SwapsWebScraper {
 
-    private static final String TD_HTML_TAG = "td";
+    private static final String TD_TAG = "td";
     private static final String TBODY_TAG = "tbody";
     private static final String SWAP_TABLE_ID = "tablepress-25";
     private static final String REMOTE_SWAP_SERVICE_URL = "https://www.icmarkets.com/blog/metatrader-4-swaps/";
@@ -41,7 +41,7 @@ public class SwapsWebScraper {
             Elements tableRows = tbody.children();
 
             for (Element tableRow : tableRows) {
-                Elements tableData = tableRow.getElementsByTag(TD_HTML_TAG);
+                Elements tableData = tableRow.getElementsByTag(TD_TAG);
                 String symbol = getTextByIndex(tableData, SYMBOL_INDEX);
                 String longSwap = getTextByIndex(tableData, LONG_SWAP_INDEX);
                 String shortSwap = getTextByIndex(tableData, SHORT_SWAP_INDEX);
