@@ -50,10 +50,10 @@ public class SwapsWebScraper {
 
                 if(!symbol.contains(".")) {
                     SwapDto swapDto = SwapDto.builder()
-                            .symbol(symbol)
-                            .longSwap(longSwap)
-                            .shortSwap(shortSwap)
-                            .build();
+                        .symbol(symbol)
+                        .longSwap(longSwap)
+                        .shortSwap(shortSwap)
+                        .build();
                     swaps.add(swapDto);
                 }
             }
