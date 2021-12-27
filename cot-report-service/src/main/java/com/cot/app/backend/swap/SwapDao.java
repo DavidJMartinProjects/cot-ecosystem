@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -24,9 +23,9 @@ public class SwapDao {
     @Autowired
     private EntityMapper entityMapper;
 
-    public List<SwapDto> saveSwaps(List<SwapDto> swapDtos) {
+    public void saveSwaps(List<SwapDto> swapDtos) {
         List<SwapEntity> swapEntities = entityMapper.toList(swapDtos, SwapEntity.class);
-        return entityMapper.toList(swapRepository.saveAll(swapEntities), SwapDto.class);
+        swapRepository.saveAll(swapEntities);
     }
 
     public List<SwapDto> fetchPositiveSwaps() {
