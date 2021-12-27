@@ -78,5 +78,9 @@ public class SwapService {
     public List<SwapDto> fetchPositiveSwaps() {
         return swapDao.fetchPositiveSwaps();
     }
+
+    public List<SwapDto> fetchSwapsBySymbol(String symbol) {
+        return swapDao.fetchSwapsBySymbol(symbol);
+    }
 }
 

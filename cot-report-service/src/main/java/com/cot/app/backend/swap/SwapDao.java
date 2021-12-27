@@ -49,4 +49,7 @@ public class SwapDao {
         return entityMapper.toList(swapRepository.findAll(), SwapDto.class);
     }
 
+    public List<SwapDto> fetchSwapsBySymbol(String symbol) {
+        return entityMapper.toList(swapRepository.findBySymbolContainingIgnoreCase(symbol), SwapDto.class);
+    }
 }

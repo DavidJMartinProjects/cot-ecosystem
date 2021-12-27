@@ -10,6 +10,7 @@ import java.util.List;
  */
 @Repository
 public interface SwapRepository extends JpaRepository<SwapEntity, Long> {
-    public List<SwapEntity> findByShortSwapGreaterThan(double num1);
-    public List<SwapEntity> findByLongSwapGreaterThan(double num1);
+    public List<SwapEntity> findBySymbolContainingIgnoreCase(String symbol);
+    public List<SwapEntity> findByShortSwapGreaterThan(double num);
+    public List<SwapEntity> findByLongSwapGreaterThan(double num);
 }
