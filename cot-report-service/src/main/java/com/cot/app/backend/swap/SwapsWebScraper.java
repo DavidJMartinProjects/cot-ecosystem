@@ -38,9 +38,9 @@ public class SwapsWebScraper {
         try {
             Document webPage = Jsoup.connect(REMOTE_SWAP_SERVICE_URL).get();
 
-            Element tbodyElement = webPage
-                .getElementById(SWAP_TABLE_ELEMENT_ID)
-                .getElementsByTag(TBODY_HTML_TAG).get(SYMBOL_ELEMENT_INDEX);
+            Element tbodyElement = webPage.getElementById(SWAP_TABLE_ELEMENT_ID)
+                .getElementsByTag(TBODY_HTML_TAG)
+                .get(SYMBOL_ELEMENT_INDEX);
             Elements rows = tbodyElement.children();
 
             for (Element row : rows) {
