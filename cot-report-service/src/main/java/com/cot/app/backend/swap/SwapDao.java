@@ -29,15 +29,9 @@ public class SwapDao {
     }
 
     public List<SwapDto> fetchPositiveSwaps() {
-        List<SwapEntity> shortSwaps = new ArrayList<>();
-        shortSwaps = swapRepository.findByShortSwapGreaterThan(0);
-
-        List<SwapEntity> longSwaps = new ArrayList<>();
-        longSwaps = swapRepository.findByLongSwapGreaterThan(0);
-
         Set<SwapEntity> totalPositiveSwaps = new HashSet<SwapEntity>();
-        totalPositiveSwaps.addAll(shortSwaps);
-        totalPositiveSwaps.addAll(longSwaps);
+        totalPositiveSwaps.addAll(swapRepository.findByShortSwapGreaterThan(0));
+        totalPositiveSwaps.addAll(swapRepository.findByLongSwapGreaterThan(0));
 
         return entityMapper.toList(Arrays.asList(totalPositiveSwaps.toArray()), SwapDto.class);
     }
