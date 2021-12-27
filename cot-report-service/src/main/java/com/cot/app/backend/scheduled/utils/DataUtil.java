@@ -1,7 +1,6 @@
 package com.cot.app.backend.scheduled.utils;
 
-import com.cot.app.backend.db.DbOperation;
-import com.cot.app.backend.db.dao.entity.ReportEntity;
+import com.cot.app.backend.db.ReportDao;
 import com.cot.app.backend.db.dao.repository.ReportRepository;
 import com.cot.app.backend.model.ReportDto;
 import com.cot.app.backend.model.SupportedSymbol;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,7 +16,7 @@ import java.util.List;
 public class DataUtil {
 
     @Autowired
-    private DbOperation<ReportDto> dbOperation;
+    private ReportDao<ReportDto> reportDao;
 
     @Autowired
     private ReportRepository reportRepository;
@@ -28,7 +26,7 @@ public class DataUtil {
     public void process() {
         List<ReportDto> reportDtos;
         for (SupportedSymbol symbol : SupportedSymbol.values()) {
-            reportDtos = dbOperation.findAll(symbol.name());
+            reportDtos = reportDao.findAll(symbol.name());
 
             for (int index = reportDtos.size()-2; index > 0; index --) {
                 String longChange = df.format(Double.parseDouble(reportDtos.get(index - 1).getPercentageLong())
@@ -45,7 +43,7 @@ public class DataUtil {
 
                 reportDtos.get(index - 1).setNetPositionsChange(netChange);
             }
-            dbOperation.save(reportDtos);
+            reportDao.save(reportDtos);
 
         }
     }

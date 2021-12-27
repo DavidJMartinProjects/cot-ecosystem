@@ -1,6 +1,6 @@
 package com.cot.app.backend.db.dao;
 
-import com.cot.app.backend.db.DbOperation;
+import com.cot.app.backend.db.ReportDao;
 import com.cot.app.backend.db.dao.entity.ReportEntity;
 import com.cot.app.backend.db.dao.mapper.ReportMapper;
 import com.cot.app.backend.db.dao.repository.ReportRepository;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Component
-public class ReportDao implements DbOperation<ReportDto> {
+public class ReportDaoImpl implements ReportDao<ReportDto> {
 
     @Autowired
     private ReportMapper mapper;

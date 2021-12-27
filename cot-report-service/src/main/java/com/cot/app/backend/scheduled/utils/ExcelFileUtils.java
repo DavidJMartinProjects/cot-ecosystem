@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-import com.cot.app.backend.db.DbOperation;
+import com.cot.app.backend.db.ReportDao;
 import com.cot.app.backend.model.ReportDto;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -39,7 +39,7 @@ public class ExcelFileUtils {
     private static final int FIRST_SHEET_POSITION = 0;
 
     @Autowired
-    private DbOperation<ReportDto> dbOperation;
+    private ReportDao<ReportDto> reportDao;
 
     public void saveReportToDb() throws IOException {
         List<ReportDto> reportDtos = new ArrayList<>();
@@ -104,7 +104,7 @@ public class ExcelFileUtils {
             reportDtos.add(reportDto);
         }
 
-        dbOperation.save(reportDtos);
+        reportDao.save(reportDtos);
     }
 
 }

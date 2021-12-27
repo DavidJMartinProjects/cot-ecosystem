@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cot.app.backend.db.DbOperation;
+import com.cot.app.backend.db.ReportDao;
 import com.cot.app.backend.model.ReportDto;
 
 /**
@@ -15,10 +15,10 @@ import com.cot.app.backend.model.ReportDto;
 public class ReportService {
 
     @Autowired
-    private DbOperation<ReportDto> dbOperation;
+    private ReportDao<ReportDto> reportDao;
 
     public List<ReportDto> getReportsByInstrument(String instrument) {
-        return dbOperation.findAll(instrument);
+        return reportDao.findAll(instrument);
     }
 
 }

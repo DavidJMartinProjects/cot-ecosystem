@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author davidjmartin
  */
-public interface DbOperation<T> {
+public interface ReportDao<T> {
 
     /**
      * Save a list of entities.
