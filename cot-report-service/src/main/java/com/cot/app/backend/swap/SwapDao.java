@@ -35,14 +35,12 @@ public class SwapDao {
 
         List<SwapEntity> longSwaps = new ArrayList<>();
         longSwaps = swapRepository.findByLongSwapGreaterThan(0);
-        log.info("shortSwaps: {}", shortSwaps.size());
-        log.info("longSwaps: {}", longSwaps.size());
 
-        Set<SwapEntity> aggregatesPositiveSwaps = new HashSet<SwapEntity>();
-        aggregatesPositiveSwaps.addAll(shortSwaps);
-        aggregatesPositiveSwaps.addAll(longSwaps);
-        log.info("aggregatesPositiveSwaps: {}", aggregatesPositiveSwaps.size());
-        return entityMapper.toList(Arrays.asList(aggregatesPositiveSwaps.toArray()), SwapDto.class);
+        Set<SwapEntity> totalPositiveSwaps = new HashSet<SwapEntity>();
+        totalPositiveSwaps.addAll(shortSwaps);
+        totalPositiveSwaps.addAll(longSwaps);
+
+        return entityMapper.toList(Arrays.asList(totalPositiveSwaps.toArray()), SwapDto.class);
     }
 
     public List<SwapDto> fetchAllSwaps() {
