@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SwapDto {
 
+    private long id;
     private String symbol;
-    private String longSwap;
-    private String shortSwap;
+    private double longSwap;
+    private double shortSwap;
 
 }

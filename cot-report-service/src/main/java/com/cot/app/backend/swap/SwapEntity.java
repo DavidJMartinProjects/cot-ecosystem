@@ -28,10 +28,10 @@ public class SwapEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    private long id;
 
     private String symbol;
-    private String shortSwaps;
-    private String longSwaps;
+    private double shortSwap;
+    private double longSwap;
 
 }

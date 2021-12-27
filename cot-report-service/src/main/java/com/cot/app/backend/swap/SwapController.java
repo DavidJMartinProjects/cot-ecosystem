@@ -26,15 +26,22 @@ public class SwapController {
     public static final String API_BASE_PATH = "/api";
     public static final String REPORTS_URL = "/reports";
 
-    public static final String SWAP_PATH = "/swaps";
+    public static final String SWAP_URL = "/swaps";
+    public static final String POSITIVE_SWAP_URL = "/positive";
 
     @Autowired
     private SwapService swapService;
 
-    @GetMapping(SWAP_PATH)
+    @GetMapping(SWAP_URL)
     @ResponseStatus(HttpStatus.OK)
     public List<SwapDto> greeting() {
-        return swapService.retrieveSwapData();
+        return swapService.fetchAllSwaps();
+    }
+
+    @GetMapping(SWAP_URL + POSITIVE_SWAP_URL)
+    @ResponseStatus(HttpStatus.OK)
+    public List<SwapDto> getPositiveSwaps() {
+        return swapService.fetchPositiveSwaps();
     }
 
 }
