@@ -1,14 +1,18 @@
 server:
-  port: 81
+  port: 8080
 
 spring:
   cloud:
     gateway:
       routes:
-        - id: cot-report-service
-          uri: http://cot-report-service:80
+        - id: cot-report-api
+          uri: http://cot-report-api:80
           predicates:
-            - Path=/api/reports**/*
+            - Path=/api/reports/cot**
+        - id: swap-rate-api
+          uri: http://swap-rate-api:80
+          predicates:
+            - Path=/api/reports/swaps**
 management:
   endpoints:
     web:

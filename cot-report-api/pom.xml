@@ -8,10 +8,10 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>cot-report-service</name>
+	<name>cot-report-api</name>
 	<groupId>main.java.app</groupId>
-	<artifactId>cot-report-service</artifactId>
-	<description>backend for cot reporting service</description>
+	<artifactId>cot-report-api</artifactId>
+	<description>backend for cot reporting api</description>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 

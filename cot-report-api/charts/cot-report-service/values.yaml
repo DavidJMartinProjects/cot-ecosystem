@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: davidjmartin/cot-report-service
-  pullPolicy: IfNotPresent
+  repository: davidjmartin/report-backend
+  pullPolicy: Never
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
