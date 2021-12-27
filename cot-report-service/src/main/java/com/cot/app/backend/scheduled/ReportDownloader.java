@@ -25,7 +25,6 @@ public class ReportDownloader {
 
     public static final String REPORT_DOWNLOAD_LOCATION = "./";
     public static final String REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_2021.zip";
-//    public static final String REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/fut_fin_xls_2021.zip";
 
     public static final String REPORT_ZIPPED_FILENAME = "dea_fut_xls_2021.zip";
     public static final String REPORT_UNZIPPED_FILENAME = "annual.xls";
@@ -35,6 +34,7 @@ public class ReportDownloader {
 
     public void downloadFile() {
         try {
+            // ToDo: implement restTemplateFacade here
             log.info("making GET request to retrieve latest COT report.");
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));

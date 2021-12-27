@@ -1,5 +1,7 @@
 package com.cot.app.backend.scheduled;
 
+import com.cot.app.backend.scheduled.utils.DataUtil;
+import com.cot.app.backend.scheduled.utils.ExcelFileUtils;
 import com.cot.app.backend.swap.SwapsWebScraper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ public class ScheduledTask {
     private ReportDownloader reportDownloader;
 
     @Autowired
-    private DataProcessor dataProcessor;
+    private DataUtil dataProcessorUtil;
 
     @Autowired
     private SwapsWebScraper swapsWebScraper;

@@ -1,4 +1,4 @@
-package com.cot.app.backend.scheduled;
+package com.cot.app.backend.scheduled.utils;
 
 import static com.cot.app.backend.scheduled.ReportDownloader.REPORT_DOWNLOAD_LOCATION;
 import static com.cot.app.backend.scheduled.ReportDownloader.REPORT_ZIPPED_FILENAME;
@@ -21,11 +21,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
-public class FileUtils {
+public class ZipFileUtils {
 
     private static final String REPORT_ZIP_FILE = REPORT_DOWNLOAD_LOCATION + REPORT_ZIPPED_FILENAME;
 
-    private FileUtils() {}
+    private ZipFileUtils() {}
 
     public static void unzip() throws IOException {
         try (ZipInputStream inputStream = new ZipInputStream(new FileInputStream(REPORT_ZIP_FILE))) {

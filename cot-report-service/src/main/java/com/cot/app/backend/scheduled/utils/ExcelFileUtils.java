@@ -1,4 +1,4 @@
-package com.cot.app.backend.scheduled;
+package com.cot.app.backend.scheduled.utils;
 
 import static com.cot.app.backend.scheduled.ReportDownloader.REPORT_DOWNLOAD_LOCATION;
 import static com.cot.app.backend.scheduled.ReportDownloader.REPORT_UNZIPPED_FILENAME;

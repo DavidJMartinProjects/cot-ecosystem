@@ -1,4 +1,4 @@
-package com.cot.app.backend.scheduled;
+package com.cot.app.backend.scheduled.utils;
 
 import com.cot.app.backend.db.DbOperation;
 import com.cot.app.backend.db.dao.entity.ReportEntity;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class DataProcessor {
+public class DataUtil {
 
     @Autowired
     private DbOperation<ReportDto> dbOperation;
@@ -25,7 +25,7 @@ public class DataProcessor {
 
     private DecimalFormat df = new DecimalFormat("0.#");
 
-    public void processData() {
+    public void process() {
         List<ReportDto> reportDtos;
         for (SupportedSymbol symbol : SupportedSymbol.values()) {
             reportDtos = dbOperation.findAll(symbol.name());
