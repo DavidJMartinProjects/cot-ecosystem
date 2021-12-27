@@ -8,11 +8,11 @@ spring:
         - id: cot-report-api
           uri: http://cot-report-api:80
           predicates:
-            - Path=/api/reports/cot**
+            - Path=/api/reports/cot**, /api/reports/cot**/*
         - id: swap-rate-api
           uri: http://swap-rate-api:80
           predicates:
-            - Path=/api/reports/swaps**
+            - Path=/api/reports/swaps**, /api/reports/swaps**/*
 management:
   endpoints:
     web:
