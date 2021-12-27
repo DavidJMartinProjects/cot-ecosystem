@@ -26,6 +26,10 @@ public class SwapsWebScraper {
     private static final String SWAP_TABLE_ELEMENT_ID = "tablepress-25";
     private static final String REMOTE_SWAP_SERVICE_URL = "https://www.icmarkets.com/blog/metatrader-4-swaps/";
 
+    private static final int SYMBOL_ELEMENT_INDEX = 0;
+    private static final int LONG_SWAP_ELEMENT_INDEX = 1;
+    private static final int SHORT_SWAP_ELEMENT_INDEX = 2;
+
     @Autowired
     private SwapDao swapDao;
 
@@ -36,14 +40,14 @@ public class SwapsWebScraper {
 
             Element tbodyElement = webPage
                 .getElementById(SWAP_TABLE_ELEMENT_ID)
-                .getElementsByTag(TBODY_HTML_TAG).get(0);
+                .getElementsByTag(TBODY_HTML_TAG).get(SYMBOL_ELEMENT_INDEX);
             Elements rows = tbodyElement.children();
 
             for (Element row : rows) {
                 Elements tdElements = row.getElementsByTag(TD_HTML_TAG);
-                String symbol = tdElements.get(0).text().replace(",", "");
-                double longSwap = Double.parseDouble(tdElements.get(1).text().replace(",", ""));
-                double shortSwap = Double.parseDouble(tdElements.get(2).text().replace(",", ""));
+                String symbol = tdElements.get(SYMBOL_ELEMENT_INDEX).text().replace(",", "");
+                double longSwap = Double.parseDouble(tdElements.get(LONG_SWAP_ELEMENT_INDEX).text().replace(",", ""));
+                double shortSwap = Double.parseDouble(tdElements.get(SHORT_SWAP_ELEMENT_INDEX).text().replace(",", ""));
 
                 if(!symbol.contains(".")) {
                     SwapDto swapDto = SwapDto.builder()
