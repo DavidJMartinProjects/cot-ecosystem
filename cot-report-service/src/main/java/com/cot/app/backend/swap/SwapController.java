@@ -26,7 +26,6 @@ public class SwapController {
     public static final String API_BASE_PATH = "/api";
     public static final String REPORTS_URL = "/reports";
 
-    private static final String STATUS_URL = "/status";
     public static final String SWAP_PATH = "/swaps";
 
     @Autowired
