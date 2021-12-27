@@ -1,14 +1,11 @@
 package com.cot.app.backend.scheduled;
 
-import com.cot.app.backend.swap.SwapDto;
-import com.cot.app.backend.swap.SwapService;
 import com.cot.app.backend.swap.SwapsWebScraper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @author DavidJMartin
@@ -47,7 +44,7 @@ public class ScheduledTask {
 //        log.info("cot-report retrieved successfully.");
 
         log.info("retrieving latest swap data.");
-        swapsWebScraper.retrieveSwapData();
+        swapsWebScraper.scrape();
         log.info("swap data retrieved successfully.");
     }
 

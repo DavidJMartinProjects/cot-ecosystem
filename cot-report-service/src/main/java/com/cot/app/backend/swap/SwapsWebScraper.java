@@ -1,6 +1,5 @@
 package com.cot.app.backend.swap;
 
-import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,12 +17,11 @@ import java.util.Set;
  * @author davidjmartin
  */
 @Component
-@Slf4j
 public class SwapsWebScraper {
 
     private static final String TD_HTML_TAG = "td";
-    private static final String TBODY_HTML_TAG = "tbody";
-    private static final String SWAP_TABLE_ELEMENT_ID = "tablepress-25";
+    private static final String TBODY_TAG = "tbody";
+    private static final String SWAP_TABLE_ID = "tablepress-25";
     private static final String REMOTE_SWAP_SERVICE_URL = "https://www.icmarkets.com/blog/metatrader-4-swaps/";
 
     private static final int SYMBOL_INDEX = 0;
@@ -33,29 +31,23 @@ public class SwapsWebScraper {
     @Autowired
     private SwapDao swapDao;
 
-    public void retrieveSwapData() {
+    public void scrape() {
         Set<SwapDto> swaps = new HashSet<>();
         try {
             Document webPage = Jsoup.connect(REMOTE_SWAP_SERVICE_URL).get();
-
-            Element tbodyElement = webPage.getElementById(SWAP_TABLE_ELEMENT_ID)
-                .getElementsByTag(TBODY_HTML_TAG)
+            Element tbody = webPage.getElementById(SWAP_TABLE_ID)
+                .getElementsByTag(TBODY_TAG)
                 .get(SYMBOL_INDEX);
-            Elements tableRowElements = tbodyElement.children();
+            Elements tableRows = tbody.children();
 
-            for (Element tableRow : tableRowElements) {
-                Elements tableDataElements = tableRow.getElementsByTag(TD_HTML_TAG);
-                String symbol = tableDataElements.get(SYMBOL_INDEX).text().replace(",", "");
-                String longSwap = tableDataElements.get(LONG_SWAP_INDEX).text().replace(",", "");
-                String shortSwap = tableDataElements.get(SHORT_SWAP_INDEX).text().replace(",", "");
+            for (Element tableRow : tableRows) {
+                Elements tableData = tableRow.getElementsByTag(TD_HTML_TAG);
+                String symbol = getTextByIndex(tableData, SYMBOL_INDEX);
+                String longSwap = getTextByIndex(tableData, LONG_SWAP_INDEX);
+                String shortSwap = getTextByIndex(tableData, SHORT_SWAP_INDEX);
 
                 if(!symbol.contains(".")) {
-                    SwapDto swapDto = SwapDto.builder()
-                        .symbol(symbol)
-                        .longSwap(Double.parseDouble(longSwap))
-                        .shortSwap(Double.parseDouble(shortSwap))
-                        .build();
-                    swaps.add(swapDto);
+                    swaps.add(buildSwapDto(symbol, longSwap, shortSwap));
                 }
             }
         } catch (IOException ioException) {
@@ -66,7 +58,18 @@ public class SwapsWebScraper {
         }
         List swapDtos = Arrays.asList(swaps.toArray());
         swapDao.saveSwaps(swapDtos);
-        log.info("saved: {} swaps.", swaps.size());
+    }
+
+    private String getTextByIndex(Elements elements, int elementId) {
+        return elements.get(elementId).text().replace(",", "");
+    }
+
+    private SwapDto buildSwapDto(String symbol, String longSwap, String shortSwap) {
+        return SwapDto.builder()
+            .symbol(symbol)
+            .longSwap(Double.parseDouble(longSwap))
+            .shortSwap(Double.parseDouble(shortSwap))
+            .build();
     }
 
 }
