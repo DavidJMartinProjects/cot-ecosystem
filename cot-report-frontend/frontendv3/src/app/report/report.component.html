@@ -1,4 +1,5 @@
 <!--dash.component.html-->
+<div class="container">
 <div class="grid-container">
   <!-- <h1 class="mat-h1">Dashboard</h1> -->
   <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="86px">
@@ -17,23 +18,21 @@
     <!--Charts-->
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
       <app-card title="positions overview">
-        <div class="chart-container image-container .center-chart">
+        <div class="container chart-container image-container .center-chart">
           <ngx-charts-advanced-pie-chart [animations]="true" [results]="pieChartData" [gradient]="true">
           </ngx-charts-advanced-pie-chart>
         </div>
       </app-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
-      <app-card title="institutional positions">
-        <!-- <div class="chart-container image-container .center-chart"> -->
-        <mat-grid-list cols="6" rowHeight="34px">
-          <!-- <mat-grid-tile [colspan]="6" [rowspan]="1"></mat-grid-tile> -->
+      <app-card title="institutional positions">        
+        <mat-grid-list cols="9" rowHeight="34px">    
+          <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>      
           <mat-grid-tile [colspan]="2" [rowspan]="5">
-            <google-chart [type]='myType' [data]="pieChartDataNew" [width]="width" [height]="height"
-              [options]="options">
+            <google-chart [type]='myType' [data]="pieChartDataNew" [width]="width" [height]="height" [options]="options">
             </google-chart>
           </mat-grid-tile>
-          <mat-grid-tile [colspan]="4" [rowspan]="3">
+          <mat-grid-tile [colspan]="6" [rowspan]="3">
             <div class="fluid-container">
               <div class="row">
                 <span [countUp]="data[0].shortPositions + data[0].longPositions" style="font-size: 34px;"></span>
@@ -41,32 +40,36 @@
               </div>
             </div>
           </mat-grid-tile>
-          <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="lightblue">
-            <div class="container">
-              
+          <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile> 
+          <mat-grid-tile [colspan]="2" [rowspan]="2" class="shorts-border">
 
+            <div class="fluid-container">
               <div class="col">
                 <div class="row">
                   <span [countUp]="data[0].shortPositions" style="font-size: 25px;"></span>
                   <p style="margin: 0; font-size: 14px;">shorts</p>
                 </div>
-                <span [countUp]="data[0].percentageShort" style="font-size: 23px;"></span>                
+                <span [countUp]="data[0].percentageShort" style="font-size: 23px;"></span>
                 <span style="font-size: 22px;">%</span>
               </div>
-            </div>            
+            </div>
           </mat-grid-tile>
-          <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="lightblue">
+
+          <mat-grid-tile [colspan]="2" [rowspan]="2"class="longs-border">
+          <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
             <div class="fluid-container">
               <div class="row">
-                <span [countUp]="data[0].longPositions" style="font-size: 25px;"></span>
+                
+                <span [countUp]="data[0].longPositions" style="font-size: 25px;"> <mat-divider [vertical]="true" style="color: green;">Z</mat-divider></span>
                 <p style="margin: 0; font-size: 14px;">longs</p>
               </div>
               <div class="row">
                 <span [countUp]="data[0].percentageLong" style="font-size: 23px;"></span>
                 <span style="font-size: 22px;">%</span>
-                
+
               </div>
-            </div>             
+            </div>
           </mat-grid-tile>
         </mat-grid-list>
         <!-- <p>Net Positions</p>        
@@ -144,4 +147,5 @@
       <!-- </app-card> -->
     </mat-grid-tile>
   </mat-grid-list>
+</div>
 </div>
