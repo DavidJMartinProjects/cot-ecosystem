@@ -68,9 +68,9 @@ export class ReportComponent {
   
   getSymbolData(symbol: string) {    
     this.http
-      .get<any>('http://my-example.com:80/api/reports/cot?symbol=' + symbol)
+      .get<any>('http://my-example.com:80/api/reports?symbol=' + symbol)
       .subscribe((response) => {
-        console.log('GET: http://my-example.com:80/api/reports/cot?symbol=' + symbol);
+        console.log('GET: http://my-example.com:80/api/reports?symbol=' + symbol);
         this.data = response.slice(0, 6);
         this.buildPieChartData(this.data);        
         this.buildLineChartData(this.data);
