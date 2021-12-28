@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
+import { ChartType, Row } from "angular-google-charts";
 
 @Component({
   selector: 'app-report',
@@ -11,9 +12,10 @@ import { HttpClient } from '@angular/common/http';
 export class ReportComponent {
 
   // chart data
-  pieChartData: any;  
+  pieChartData: any;
+  pieChartDataNew: any;
   changeChartSize: [number, number] = [130, 180];
-  
+
   // dataList = new MatTableDataSource();
   data: any;
 
@@ -32,8 +34,8 @@ export class ReportComponent {
           table: { cols: 1, rows: 1 },
         };
       }
- 
-     return {
+
+      return {
         columns: 3,
         miniCard: { cols: 3, rows: 1 },
         chart: { cols: 1, rows: 3 },
@@ -46,33 +48,33 @@ export class ReportComponent {
     this.getSymbolData(this.selectedSymbol);
   }
 
-  handleChange(theSymbol: string) {    
+  handleChange(theSymbol: string) {
     this.getSymbolData(theSymbol);
   }
 
-    multi!: any[];
-    // lineChartSize: [number, number] = [330, 210];
-    // line chart options
-    showXAxis = false;
-    showYAxis = true;
-    gradient = true;
-    showLegend = false;
-    xAxisLabel = 'Time';
-    showYAxisLabel = true;
-    showXAxisLabel = true;
-    yAxisLabel = 'Institutional Positions';
-    autoScale = true;
-    legendTitle = 'Positions';
-    changeLabel = '% change'
-  
-  
-  getSymbolData(symbol: string) {    
+  multi!: any[];
+  // lineChartSize: [number, number] = [330, 210];
+  // line chart options
+  showXAxis = false;
+  showYAxis = true;
+  gradient = true;
+  showLegend = false;
+  xAxisLabel = 'Time';
+  showYAxisLabel = true;
+  showXAxisLabel = true;
+  yAxisLabel = 'Institutional Positions';
+  autoScale = true;
+  legendTitle = 'Positions';
+  changeLabel = '% change'
+
+
+  getSymbolData(symbol: string) {
     this.http
       .get<any>('http://my-example.com:80/api/reports?symbol=' + symbol)
       .subscribe((response) => {
         console.log('GET: http://my-example.com:80/api/reports?symbol=' + symbol);
         this.data = response.slice(0, 6);
-        this.buildPieChartData(this.data);        
+        this.buildPieChartData(this.data);
         this.buildLineChartData(this.data);
         this.buildChangeData(this.data);
       }, error => {
@@ -104,12 +106,16 @@ export class ReportComponent {
       { name: "shorts", value: data[0].shortPositions },
       { name: "longs", value: data[0].longPositions },
     ];
+
+    this.pieChartDataNew = [
+      [ "shorts", data[0].shortPositions ],
+      [ "longs", data[0].longPositions ],
+    ];
   }
 
-  
   // line chart
   private buildLineChartData(data: any) {
-    this.multi = [    
+    this.multi = [
       {
         "name": "Open Positions",
         "series": this.getOpenPositions(data)
@@ -126,28 +132,44 @@ export class ReportComponent {
   }
 
   displayedColumns =
-  [
-    'reportDate',
-    'longPositions',
-    'shortPositions',
-    'percentageLong',
-    'percentageShort',
-    'netPositions'
-  ];
+    [
+      'reportDate',
+      'longPositions',
+      'shortPositions',
+      'percentageLong',
+      'percentageShort',
+      'netPositions'
+    ];
 
   tiles: Tile[] = [
-    {text: 'Title', cols: 6, rows: 1, color: 'lightblue'},
-    {text: 'PieChart', cols: 2, rows: 5, color: 'lightgreen'},
-    {text: 'CountUp Number', cols: 4, rows: 1, color: 'lightpink'},
-    {text: 'Shorts Info', cols: 2, rows: 3, color: '#DDBDF1'},
-    {text: 'Longs Info', cols: 2, rows: 3, color: '#DDBDF1'}
+    { text: 'Title', cols: 6, rows: 1, color: 'lightblue' },
+    { text: 'PieChart', cols: 2, rows: 5, color: 'lightgreen' },
+    { text: 'CountUp Number', cols: 4, rows: 1, color: 'lightpink' },
+    { text: 'Shorts Info', cols: 2, rows: 3, color: '#DDBDF1' },
+    { text: 'Longs Info', cols: 2, rows: 3, color: '#DDBDF1' }
   ];
 
   lightblue = 'lightblue';
   lightgreen = 'lightgreen';
   lightpink = 'lightpink';
 
-
+  myType = ChartType.PieChart;
+  width = 140;
+  height = 140;
+  options = {
+    legend: { position: 'bottom' }, 
+    // colors: ['#949FB1', 'green'],   
+    colors: ['#949FB1', 'green'],
+    pieHole:0.8,
+    animation: {      
+      duration: 2000,
+      easing: 'in',
+      startup: true
+   },
+   pieSliceTextStyle: {
+    color: 'white',    
+  }
+  };
 }
 
 export interface Tile {

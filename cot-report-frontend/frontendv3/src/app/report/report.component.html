@@ -18,8 +18,7 @@
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
       <app-card title="positions overview">
         <div class="chart-container image-container .center-chart">
-          <ngx-charts-advanced-pie-chart [animations]="true" [results]="pieChartData" 
-          [gradient]="true">
+          <ngx-charts-advanced-pie-chart [animations]="true" [results]="pieChartData" [gradient]="true">
           </ngx-charts-advanced-pie-chart>
         </div>
       </app-card>
@@ -27,27 +26,61 @@
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
       <app-card title="institutional positions">
         <!-- <div class="chart-container image-container .center-chart"> -->
-          <mat-grid-list cols="6" rowHeight="30px">
-            <mat-grid-tile [colspan]="6" [rowspan]="1" [style.background]="lightblue">Title</mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="5" [style.background]="lightgreen">
-              <!-- <google-chart [type]="AreaChart"></google-chart> -->
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="4" [rowspan]="2" [style.background]="lightpink">CountUp Number</mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="3" [style.background]="lightblue">Shorts Info</mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="3" [style.background]="lightblue">Long Info</mat-grid-tile>
-          </mat-grid-list> 
-            <!-- <p>Net Positions</p>        
+        <mat-grid-list cols="6" rowHeight="34px">
+          <!-- <mat-grid-tile [colspan]="6" [rowspan]="1"></mat-grid-tile> -->
+          <mat-grid-tile [colspan]="2" [rowspan]="5">
+            <google-chart [type]='myType' [data]="pieChartDataNew" [width]="width" [height]="height"
+              [options]="options">
+            </google-chart>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="4" [rowspan]="3">
+            <div class="fluid-container">
+              <div class="row">
+                <span [countUp]="data[0].shortPositions + data[0].longPositions" style="font-size: 34px;"></span>
+                <p style="margin: 0; font-size: 24px;">Total</p>
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="lightblue">
+            <div class="container">
+              
+
+              <div class="col">
+                <div class="row">
+                  <span [countUp]="data[0].shortPositions" style="font-size: 25px;"></span>
+                  <p style="margin: 0; font-size: 14px;">shorts</p>
+                </div>
+                <span [countUp]="data[0].percentageShort" style="font-size: 23px;"></span>                
+                <span style="font-size: 22px;">%</span>
+              </div>
+            </div>            
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="lightblue">
+            <div class="fluid-container">
+              <div class="row">
+                <span [countUp]="data[0].longPositions" style="font-size: 25px;"></span>
+                <p style="margin: 0; font-size: 14px;">longs</p>
+              </div>
+              <div class="row">
+                <span [countUp]="data[0].percentageLong" style="font-size: 23px;"></span>
+                <span style="font-size: 22px;">%</span>
+                
+              </div>
+            </div>             
+          </mat-grid-tile>
+        </mat-grid-list>
+        <!-- <p>Net Positions</p>        
             <span [countUp]="data[0].netPositions"></span >
             <p>Total</p> -->
 
-          <!-- <div class="row">
+        <!-- <div class="row">
             <div class="col">
               <p [countUp]="data[0].netPositions"></p>
               <p>Net Positions</p>
             </div>
           </div> -->
 
-          <!-- <div class="linechart-container center-chart image-container">
+        <!-- <div class="linechart-container center-chart image-container">
             <ngx-charts-line-chart [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
               [legend]="showLegend" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
               [yAxisLabel]="yAxisLabel"  [animations]="true">
@@ -60,50 +93,52 @@
       <app-card title="change">
         <div class="linechart-container center-chart image-container">
           <ngx-charts-bar-vertical-stacked [view]="changeChartSize" [results]="positionChangeData" [gradient]="false"
-            [xAxis]="true" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="false"
-            [showYAxisLabel]="false" [xAxisLabel]="changeLabel" [yAxisLabel]="changeLabel" [animations]="true">
+            [xAxis]="true" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="false" [showYAxisLabel]="false"
+            [xAxisLabel]="changeLabel" [yAxisLabel]="changeLabel" [animations]="true">
           </ngx-charts-bar-vertical-stacked>
         </div>
       </app-card>
     </mat-grid-tile>
     <!--Table-->
     <mat-grid-tile [colspan]="( cardLayout | async )!.table.cols" [rowspan]="( cardLayout | async )!.table.rows">
-     
-        <table mat-table [dataSource]="data">
 
-          <ng-container matColumnDef="reportDate">
-              <th mat-header-cell *matHeaderCellDef> Report Date </th>
-              <td mat-cell *matCellDef="let element"> {{ element.reportDate }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="longPositions">
-              <th mat-header-cell *matHeaderCellDef> Longs </th>
-              <td mat-cell *matCellDef="let element"> {{ element.longPositions }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="shortPositions">
-              <th mat-header-cell *matHeaderCellDef> Shorts </th>
-              <td mat-cell *matCellDef="let element"> {{ element.shortPositions }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="percentageLong">
-              <th mat-header-cell *matHeaderCellDef> % Long </th>
-              <td mat-cell *matCellDef="let element"> {{ element.percentageLong }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="percentageShort">
-              <th mat-header-cell *matHeaderCellDef> % Shorts </th>
-              <td mat-cell *matCellDef="let element"> {{ element.percentageShort }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="netPositions">
-              <th mat-header-cell *matHeaderCellDef> Net Positions </th>
-              <td mat-cell *matCellDef="let element"> {{ element.netPositions }} </td>
-          </ng-container>
-  
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
-  
+      <table mat-table [dataSource]="data">
+
+        <ng-container matColumnDef="reportDate">
+          <th mat-header-cell *matHeaderCellDef> Report Date </th>
+          <td mat-cell *matCellDef="let element"> {{ element.reportDate }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="longPositions">
+          <th mat-header-cell *matHeaderCellDef> Longs </th>
+          <td mat-cell *matCellDef="let element"> {{ element.longPositions }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="shortPositions">
+          <th mat-header-cell *matHeaderCellDef> Shorts </th>
+          <td mat-cell *matCellDef="let element"> {{ element.shortPositions }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="percentageLong">
+          <th mat-header-cell *matHeaderCellDef> % Long </th>
+          <td mat-cell *matCellDef="let element"> {{ element.percentageLong }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="percentageShort">
+          <th mat-header-cell *matHeaderCellDef> % Shorts </th>
+          <td mat-cell *matCellDef="let element"> {{ element.percentageShort }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="netPositions">
+          <th mat-header-cell *matHeaderCellDef> Net Positions </th>
+          <td mat-cell *matCellDef="let element"> {{ element.netPositions }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (mouseover)="row.hovered = true"
+          (mouseout)="row.hovered = false"></tr>
+
       </table>
 
       <!-- </app-card> -->
