@@ -12,11 +12,13 @@ build:
     context: ./twitter-crawler-api
 deploy:
   helm:
+
     releases:
     - name: api-gateway
       chartPath: ./api-gateway/chart
       artifactOverrides:
         image: davidjmartin/api-gateway
+      createNamespace: true
       imageStrategy:
         helm: {}
     - name: swap-rate-api
