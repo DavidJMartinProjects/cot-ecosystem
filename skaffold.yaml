@@ -8,6 +8,8 @@ build:
     context: ./swap-rate-api
   - image: davidjmartin/cot-report-api
     context: ./cot-report-api
+  - image: davidjmartin/twitter-crawler-api
+    context: ./twitter-crawler-api
 deploy:
   helm:
     releases:
@@ -27,5 +29,11 @@ deploy:
       chartPath: ./cot-report-api/chart
       artifactOverrides:
         image: davidjmartin/cot-report-api
+      imageStrategy:
+        helm: { }
+    - name: twitter-crawler-api
+      chartPath: ./twitter-crawler-api/chart
+      artifactOverrides:
+        image: davidjmartin/twitter-crawler-api
       imageStrategy:
         helm: { }

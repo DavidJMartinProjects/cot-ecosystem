@@ -13,6 +13,10 @@ spring:
           uri: http://swap-rate-api:80
           predicates:
             - Path=/api/swaps**, /api/swaps**/*
+        - id: twitter-crawler-api
+          uri: http://twitter-crawler-api:80
+          predicates:
+            - Path=/api/tweets**, /api/tweets**/*
 management:
   endpoints:
     web:

@@ -1,58 +1,10 @@
-server:
-  port: 80
+twitter-listener-service:
+  event:
+    queue:
+      name: "tweetQueue"
 
-spring:
-  kafka:
-    consumer:
-      bootstrap-servers: kafka.confluent.svc.cluster.local:9092
-      group-id: group_id
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      bootstrap-servers: kafka.confluent.svc.cluster.local:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    bootstrap-servers: kafka.confluent.svc.cluster.local:9092
-
-twitter-crawler-service:
-  twitter-keywords:
-    - '$EURUSD'
-    - '$AUDUSD'
-    - '$GBPUSD'
-    - '$NZDUSD'
-    - '$AUDNZD'
-    - '$XAUUSD'
-    - '$USDCHF'
-    - '$CADJPY'
-    - '$GBPJPY'
-    - '$DXY'
-    - '#EURUSD'
-    - '#AUDUSD'
-    - '#GBPUSD'
-    - '#NZDUSD'
-    - '#AUDNZD'
-    - '#XAUUSD'
-    - '#USDCHF'
-    - '#CADJPY'
-    - '#GBPJPY'
-    - '#DXY'
-    - EURUSD
-    - AUDUSD
-    - GBPUSD
-    - NZDUSD
-    - AUDNZD
-    - XAUUSD
-    - USDCHF
-    - CADJPY
-    - GBPJPY
-    - DXY
-    - Diablo 2 Ressurected
-    - Diablo 2
-    - D2R
-
-
-
-
-
-
+  tweet-keywords:
+    - news
+    - latestnews
+    - euronews
+    - breaking news
