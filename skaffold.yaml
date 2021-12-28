@@ -1,0 +1,31 @@
+apiVersion: skaffold/v2beta22
+kind: Config
+build:
+  artifacts:
+  - image: davidjmartin/api-gateway
+    context: ./api-gateway
+  - image: davidjmartin/swap-rate-api
+    context: ./swap-rate-api
+  - image: davidjmartin/cot-report-api
+    context: ./cot-report-api
+deploy:
+  helm:
+    releases:
+    - name: api-gateway
+      chartPath: ./api-gateway/chart
+      artifactOverrides:
+        image: davidjmartin/api-gateway
+      imageStrategy:
+        helm: {}
+    - name: swap-rate-api
+      chartPath: ./swap-rate-api/chart
+      artifactOverrides:
+        image: davidjmartin/swap-rate-api
+      imageStrategy:
+        helm: {}
+    - name: cot-report-api
+      chartPath: ./cot-report-api/chart
+      artifactOverrides:
+        image: davidjmartin/cot-report-api
+      imageStrategy:
+        helm: { }
