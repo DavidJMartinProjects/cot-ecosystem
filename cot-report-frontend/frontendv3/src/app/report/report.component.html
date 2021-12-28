@@ -26,14 +26,34 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">
       <app-card title="institutional positions">
-        <div class="chart-container image-container .center-chart">
-          <div class="linechart-container center-chart image-container">
+        <!-- <div class="chart-container image-container .center-chart"> -->
+          <mat-grid-list cols="6" rowHeight="30px">
+            <mat-grid-tile [colspan]="6" [rowspan]="1" [style.background]="lightblue">Title</mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="5" [style.background]="lightgreen">
+              <!-- <google-chart [type]="AreaChart"></google-chart> -->
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="4" [rowspan]="2" [style.background]="lightpink">CountUp Number</mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="3" [style.background]="lightblue">Shorts Info</mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="3" [style.background]="lightblue">Long Info</mat-grid-tile>
+          </mat-grid-list> 
+            <!-- <p>Net Positions</p>        
+            <span [countUp]="data[0].netPositions"></span >
+            <p>Total</p> -->
+
+          <!-- <div class="row">
+            <div class="col">
+              <p [countUp]="data[0].netPositions"></p>
+              <p>Net Positions</p>
+            </div>
+          </div> -->
+
+          <!-- <div class="linechart-container center-chart image-container">
             <ngx-charts-line-chart [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
               [legend]="showLegend" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
               [yAxisLabel]="yAxisLabel"  [animations]="true">
             </ngx-charts-line-chart>
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </app-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )!.chart.cols" [rowspan]="( cardLayout | async )!.chart.rows">

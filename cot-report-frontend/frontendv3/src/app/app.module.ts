@@ -27,6 +27,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import { CountUpModule } from 'ngx-countup';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CountUpModule,
+    GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -50,7 +50,7 @@ export class ReportComponent {
     this.getSymbolData(theSymbol);
   }
 
-    multi: any[] | undefined;
+    multi!: any[];
     // lineChartSize: [number, number] = [330, 210];
     // line chart options
     showXAxis = false;
@@ -135,4 +135,24 @@ export class ReportComponent {
     'netPositions'
   ];
 
+  tiles: Tile[] = [
+    {text: 'Title', cols: 6, rows: 1, color: 'lightblue'},
+    {text: 'PieChart', cols: 2, rows: 5, color: 'lightgreen'},
+    {text: 'CountUp Number', cols: 4, rows: 1, color: 'lightpink'},
+    {text: 'Shorts Info', cols: 2, rows: 3, color: '#DDBDF1'},
+    {text: 'Longs Info', cols: 2, rows: 3, color: '#DDBDF1'}
+  ];
+
+  lightblue = 'lightblue';
+  lightgreen = 'lightgreen';
+  lightpink = 'lightpink';
+
+
+}
+
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
 }
