@@ -154,11 +154,11 @@ export class ReportComponent {
   lightpink = 'lightpink';
 
   myType = ChartType.PieChart;
-  width = 140;
-  height = 140;
+  width = 160;
+  height = 160;
   options = {
     legend: { position: 'bottom' }, 
-    // colors: ['#949FB1', 'green'],   
+     
     colors: ['#949FB1', 'green'],
     pieHole:0.8,
     animation: {      
