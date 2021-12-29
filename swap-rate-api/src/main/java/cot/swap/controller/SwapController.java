@@ -40,7 +40,8 @@ public class SwapController {
 
     @GetMapping(SWAP_URL)
     @ResponseStatus(HttpStatus.OK)
-    public List<SwapDto> getSwapsBySymbol(@RequestParam(defaultValue = SYMBOL_DEFAULT_VALUE) String symbol) {
+    public List<SwapDto> getSwapsBySymbol(
+        @RequestParam(defaultValue = SYMBOL_DEFAULT_VALUE) String symbol) {
         log.info("GET: {}?symbol={}", API_BASE_PATH + SWAP_URL, symbol);
         if(SYMBOL_DEFAULT_VALUE.equalsIgnoreCase(symbol)) {
             return swapService.fetchAllSwaps();
