@@ -36,7 +36,7 @@ public class SwapsWebScraper {
     public void scrape() {
         Set<SwapDto> swaps = new HashSet<>();
         try {
-            Document webPage = Jsoup.connect(REMOTE_SWAP_SERVICE_URL).get();
+            Document webPage = Jsoup.connect(REMOTE_SWAP_SERVICE_URL).get();            
             Element tbody = webPage.getElementById(SWAP_TABLE_ID)
                 .getElementsByTag(TBODY_TAG)
                 .get(SYMBOL_INDEX);

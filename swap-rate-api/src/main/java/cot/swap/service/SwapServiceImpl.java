@@ -2,7 +2,6 @@ package cot.swap.service;
 
 import cot.swap.db.SwapDao;
 import cot.swap.model.SwapDto;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,6 @@ import java.util.List;
  * @author davidjmartin
  */
 @Service
-@Slf4j
 public class SwapServiceImpl implements SwapService {
 
     @Autowired

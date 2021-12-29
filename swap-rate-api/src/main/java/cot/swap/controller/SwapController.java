@@ -1,6 +1,7 @@
 package cot.swap.controller;
 
 import cot.swap.model.SwapDto;
+import cot.swap.service.SwapService;
 import cot.swap.service.SwapServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,16 @@ import static cot.swap.controller.SwapController.API_BASE_PATH;
 public class SwapController {
 
     public static final String API_BASE_PATH = "/api";
-
     private static final String SWAP_URL = "/swaps";
     private static final String POSITIVE_SWAP_URL = "/positive";
-
     private static final String SYMBOL_DEFAULT_VALUE = "all";
-
+    
+    private SwapService swapService;
+    
     @Autowired
-    private SwapServiceImpl swapService;
+    public SwapController(SwapService swapService) {
+        this.swapService = swapService;
+    }
 
     @GetMapping(SWAP_URL)
     @ResponseStatus(HttpStatus.OK)

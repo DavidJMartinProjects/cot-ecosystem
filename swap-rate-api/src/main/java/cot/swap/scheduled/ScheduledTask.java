@@ -17,7 +17,7 @@ public class ScheduledTask {
     private SwapsWebScraper swapsWebScraper;
 
     public void importReport() throws IOException {
-        log.info("retrieving latest swap data.");
+        log.info("Executing scheduled task: retrieve swap data.");
         swapsWebScraper.scrape();
         log.info("swap data retrieved successfully.");
     }
