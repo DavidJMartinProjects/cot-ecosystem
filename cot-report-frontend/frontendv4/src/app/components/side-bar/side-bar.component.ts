@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { SideNavService } from './side-bar.service';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-side-bar',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
+  @ViewChild('sidenav') public sidenav?: SideBarComponent;
 
-  constructor() { }
+
+  constructor(private sideNavService: SideNavService) { }
 
   ngOnInit(): void {
   }
+
+  toggle() {
+    console.log("this.navbarComponent.togglemenu(): " + this.sideNavService.toggle());
+    return this.sideNavService.toggle();
+  } 
 
 }

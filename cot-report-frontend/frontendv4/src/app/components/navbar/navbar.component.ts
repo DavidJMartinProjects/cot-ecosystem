@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { SideNavService } from './../side-bar/side-bar.service';
+import { SideBarComponent } from './../side-bar/side-bar.component';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sidebar: SideNavService) { }
 
   ngOnInit(): void {
+  }
+
+  clickMenu() {
+    console.log("this.navbarComponent.togglemenu(): " + this.sidebar.toggle());
+    return this.sidebar.toggle();
   }
 
 }
