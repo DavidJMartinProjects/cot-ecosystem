@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { SideNavService } from './components/side-bar/side-bar.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CotReportComponent } from './components/cot-report/cot-report.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,13 @@ import { SideNavService } from './components/side-bar/side-bar.service';
     CotTableComponent,
     NavbarComponent,
     MainContentComponent,
-    SideBarComponent
+    SideBarComponent,
+    CotReportComponent    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [SideNavService, SideBarComponent],
   bootstrap: [AppComponent]

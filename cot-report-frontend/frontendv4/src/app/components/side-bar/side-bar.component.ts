@@ -1,6 +1,5 @@
 import { SideNavService } from './side-bar.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-side-bar',

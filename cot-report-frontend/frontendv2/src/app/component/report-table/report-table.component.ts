@@ -27,10 +27,10 @@ export class ReportTableComponent implements OnInit {
   getSymbolData(symbol: string) {
     this.http
       .get<any>('http://my-example.com:80/api/reports/cot?symbol=' + symbol)
-      .subscribe((response) => {
+      .subscribe((response: string | any[]) => {
         console.log('GET: http://localhost:80/api/reports/cot?symbol=USD');
         this.dataList.data = response.slice(0, 11);
-      }, error => {
+      }, (error: any) => {
         console.log(error);
       })
   }
