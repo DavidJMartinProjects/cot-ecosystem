@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CotReportService } from 'src/app/services/cotReportService.service';
 
@@ -18,8 +17,7 @@ export class CotReportComponent implements OnInit {
   ngOnInit(): void {    
   }
 
-  handleChange(theSymbol: any) {
-    console.log('SELECTED: ' + theSymbol)
+  handleChange(theSymbol: any) {    
     this.cotReportService.updateSymbolData(theSymbol) ;
   }
 

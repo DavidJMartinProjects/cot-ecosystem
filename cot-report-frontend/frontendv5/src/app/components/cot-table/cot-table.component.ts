@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CotReportService } from 'src/app/services/cotReportService.service';
 
@@ -12,11 +11,10 @@ export class CotTableComponent implements OnInit {
   
   data: any;
 
-  constructor(private http: HttpClient, private cotReportService: CotReportService) {    
-    this.cotReportService.dataSource.subscribe(data => this.data = data)
-  }
+  constructor(private cotReportService: CotReportService) {}
 
   ngOnInit(): void {
+    this.cotReportService.dataSource.subscribe(data => this.data = data)
   }
 
 }
