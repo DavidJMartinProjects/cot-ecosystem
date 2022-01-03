@@ -9,12 +9,10 @@
                                 Report Date
                             </th>
                             <div class="hidden md:block" id="col3">
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Longs
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Shorts
-                                </th>
+                                <div class="flex justify-around">
+                                    <th class="text-xs text-gray-500"> Longs </th>
+                                    <th class="text-xs text-gray-500"> Shorts </th>
+                                </div>
                             </div>
                             <th class="px-6 py-2 text-xs text-gray-500">
                                 % Long
@@ -25,6 +23,7 @@
                             <th class="px-6 py-2 text-xs text-gray-500">
                                 Net Positions
                             </th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-300">
@@ -35,30 +34,43 @@
                             <div class="hidden md:block">
                                 <td class="px-6 py-4">
                                     <div class="text-sm text-gray-500">
-                                        {{ report.longPositions }}
+                                        {{ report.longPositions }} ( <i
+                                            [ngStyle]="{'color': report.changeLong < 0 ? 'red' : 'green' }">{{
+                                            report.changeLong }}</i> )
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-sm text-gray-500">
-                                        {{ report.shortPositions }}
+                                        {{ report.shortPositions }} ( <i
+                                            [ngStyle]="{'color':report.changeShort < 0 ? 'red' : 'green' }">{{report.changeShort}}</i>
+                                        )
                                     </div>
                                 </td>
                             </div>
                             <td class="px-6 py-4 ">
                                 <div class="text-sm text-gray-500">
-                                    {{ report.percentageLong }}
+                                    {{ report.percentageLong }} ( <i
+                                        [ngStyle]="{'color':report.percentageLongChange < 0 ? 'red' : 'green' }">{{report.percentageLongChange}}</i>
+                                    )
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-500">
-                                    {{ report.percentageShort }}
+                                    {{ report.percentageShort }} ( <i
+                                        [ngStyle]="{'color':report.percentageShort < 0 ? 'red' : 'green' }">{{report.percentageShortChange}}</i>
+                                    )
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-500">
-                                    {{ report.netPositions }}
+                                    {{ report.netPositions }} ( <i
+                                        [ngStyle]="{'color':report.netPositionsChange < 0 ? 'red' : 'green' }">{{report.netPositionsChange}}</i>
+                                    )
                                 </div>
                             </td>
+                            <td *ngIf="report.netPositionsChange < 0"><span class='m-2 arrow-down'></span></td>
+                            <td *ngIf="report.netPositionsChange > 0"><span class='m-2 arrow-up'></span></td>
+                            <td *ngIf="report.netPositionsChange == 0"><span class='m-2 arrow-up'></span></td>
                         </tr>
                     </tbody>
                 </table>
