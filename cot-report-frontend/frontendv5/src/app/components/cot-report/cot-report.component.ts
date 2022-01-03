@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CotReportComponent implements OnInit {
 
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'CAD', 'MXN', 'ZAR', 'BTC'];
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,5 +1,9 @@
-<div class="flex-col justify-between align-middle border-2 border-black w-full h-full">
-    <div class="flex border-2 border-black">radio buttons</div>
-    <div class="flex border-2 border-black">charts (flex)</div>
-    <div class="flex border-2 border-black">datatable</div>
+<div class="flex justify-center max-w-sm mx-auto text-center">
+    <div *ngFor="let symbol of symbols" class="flex items-center mb-4 mr-4">
+        <input id="{{ symbol }}" type="radio" name="radio" class="hidden" checked />
+        <label for="{{ symbol }}" class="flex items-center cursor-pointer">
+            <span class="inline-block w-4 h-4 mr-1 border rounded-full border-grey"></span>
+            {{ symbol }}
+        </label>
+    </div>
 </div>

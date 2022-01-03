@@ -8,12 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CotTableComponent implements OnInit {
      
-  selectedSymbol: string = 'USD';
-  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'CAD', 'MXN', 'ZAR', 'BTC'];
+  selectedSymbol: string = 'USD';  
   data: any;
 
   constructor(private http: HttpClient) {
-    this.getSymbolData(this.symbols[0]);
+    this.getSymbolData(this.selectedSymbol);
   }
 
   ngOnInit(): void {
