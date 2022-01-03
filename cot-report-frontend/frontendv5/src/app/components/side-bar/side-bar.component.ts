@@ -16,7 +16,7 @@ export class SideBarComponent implements OnInit {
   }
 
   toggle() {
-    console.log("this.navbarComponent.togglemenu(): " + this.sideNavService.toggle());
+    // console.log("this.navbarComponent.togglemenu(): " + this.sideNavService.toggle());
     return this.sideNavService.toggle();
   } 
 

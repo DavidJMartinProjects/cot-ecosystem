@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CotReportService } from 'src/app/services/cotReportService.service';
+
 
 @Component({
   selector: 'app-cot-table',
@@ -7,42 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cot-table.component.scss']
 })
 export class CotTableComponent implements OnInit {
-     
-  selectedSymbol: string = 'USD';  
+  
   data: any;
 
-  constructor(private http: HttpClient) {
-    this.getSymbolData(this.selectedSymbol);
+  constructor(private http: HttpClient, private cotReportService: CotReportService) {    
+    this.cotReportService.dataSource.subscribe(data => this.data = data)
   }
 
   ngOnInit(): void {
   }
-
-  handleChange(theSymbol: string) {
-    this.getSymbolData(theSymbol);
-  }
-
-  cot_report_backend_url: string = 'http://cloud-projectz.xyz/api/reports?symbol=';
-
-  getSymbolData(symbol: string) {
-    this.http
-      .get<any>(this.cot_report_backend_url + symbol)
-      .subscribe((response: string | any[]) => {
-        console.log('GET: ' + this.cot_report_backend_url  + symbol);
-        this.data = response.slice(0, 11);
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
-
-  columnNames =
-  [
-    'Report Date ',
-    'Longs',
-    'Shorts',
-    '% Long',
-    '% Short',
-    'Net Positions'
-  ];
 
 }

@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CotReportService } from 'src/app/services/cotReportService.service';
+
 
 @Component({
   selector: 'app-cot-report',
@@ -7,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CotReportComponent implements OnInit {
 
-  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'CAD', 'MXN', 'ZAR', 'BTC'];
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR', 'GOLD', 'BTC'];
   
-  constructor() { }
+  constructor(private cotReportService: CotReportService) {         
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+  }
+
+  handleChange(theSymbol: any) {
+    console.log('SELECTED: ' + theSymbol)
+    this.cotReportService.updateSymbolData(theSymbol) ;
   }
 
 }
