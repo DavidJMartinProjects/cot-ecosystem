@@ -1,12 +1,29 @@
-<div class="justify-center mx-auto relative">
+<div class="relative justify-center w-full mx-auto">
     <div class="flex flex-col justify-center mx-auto">
-        <div class="flex flex-col justify-center mx-auto">
+        <div class="flex flex-row justify-center mx-auto">
             <div class="border-b border-gray-200 shadow">
                 <table class="divide-y divide-gray-300 ">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th *ngFor="let columnName of columnNames" class="px-6 py-2 text-xs text-gray-500">
-                                {{ columnName }}
+                            <th class="px-6 py-2 text-xs text-gray-500">
+                                Report Date
+                            </th>
+                            <div class="hidden md:block" id="col3">
+                                <th class="px-6 py-2 text-xs text-gray-500">
+                                    Longs
+                                </th>
+                                <th class="px-6 py-2 text-xs text-gray-500">
+                                    Shorts
+                                </th>
+                            </div>
+                            <th class="px-6 py-2 text-xs text-gray-500">
+                                % Long
+                            </th>
+                            <th class="px-6 py-2 text-xs text-gray-500">
+                                % Short
+                            </th>
+                            <th class="px-6 py-2 text-xs text-gray-500">
+                                Net Positions
                             </th>
                         </tr>
                     </thead>
@@ -15,16 +32,18 @@
                             <td class="px-6 py-4 text-sm text-gray-500">
                                 {{ report.reportDate }}
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">
-                                    {{ report.longPositions }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">
-                                    {{ report.shortPositions }}
-                                </div>
-                            </td>
+                            <div class="hidden md:block">
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-gray-500">
+                                        {{ report.longPositions }}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-gray-500">
+                                        {{ report.shortPositions }}
+                                    </div>
+                                </td>
+                            </div>
                             <td class="px-6 py-4 ">
                                 <div class="text-sm text-gray-500">
                                     {{ report.percentageLong }}
