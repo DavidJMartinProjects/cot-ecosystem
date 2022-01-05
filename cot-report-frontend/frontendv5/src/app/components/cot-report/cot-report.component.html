@@ -1,7 +1,7 @@
 <div class="flex flex-wrap justify-center w-full"  >
     <div *ngFor="let symbol of symbols" class="flex items-center mb-4 mr-4 ">
-        <input input id="{{ symbol }}" type="radio" name="radio" class="checked:text-purple-400 ring-black dark:bg-stone-300" checked (change)="handleChange(symbol)"/>
-        <label for="{{ symbol }}" class="flex items-center cursor-pointer">
+        <input input id="{{ symbol }}" type="radio" name="radio" class=" active:ring-white dark:ring-white checked:ring-white dark:ring-black dark:black" checked (change)="handleChange(symbol)"/>
+        <label for="{{ symbol }}" class="flex items-center cursor-pointer ">
             <!-- <span class="inline-block w-4 h-4 mr-1 border rounded-full border-grey"></span> -->
             <div class="ml-1 dark:text-slate-100 "> {{ symbol }}</div>
         </label>
