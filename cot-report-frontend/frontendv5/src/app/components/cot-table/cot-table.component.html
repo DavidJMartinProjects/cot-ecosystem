@@ -26,21 +26,21 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-300 dark:bg-slate-600 dark:text-white">
+                    <tbody class="bg-white divide-y divide-gray-300 dark:bg-stone-900 dark:text-slate-100">
                         <tr *ngFor="let report of data" class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-gray-500 dark:text-white">
                                 {{ report.reportDate }}
                             </td>
                             <div class="hidden md:block">
                                 <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500 dark:text-white">
+                                    <div class="text-sm text-gray-500 dark:text-slate-100">
                                         {{ report.longPositions }} ( <i
                                             [ngStyle]="{'color': report.changeLong < 0 ? 'red' : 'green' }">{{
                                             report.changeLong }}</i> )
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500 dark:text-white">
+                                    <div class="text-sm text-gray-500 dark:text-slate-100">
                                         {{ report.shortPositions }} ( <i
                                             [ngStyle]="{'color':report.changeShort < 0 ? 'red' : 'green' }">{{report.changeShort}}</i>
                                         )
@@ -48,21 +48,21 @@
                                 </td>
                             </div>
                             <td class="px-6 py-4 ">
-                                <div class="text-sm text-gray-500 dark:text-white">
+                                <div class="text-sm text-gray-500 dark:text-slate-100">
                                     {{ report.percentageLong }} ( <i
                                         [ngStyle]="{'color':report.percentageLongChange < 0 ? 'red' : 'green' }">{{report.percentageLongChange}}</i>
                                     )
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500 dark:text-white">
+                                <div class="text-sm text-gray-500 dark:text-slate-100">
                                     {{ report.percentageShort }} ( <i
                                         [ngStyle]="{'color':report.percentageShort < 0 ? 'red' : 'green' }">{{report.percentageShortChange}}</i>
                                     )
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500 dark:text-white">
+                                <div class="text-sm text-gray-500 dark:text-slate-100">
                                     {{ report.netPositions }} ( <i
                                         [ngStyle]="{'color':report.netPositionsChange < 0 ? 'red' : 'green' }">{{report.netPositionsChange}}</i>
                                     )
