@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CotReportComponent } from './components/cot-report/cot-report.component';
 import { FormsModule } from '@angular/forms';
 import { CotReportService } from './services/cotReportService.service';
+import { DarkModeService } from './services/dark-mode.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { CotReportService } from './services/cotReportService.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [CotReportService, SideNavService],
+  providers: [CotReportService, SideNavService, DarkModeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

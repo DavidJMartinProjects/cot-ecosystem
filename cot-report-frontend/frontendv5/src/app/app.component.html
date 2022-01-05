@@ -1,4 +1,8 @@
-<div class="h-screen min-w-full bg-gray-50">
-  <app-navbar></app-navbar>  
-  <app-main-content></app-main-content>
-</div>  
+<div>
+  <div [ngClass]="[isDarkModeEnabled ? 'dark' : '']">    
+    <div class="h-screen min-w-full bg-gray-50 dark:bg-slate-600">
+      <app-navbar></app-navbar>
+      <app-main-content></app-main-content>
+    </div>    
+  </div>
+</div>
