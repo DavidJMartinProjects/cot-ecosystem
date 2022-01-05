@@ -1,7 +1,7 @@
 <!--Nav-->
 <nav class="relative top-0 z-20 w-full mt-0 bg-white border-b-2 border-gray-200 shadow-sm dark:border-black md:mt-0 dark:bg-stone-800 ">
     <div class="flex flex-wrap items-center">
-        <button (click)="clickMenu()" class="m-1 ml-10 rounded-md bg-white-100 dark:text-slate-100 ">
+        <button (click)="clickMenu()" class="m-1 ml-10 rounded-md bg-white-100 dark:text-slate-100 active:animate-ping">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-18" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -13,7 +13,7 @@
         <div class="flex justify-center">
             <!-- Dark Mode Button -->
             <button id="theme-toggle" type="button" 
-                class="col mr-2 md:mr-10 text-gray-500 dark:bg-stone-800  hover:bg-gray-100 dark:hover:bg-stone-700 focus:outline-none focus:ring-transparent focus:ring-gray-200 dark:focus:ring-black rounded-lg text-sm p-2.5 "
+                class="col mr-2 md:mr-10 text-gray-500 dark:bg-stone-800  active:animate-ping hover:bg-gray-100 dark:hover:bg-stone-700 focus:outline-none focus:ring-transparent focus:ring-gray-200 dark:focus:ring-black rounded-lg text-sm p-2.5 "
                 (click)="toggleDarkMode()">
                 <svg id="theme-toggle-dark-icon" class="w-6 h-6 " [ngClass]="[isDarkModeEnabled ? 'hidden' : '']"
                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
