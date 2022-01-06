@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CotReportService } from 'src/app/services/cot-report-backend.service';
+import { CotReportService } from 'src/app/services/cotReportService.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { CotReportService } from 'src/app/services/cot-report-backend.service';
 export class CotReportComponent implements OnInit {
 
   symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR', 'GOLD', 'BTC'];
-  
+
   constructor(private cotReportService: CotReportService) {         
   }
 

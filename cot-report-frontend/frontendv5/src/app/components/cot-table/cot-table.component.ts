@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CotReportService } from 'src/app/services/cot-report-backend.service';
+import { CotReportService } from 'src/app/services/cotReportService.service';
+
 
 
 @Component({
@@ -10,11 +11,15 @@ import { CotReportService } from 'src/app/services/cot-report-backend.service';
 export class CotTableComponent implements OnInit {
   
   data: any;
+  pieChartData: any;
+  // pieChartDataNew: any;
+
 
   constructor(private cotReportService: CotReportService) {}
 
   ngOnInit(): void {
-    this.cotReportService.dataSource.subscribe(data => this.data = data)
+    this.cotReportService.dataSource.subscribe(data => this.data = data)         
   }
+
 
 }

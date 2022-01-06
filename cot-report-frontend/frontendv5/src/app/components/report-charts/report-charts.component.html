@@ -1,0 +1,27 @@
+<div class="flex self-center w-full mx-auto mb-10 border-2 border-black md:w-3/4 justify-evenly">
+    <div class="flex-1 hidden border-2 border-black md:block">Chart 1</div>
+    <!-- <div class="flex border-2 border-black"> -->
+    <!-- <div class="flex justify-around border-2 border-black"> -->
+    <div>
+        <google-chart [type]='myType' [data]="pieChartData" [width]="width" [height]="height" [options]="options">
+        </google-chart>
+    </div>
+
+    <div class="border-2 border-black">
+        <!-- <div class="flex-row border-2border-black justify-"> -->
+        <div class="border-2 border-black row">
+            <div class="text-center row">
+                <span >Total: </span>
+                <span [countUp]="data[0].shortPositions + data[0].longPositions" [options]="myCountUpOpts"></span>
+              </div>
+        </div>
+        <!-- </div> -->
+        <div class="flex">
+            <div class="flex border-2 border-black">Shorts with col</div>
+            <div class="flex border-2 border-black">longs with col</div>
+        </div>
+    </div>
+    <!-- </div>         -->
+    <!-- </div> -->
+    <div class="flex-1 hidden border-2 border-black md:block">Chart 3</div>
+</div>
