@@ -1,4 +1,4 @@
-import { SideNavService } from './side-bar.service';
+import { SideNavService } from 'src/app/services/side-bar.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({

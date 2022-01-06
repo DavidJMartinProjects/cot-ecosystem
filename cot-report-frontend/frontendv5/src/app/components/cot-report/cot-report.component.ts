@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CotReportService } from 'src/app/services/cotReportService.service';
+import { CotReportService } from 'src/app/services/cot-report-backend.service';
 
 
 @Component({

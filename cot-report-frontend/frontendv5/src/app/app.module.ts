@@ -7,11 +7,11 @@ import { CotTableComponent } from './components/cot-table/cot-table.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { SideNavService } from './components/side-bar/side-bar.service';
+import { SideNavService } from 'src/app/services/side-bar.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CotReportComponent } from './components/cot-report/cot-report.component';
 import { FormsModule } from '@angular/forms';
-import { CotReportService } from './services/cotReportService.service';
+import { CotReportService } from './services/cot-report-backend.service';
 import { DarkModeService } from './services/dark-mode.service';
 
 @NgModule({
