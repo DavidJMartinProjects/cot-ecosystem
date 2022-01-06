@@ -1,80 +1,67 @@
-<div class="relative justify-center w-full mx-auto">
-    <div class="flex flex-col justify-center mx-auto">
-        <div class="flex flex-row justify-center mx-auto">
-            <div class="border-b border-gray-200 shadow">
-                <table class="divide-y divide-gray-300 ">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-2 text-xs text-gray-500">
-                                Report Date
-                            </th>
-                            <div class="hidden md:block" id="col3">
-                                <div class="flex justify-around">
-                                    <th class="text-xs text-gray-500"> Longs </th>
-                                    <th class="text-xs text-gray-500"> Shorts </th>
-                                </div>
-                            </div>
-                            <th class="px-6 py-2 text-xs text-gray-500">
-                                % Long
-                            </th>
-                            <th class="px-6 py-2 text-xs text-gray-500">
-                                % Short
-                            </th>
-                            <th class="px-6 py-2 text-xs text-gray-500">
-                                Net Positions
-                            </th>
-                            <th></th>
+<div class="flex justify-around">
+    <div class="hidden md:block"></div>
+    <div class="flex w-full text-center md:w-1/2 ">        
+            <div class="flex overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                <table class="w-full table-fixed">
+                    <thead>
+                        <tr class="w-full">
+                            <th
+                                class="p-3 m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                Date</th>
+                            <th
+                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                Longs</th> 
+                            <th
+                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                Shorts</th>
+                            <th
+                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                Long(%)</th>
+                            <th
+                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                Short(%)</th>
+                            <th
+                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                Net</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-300 dark:bg-stone-900 dark:text-slate-100">
-                        <tr *ngFor="let report of data" class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500 dark:text-white">
-                                {{ report.reportDate }}
-                            </td>
-                            <div class="hidden md:block">
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500 dark:text-slate-100">
-                                        {{ report.longPositions }} ( <i
-                                            [ngStyle]="{'color': report.changeLong < 0 ? 'red' : 'green' }">{{
-                                            report.changeLong }}</i> )
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500 dark:text-slate-100">
-                                        {{ report.shortPositions }} ( <i
-                                            [ngStyle]="{'color':report.changeShort < 0 ? 'red' : 'green' }">{{report.changeShort}}</i>
-                                        )
-                                    </div>
-                                </td>
-                            </div>
-                            <td class="px-6 py-4 ">
-                                <div class="text-sm text-gray-500 dark:text-slate-100">
-                                    {{ report.percentageLong }} ( <i
-                                        [ngStyle]="{'color':report.percentageLongChange < 0 ? 'red' : 'green' }">{{report.percentageLongChange}}</i>
-                                    )
+
+                    <tbody class="bg-white dark:bg-stone-100">
+                        <tr *ngFor="let report of data">
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">
+                                    {{ report.reportDate }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500 dark:text-slate-100">
-                                    {{ report.percentageShort }} ( <i
-                                        [ngStyle]="{'color':report.percentageShort < 0 ? 'red' : 'green' }">{{report.percentageShortChange}}</i>
-                                    )
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">
+                                    {{ report.longPositions }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500 dark:text-slate-100">
-                                    {{ report.netPositions }} ( <i
-                                        [ngStyle]="{'color':report.netPositionsChange < 0 ? 'red' : 'green' }">{{report.netPositionsChange}}</i>
-                                    )
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">
+                                    {{ report.shortPositions }}
                                 </div>
                             </td>
-                            <td *ngIf="report.netPositionsChange < 0"><span class='m-2 arrow-down'></span></td>
-                            <td *ngIf="report.netPositionsChange > 0"><span class='m-2 arrow-up'></span></td>
-                            <td *ngIf="report.netPositionsChange == 0"><span class='m-2 arrow-up'></span></td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">
+                                    {{ report.percentageLong }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">
+                                    {{ report.percentageShort }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">
+                                    {{ report.netPositions }}
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="hidden md:block"></div>
     </div>
-</div>

@@ -17,4 +17,14 @@ export class CotTableComponent implements OnInit {
     this.cotReportService.dataSource.subscribe(data => this.data = data)
   }
 
+  displayedColumns =
+  [
+    'reportDate',
+    'longPositions',
+    'shortPositions',
+    'percentageLong',
+    'percentageShort',
+    'netPositions'
+  ];
+
 }
