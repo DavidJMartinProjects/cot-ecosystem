@@ -1,60 +1,60 @@
 <div class="flex justify-around">
     <div class="hidden md:block"></div>
-    <div class="flex w-full text-center md:w-1/2 ">        
+    <div class="flex w-full text-center md:w-7/12 ">        
             <div class="flex overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                <table class="w-full table-fixed">
+                <table class="w-full font-medium table-fixed font-qs">
                     <thead>
                         <tr class="w-full">
                             <th
-                                class="p-3 m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                class="p-4 m-4 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Date</th>
                             <th
-                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Longs</th> 
                             <th
-                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Shorts</th>
                             <th
-                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Long(%)</th>
                             <th
-                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Short(%)</th>
                             <th
-                                class="m-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-300">
+                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Net</th>
                         </tr>
                     </thead>
 
-                    <tbody class="bg-white dark:bg-stone-100">
-                        <tr *ngFor="let report of data">
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-500">
+                    <tbody class="bg-white dark:bg-stone-400 dark:text-white">
+                        <tr *ngFor="let report of data" class="border-b border-gray-200 dark:border-stone-800">
+                            <td class="px-6 py-4">
+                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.reportDate }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 whitespace-no-wrap ">
+                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.longPositions }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 whitespace-no-wrap ">
+                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.shortPositions }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 whitespace-no-wrap ">
+                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.percentageLong }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 whitespace-no-wrap ">
+                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.percentageShort }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 whitespace-no-wrap ">
+                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.netPositions }}
                                 </div>
                             </td>
