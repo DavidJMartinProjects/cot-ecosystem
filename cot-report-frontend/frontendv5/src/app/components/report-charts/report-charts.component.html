@@ -7,7 +7,7 @@
         </google-chart>
     </div>
 
-    <div class="border-2 border-black">
+    <div class="flex-1 border-2 border-black md:w1/6 md:max-w-xs">
         <!-- <div class="flex-row border-2border-black justify-"> -->
         <div class="border-2 border-black row">
             <div class="text-center row">
@@ -16,25 +16,35 @@
             </div>
         </div>
         <!-- </div> -->
-        <div class="flex text-center">
-            <div class="flex-1 border-2 border-black divide">
-                <span [countUp]="data[0].shortPositions" [options]="myCountUpOpts"></span>
-                <p>shorts</p>
-                <span [countUp]="data[0].percentageShort" [options]="myCountUpOpts"></span>
-                <span class="ml-0">%</span>
+        <div class="flex justify-center text-center border-2 border-purple-800">
+            <div class="grid grid-cols-2 ">
+                <div class="hidden border-2 border-black md:block"></div>
+                <div class="content-center p-1 pr-2 border-l-8 border-red-800 row">
+                    <span [countUp]="data[0].shortPositions" [options]="myCountUpOpts"></span>
+                    <p>shorts</p>
+                    <span [countUp]="data[0].percentageShort" [options]="myCountUpOpts"></span>
+                    <span class="ml-0">%</span>
+                </div>
             </div>
-            <div class="flex-1 border-2 border-black">
-                <span [countUp]="data[0].longPositions" [options]="myCountUpOpts"></span>
-                <p>longs</p>
-                <span [countUp]="data[0].percentageLong" [options]="myCountUpOpts"></span>
-                <span class="ml-0">%</span>
+            <div class="grid grid-cols-2">
+                <div class="p-1 border-l-8 border-green-800">
+                    <span [countUp]="data[0].longPositions" [options]="myCountUpOpts"></span>
+                    <p>longs</p>
+                    <span [countUp]="data[0].percentageLong" [options]="myCountUpOpts"></span>
+                    <span class="ml-0">%</span>
+                </div>
             </div>
         </div>
-        <div class="border-2 border-black row">
-            <div class="text-center row">
-                <span>net positions: </span>
-                <span [countUp]="data[0].netPositions" [options]="myCountUpOpts"></span>
+        <div class="flex justify-between grid-cols-3 border-2 border-black">
+            <div class="border-2 border-black"></div>
+            <div class="p-1 mt-1 border-l-8 border-blue-900">
+                <div class="text-center row">
+                    <span>net positions: </span>
+                    <span [countUp]="data[0].netPositions" [options]="myCountUpOpts"></span>
+                </div>
             </div>
+            <div class="border-2 border-black"></div>
+
         </div>
     </div>
     <!-- </div>         -->
