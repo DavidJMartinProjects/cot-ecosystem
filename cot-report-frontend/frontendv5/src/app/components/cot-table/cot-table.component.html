@@ -9,10 +9,10 @@
                                 class="p-4 m-4 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Date</th>
                             <th
-                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
+                                class="hidden m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 md:block bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Longs</th> 
                             <th
-                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
+                                class="hidden m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 md:block bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
                                 Shorts</th>
                             <th
                                 class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-600 dark:text-white dark:border-stone-800">
@@ -33,12 +33,12 @@
                                     {{ report.reportDate }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap ">
+                            <td class="hidden px-6 py-4 whitespace-no-wrap md:block">
                                 <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.longPositions }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap ">
+                            <td class="hidden px-6 py-4 whitespace-no-wrap md:block">
                                 <div class="text-sm leading-5 text-gray-500 dark:text-white">
                                     {{ report.shortPositions }}
                                 </div>

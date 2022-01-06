@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { CountUpModule } from 'ngx-countup';
 import { ReportChartsComponent } from './components/report-charts/report-charts.component';
+import { Chart } from "chart.js";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ReportChartsComponent } from './components/report-charts/report-charts.
     FormsModule,
     BrowserAnimationsModule,    
     GoogleChartsModule,
-    CountUpModule
+    CountUpModule    
   ],
   providers: [CotReportService, SideNavService, DarkModeService],
   bootstrap: [AppComponent]

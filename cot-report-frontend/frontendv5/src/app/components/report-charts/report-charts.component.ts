@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartType } from 'angular-google-charts';
 import { CotReportService } from 'src/app/services/cot-report-backend.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-report-charts',
@@ -9,42 +10,62 @@ import { CotReportService } from 'src/app/services/cot-report-backend.service';
 })
 export class ReportChartsComponent implements OnInit {
 
-  pieChartData: any;
-  data: any;
+  public pieChartData: any[] = []
+  pieChart: any = [];
 
-  constructor(private cotReportService: CotReportService) {}
+  @ViewChild('chart')
+  private chartRef: any;
+  private chart: any;
+  public data: any[] = [];
+
+  constructor(private cotReportService: CotReportService) { }
 
   ngOnInit(): void {
-    this.cotReportService.dataSource.subscribe(data => this.data = data)
-    this.cotReportService.dataSource.subscribe(data => this.pieChartData = this.buildPieChartData(data)) 
-  }
+    this.cotReportService.dataSource.subscribe(data => this.data = data);
+    this.cotReportService.dataSource.subscribe(data => {
+      console.log("data updated.");
+      this.pieChart.data.datasets.data = [this.data[0].longPositions, this.data[0].shortPositions] 
 
-  buildPieChartData(data: any) {
-    return this.pieChartData = [
-      [ "shorts", data[0].shortPositions ],
-      [ "longs", data[0].longPositions ],
-    ];
+      this.pieChart.destroy(); 
+      this.buildChart();  
+    });
   }
-    
-  myType = ChartType.PieChart;
-  width = 150;
-  height = 150;
-  options = {    
-    legend: { position: 'bottom' },      
-    colors: ['#949FB1', 'green'],
-    pieHole:0.8,
-    animation: {      
-      duration: 4000,
-      easing: 'in',
-      startup: true
-   },
-   pieSliceTextStyle: {
-    color: 'white',    
-  }
-  };
 
   myCountUpOpts = {
     duration: .3
   }
+
+  buildChart() {
+    this.cotReportService.dataSource.subscribe(data => {
+      console.log("data updated.");
+      this.pieChart.data.datasets.data = [this.data[0].longPositions, this.data[0].shortPositions] 
+      this.pieChart.update();     
+    });
+
+    this.pieChart = new Chart(this.chartRef.nativeElement, {
+      type: 'pie',
+
+      data: {
+        datasets: [{
+          backgroundColor: ['rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 0.1)'],
+          label: 'Interesting Data',
+          data: [this.data[0].longPositions, this.data[0].shortPositions]          
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: false,
+        scales: {
+        }
+      }
+    });
+    
+    this.pieChart.update();
+  }
+
+  ngAfterViewInit(): void {
+    this.buildChart();
+  }
+  
 
 }
