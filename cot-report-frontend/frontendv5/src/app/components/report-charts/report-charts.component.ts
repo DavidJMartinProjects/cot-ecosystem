@@ -27,14 +27,14 @@ export class ReportChartsComponent implements OnInit {
   }
     
   myType = ChartType.PieChart;
-  width = 160;
-  height = 160;
-  options = {
+  width = 150;
+  height = 150;
+  options = {    
     legend: { position: 'bottom' },      
     colors: ['#949FB1', 'green'],
     pieHole:0.8,
     animation: {      
-      duration: 2000,
+      duration: 4000,
       easing: 'in',
       startup: true
    },
