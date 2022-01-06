@@ -14,23 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { CotReportService } from './services/cot-report-backend.service';
 import { DarkModeService } from './services/dark-mode.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSortModule } from '@angular/material/sort';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { CountUpModule } from 'ngx-countup';
+import { ReportChartsComponent } from './components/report-charts/report-charts.component';
 
 @NgModule({
   declarations: [
@@ -39,31 +25,15 @@ import { CountUpModule } from 'ngx-countup';
     NavbarComponent,
     MainContentComponent,
     SideBarComponent,
-    CotReportComponent    
+    CotReportComponent,
+    ReportChartsComponent    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,        
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatRadioModule,
-    MatTableModule,
-    FormsModule,
-    HttpClientModule,    
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,    
+    BrowserAnimationsModule,    
     GoogleChartsModule,
     CountUpModule
   ],
