@@ -1,67 +1,72 @@
 <div class="flex justify-around">
     <div class="hidden md:block"></div>
-    <div class="flex w-full text-center md:w-7/12 ">        
-            <div class="flex overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                <table class="w-full font-medium table-fixed font-qs">
-                    <thead>
-                        <tr class="w-full">
+    <div class="flex w-full text-center md:w-7/12 ">
+        <div class="flex overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            <table class="w-full font-medium table-fixed font-qs">
+                <thead class="table-header-group">
+                    <tr class="w-full">
+                        <th
+                            class="p-4 m-4 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            Date</th>
+                        
                             <th
-                                class="p-4 m-4 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
-                                Date</th>
-                            <th
-                                class="hidden m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 md:block bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
-                                Longs</th> 
-                            <th
-                                class="hidden m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 md:block bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
-                                Shorts</th>
-                            <th
-                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
-                                Long(%)</th>
-                            <th
-                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
-                                Short(%)</th>
-                            <th
-                                class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
-                                Net</th>
-                        </tr>
-                    </thead>
+                                class="hidden m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 md:table-cell bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                                Longs</th>
 
-                    <tbody class="bg-white dark:bg-stone-800 dark:text-white">
-                        <tr *ngFor="let report of data" class="border-b border-gray-200 dark:border-stone-800">
-                            <td class="px-6 py-4">
-                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                    {{ report.reportDate }}
-                                </div>
-                            </td>
-                            <td class="hidden px-6 py-4 whitespace-no-wrap md:block">
-                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                    {{ report.longPositions }}
-                                </div>
-                            </td>
-                            <td class="hidden px-6 py-4 whitespace-no-wrap md:block">
-                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                    {{ report.shortPositions }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap ">
-                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                    {{ report.percentageLong }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap ">
-                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                    {{ report.percentageShort }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap ">
-                                <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                    {{ report.netPositions }}
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            <th
+                                class="hidden m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 md:table-cell bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                                Shorts</th>
+                        
+                        <th
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            Long(%)</th>
+                        <th
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            Short(%)</th>
+                        <th
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            Net</th>
+                    </tr>
+                </thead>
+
+                <tbody class="bg-white dark:bg-stone-800 dark:text-white">
+                    <tr *ngFor="let report of data" class="table-row border-b border-gray-200 dark:border-stone-800">
+                        <td class="px-6 py-4">
+                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                                {{ report.reportDate }}
+                            </div>
+                        </td>
+
+                        <td class="hidden px-6 py-4 whitespace-no-wrap md:table-cell">
+                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                                {{ report.longPositions }}
+                            </div>
+                        </td>
+                        <td class="hidden px-6 py-4 whitespace-no-wrap md:table-cell">
+                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                                {{ report.shortPositions }}
+                            </div>
+                        </td>
+
+                        <td class="table-cell px-6 py-4 whitespace-no-wrap">
+                            <div class="table-row text-sm leading-5 text-gray-500 dark:text-white">
+                                {{ report.percentageLong }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap ">
+                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                                {{ report.percentageShort }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap ">
+                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                                {{ report.netPositions }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="hidden md:block"></div>
     </div>
+    <div class="hidden md:block"></div>
+</div>
