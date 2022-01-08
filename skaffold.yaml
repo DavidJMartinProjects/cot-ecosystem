@@ -10,9 +10,15 @@ build:
     context: ./cot-report-api
   - image: davidjmartin/twitter-crawler-api
     context: ./twitter-crawler-api
+  - image: davidjmartin/cot-report-frontend
+    context: ./cot-report-frontend/frontendv5
 deploy:
   helm:
     releases:
+    - name: nginx-ingress-controller
+      chartPath: ./nginx-ingress-controller
+      imageStrategy:
+        helm: {}
     - name: api-gateway
       chartPath: ./api-gateway/chart
       artifactOverrides:
@@ -38,3 +44,10 @@ deploy:
         image: davidjmartin/twitter-crawler-api
       imageStrategy:
         helm: {}
+    - name: cot-report-frontend
+      chartPath: ./cot-report-frontend/frontendv5/chart
+      artifactOverrides:
+        image: davidjmartin/cot-report-frontend
+      imageStrategy:
+        helm: {}
+
