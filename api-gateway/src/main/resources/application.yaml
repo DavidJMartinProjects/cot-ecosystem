@@ -4,8 +4,6 @@ server:
 spring:
   cloud:
     gateway:          
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -25,8 +23,11 @@ spring:
           uri: http://twitter-crawler-api:80
           predicates:
             - Path=/api/tweets**, /api/tweets**/*
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
+

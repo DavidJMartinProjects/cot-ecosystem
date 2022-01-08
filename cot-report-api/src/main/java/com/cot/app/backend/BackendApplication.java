@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.cot.app.backend.scheduled.ScheduledTask;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @author DavidJMartin
@@ -29,5 +31,22 @@ public class BackendApplication {
 	 		scheduledTask.importReport();
 	 	};
 	 }
+
+	/**
+	 * Bean to define global CORS.
+	 *
+	 * @return
+	 */
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE")
+						.allowedOrigins("*")
+						.allowedHeaders("*");
+			}
+		};
+	}
 
 }
