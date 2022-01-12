@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "my-example.com",
+    "target": "cloud-projectz.xyz",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

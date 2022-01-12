@@ -49,7 +49,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   
   hosts:
-    - host: "my-example.com"
+    - host: "cloud-projectz.xyz"
       servicePort: 8080
       targetPort: 8080
       paths:
