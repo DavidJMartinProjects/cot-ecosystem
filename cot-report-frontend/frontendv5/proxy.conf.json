@@ -1,7 +1,8 @@
 {
   "/api/*": {
-    "target": "http://cloud-projectz.xyz:8080",
+    "target": "cloud-projectz.xyz",
     "secure": false,
-    "logLevel": "debug" 
+    "logLevel": "debug",
+    "changeOrigin": true
   }
 }

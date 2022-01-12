@@ -10,6 +10,7 @@ spring:
               allowedOrigins: "*"
               allowedMethods: "*"
               allowedHeaders: "*"
+              allowedOptions: "*"
       routes:
         - id: cot-report-api
           uri: http://cot-report-api:80
@@ -23,6 +24,10 @@ spring:
           uri: http://twitter-crawler-api:80
           predicates:
             - Path=/api/tweets**, /api/tweets**/*
+        - id: cot-report-frontend
+          uri: http://cot-report-frontend:80
+          predicates:
+            - Path=/**
 
 management:
   endpoints:

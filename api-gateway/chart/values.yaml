@@ -37,23 +37,23 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 8080
   targetPort: 8080
 
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   
   hosts:
-    - host: "my-example.com"
+    - host: "cloud-projectz.xyz"
       servicePort: 8080
       targetPort: 8080
       paths:
-        - path: /api
+        - path: /
           pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
