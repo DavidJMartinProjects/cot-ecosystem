@@ -3,9 +3,7 @@ kind: IngressClass
 metadata:
   name: {{ .Values.controller.ingressClass }}
 {{- if .Values.controller.setAsDefaultIngress }}
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true",
-    nginx.ingress.kubernetes.io/enable-cors: "true"    
+  annotations:  
 {{- end }}
 spec:
   controller: nginx.org/ingress-controller

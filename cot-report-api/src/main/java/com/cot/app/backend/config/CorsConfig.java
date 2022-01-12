@@ -38,7 +38,7 @@ public class CorsConfig {
                 "https://localhost/",
                 "http://localhost:8080",
                 "http://localhost:8081",
-                "http://cot.com:3000"
+                "http://my-example.com:8080"
             )
         );
         corsConfiguration.setAllowedHeaders(
