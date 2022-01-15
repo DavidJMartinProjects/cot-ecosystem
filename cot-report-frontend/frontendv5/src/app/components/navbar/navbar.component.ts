@@ -18,14 +18,14 @@ export class NavbarComponent implements OnInit {
     this.sidebar.isMenuShowing.subscribe(isMenuEnabled => this.isSideMenuEnabled = isMenuEnabled);
   }
 
-  toggleSideMenu() {    
+  toggleSideMenu() {  
+    this.sidebar.toggle();
     console.log("side menu enabled: " + this.isSideMenuEnabled);    
-    return this.sidebar.toggle();
   }
 
   toggleDarkMode() {   
-    console.log("dark mode: " + this.isDarkModeEnabled); 
     this.darkMode.toggleDarkMode();
+    console.log("dark mode enabled: " + this.isDarkModeEnabled); 
   }
 
 }

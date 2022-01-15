@@ -16,7 +16,6 @@ export class DarkModeService implements OnInit {
 
   showMenu: boolean = false;
   toggleDarkMode() {
-    console.log("toggle dark mode." + this.isDarkMode.value);   
     this.showMenu = !this.showMenu;
     return this.isDarkMode.next(this.showMenu);       
   }

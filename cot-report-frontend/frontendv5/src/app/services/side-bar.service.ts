@@ -10,7 +10,7 @@ export class SideNavService {
 
   showMenu: boolean = false;
   public toggle() {
-    this.showMenu = !this.showMenu;
+    this.showMenu = !this.showMenu; 
     return this.isMenuShowing.next(this.showMenu);
   }
 
