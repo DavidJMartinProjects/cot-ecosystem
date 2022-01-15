@@ -18,7 +18,6 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { CountUpModule } from 'ngx-countup';
 import { ReportChartsComponent } from './components/report-charts/report-charts.component';
 import { Chart } from "chart.js";
-import { MobileSidebarComponent } from './components/mobile-sidebar/mobile-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { MobileSidebarComponent } from './components/mobile-sidebar/mobile-sideb
     MainContentComponent,
     SideBarComponent,
     CotReportComponent,
-    ReportChartsComponent,
-    MobileSidebarComponent    
+    ReportChartsComponent    
   ],
   imports: [
     BrowserModule,

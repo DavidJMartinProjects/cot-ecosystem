@@ -7,14 +7,13 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
+  @ViewChild('sidenav') public sidenav?: SideBarComponent;
 
-  isSideMenuEnabled: boolean = true;
-  
-  ngOnInit(): void {
-    this.sideNavService.isMenuShowing.subscribe(isMenuEnabled => this.isSideMenuEnabled = isMenuEnabled);
-  }
 
   constructor(private sideNavService: SideNavService) { }
+
+  ngOnInit(): void {
+  }
 
   toggle() {
     // console.log("this.navbarComponent.togglemenu(): " + this.sideNavService.toggle());

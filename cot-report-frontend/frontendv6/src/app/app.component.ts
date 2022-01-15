@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DarkModeService } from 'src/services/dark-mode.service';
-import { SideNavService } from 'src/services/side-bar.service';
-
+import { DarkModeService } from './services/dark-mode.service';
+import { SideNavService } from './services/side-bar.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent implements OnInit {
 
   isDarkModeEnabled: any;
   isSideMenuEnabled: any;
-
+  
   ngOnInit(): void {
     this.darkMode.isDarkMode.subscribe(isDarkMode => this.isDarkModeEnabled = isDarkMode)  
     this.sidebar.isMenuShowing.subscribe(isMenuEnabled => this.isSideMenuEnabled = isMenuEnabled);
