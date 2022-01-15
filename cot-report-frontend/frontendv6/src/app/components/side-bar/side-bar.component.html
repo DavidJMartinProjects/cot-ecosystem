@@ -1,10 +1,20 @@
 <!-- side-bar -->
-<div class="flex justify-around min-h-screen ">
-<div class="bg-white dark:bg-stone-800 text-black dark:text-white w-32 border-r-2 shadow-lg "  >
+<div class="flex justify-around" >
+<div [ngClass]="{'-translate-x-full': isSideMenuEnabled}" 
+    class="bg-white dark:bg-stone-800 text-black dark:text-white w-32  shadow-lg h-screen
+        absolute left-0 top-0 transform  transition duration-200 ease-in-out"  >
 
     <!-- nav  -->
     <nav class="flex justify-center space-x-5 ">
-        <div class="flex-col items-center  justify-center h-3/4 dark:text-slate-100" [ngClass]="{'hidden': toggle()} ">
+
+        <div class="flex-col items-center  justify-center h-3/4 dark:text-slate-100" >                        
+            <div class="flex-1 mt-1 rounded-md hover:scale-110  text-center">                
+                <button (click)="toggle()" class=" p-3 hover:bg-slate-100 dark:hover:bg-stone-700 rounded-md bg-white-100 dark:text-slate-100 active:animate-ping">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-10 hover:scale-125" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>                
+            </div>
             <div class="flex-1 p-5 mt-7 rounded-md hover:scale-110 hover:bg-slate-100 dark:hover:bg-stone-700">
                 <button class="hover:animate-none ">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-10 mx-auto " fill="none" viewBox="0 0 24 24"
