@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideNavService } from 'src/app/services/side-bar.service';
 
 @Component({
   selector: 'app-mobile-sidebar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MobileSidebarComponent implements OnInit {
 
-  constructor() { }
-
+  isSideMenuEnabled: boolean = true;
+  
   ngOnInit(): void {
+    this.sideNavService.isMenuShowing.subscribe(isMenuEnabled => this.isSideMenuEnabled = isMenuEnabled);
+  }
+
+  constructor(private sideNavService: SideNavService) { }
+  
+  toggle() {
+    console.log("isSideMenuEnabled" + this.isSideMenuEnabled);
+    return this.sideNavService.toggle();
   }
 
 }

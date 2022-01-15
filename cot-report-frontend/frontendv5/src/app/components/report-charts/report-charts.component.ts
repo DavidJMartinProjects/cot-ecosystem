@@ -15,14 +15,17 @@ export class ReportChartsComponent implements OnInit {
 
   @ViewChild('chart')
   private chartRef: any;
+  private chart: any;
   public data: any[] = [];
 
   constructor(private cotReportService: CotReportService) { }
 
   ngOnInit(): void {
+    this.cotReportService.dataSource.subscribe(data => this.data = data);
     this.cotReportService.dataSource.subscribe(data => {
-      this.data = data
+      console.log("data updated.");
       this.pieChart.data.datasets.data = [this.data[0].longPositions, this.data[0].shortPositions] 
+
       this.pieChart.destroy(); 
       this.buildChart();  
     });
@@ -33,8 +36,15 @@ export class ReportChartsComponent implements OnInit {
   }
 
   buildChart() {
+    this.cotReportService.dataSource.subscribe(data => {
+      console.log("data updated.");
+      this.pieChart.data.datasets.data = [this.data[0].longPositions, this.data[0].shortPositions] 
+      this.pieChart.update();     
+    });
+
     this.pieChart = new Chart(this.chartRef.nativeElement, {
       type: 'pie',
+
       data: {
         datasets: [{
           backgroundColor: ['rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 0.1)'],
@@ -48,12 +58,13 @@ export class ReportChartsComponent implements OnInit {
         scales: {
         }
       }
-    });    
+    });
+    
     this.pieChart.update();
   }
 
   ngAfterViewInit(): void {
     this.buildChart();
-  }  
+  }
 
 }

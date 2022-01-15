@@ -12,4 +12,8 @@ export class MainSideMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggle() {
+    
+  }
+
 }

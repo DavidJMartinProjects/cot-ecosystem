@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CotReportService } from 'src/app/services/cot-report-backend.service';
+
 import { Chart } from "chart.js";
+import { CotReportService } from 'src/services/cot-report-backend.service';
 
 @Component({
   selector: 'app-cot-report',
