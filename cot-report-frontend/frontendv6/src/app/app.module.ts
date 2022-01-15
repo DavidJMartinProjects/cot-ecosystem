@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { CotReportService } from './services/cot-report-backend.service';
 import { DarkModeService } from './services/dark-mode.service';
 import { SideNavService } from './services/side-bar.service';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,

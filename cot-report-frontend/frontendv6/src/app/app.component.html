@@ -1,4 +1,4 @@
-<div>
+<div class="relative min-h-screen w-full flex-1">
   <div [ngClass]="[isDarkModeEnabled ? 'dark' : '']">           
     <!--Nav-->
     <nav class="relative top-0 z-20 w-full mt-0 bg-white border-b-2 border-gray-200 shadow-sm dark:border-black md:mt-0 dark:bg-stone-800 ">
@@ -35,5 +35,9 @@
             </div>
         </div>
     </nav>
+
+    <!-- Side Bar -->
+    <app-side-bar></app-side-bar>
+
   </div>
 </div>
