@@ -1,0 +1,12 @@
+<div class="flex flex-wrap justify-center w-full"  >
+    <div *ngFor="let symbol of symbols" class="flex items-center mb-4 mr-4 ">
+        <input input id="{{ symbol }}" type="radio" name="radio" class="flex text-black checked:bg-black dark:checked:bg-orange-600 active:ring-white default:ring-white checked:ring-white dark:checked:ring-0 dark:ring-transparent dark:text-orange-600 dark:active:bg-orange-600 active:bg-black checked-bg-black dark:border-white dark:border-2" checked (change)="handleChange(symbol)"/>
+        <label for="{{ symbol }}" class="flex items-center cursor-pointer ">            
+            <div class="ml-1 text-sm text-black dark:text-slate-100 font-qs "> {{ symbol }}</div>
+        </label>
+    </div>
+</div>
+<div class="mt-1 md:mt-3">
+    <app-cot-charts></app-cot-charts>
+    <app-cot-table></app-cot-table>
+</div>  

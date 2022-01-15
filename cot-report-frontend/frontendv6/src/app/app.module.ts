@@ -10,18 +10,29 @@ import { CotReportService } from './services/cot-report-backend.service';
 import { DarkModeService } from './services/dark-mode.service';
 import { SideNavService } from './services/side-bar.service';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { CotReportComponent } from './components/cot-report/cot-report.component';
+import { CotChartsComponent } from './components/cot-charts/cot-charts.component';
+import { CotTableComponent } from './components/cot-table/cot-table.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { Chart } from "chart.js";
+import { CountUpModule } from 'ngx-countup';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent
+    SideBarComponent,
+    CotReportComponent,
+    CotChartsComponent,
+    CotTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GoogleChartsModule,    
+    CountUpModule   
   ],
   providers: [CotReportService, SideNavService, DarkModeService],
   bootstrap: [AppComponent]
