@@ -1,7 +1,7 @@
-<div class="flex-1 w-full min-h-screen">
-  <div [ngClass]="[isDarkModeEnabled ? 'dark' : '']">           
+<div class="flex-1 w-full min-h-screen" [ngClass]="[isDarkModeEnabled ? 'dark' : '']">
+  <div class="min-h-screen bg-gray-50 dark:bg-stone-900">           
     <!--Nav-->
-    <nav class="w-full mt-0 bg-white border-b-2 border-gray-200 shadow-sm dark:border-black md:mt-0 dark:bg-stone-800">
+    <nav class="w-full mt-0 bg-white border-gray-200 shadow-md dark:border-black md:mt-0 dark:bg-stone-800">
 
         <!-- Sidebar Menu Button -->
         <div class="flex flex-wrap items-center">        
