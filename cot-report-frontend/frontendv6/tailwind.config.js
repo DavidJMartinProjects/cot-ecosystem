@@ -12,7 +12,7 @@ module.exports = {
         'gorilla-light':
           "url('~/assets/images/logo-gorilla-light.PNG')",
         'gorilla-dark':
-        "url('/assets/images/logo-gorilla.PNG')",
+        "url('~/assets/images/logo-gorilla.PNG')",
       })
     },
   },

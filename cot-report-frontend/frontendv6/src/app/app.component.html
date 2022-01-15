@@ -1,11 +1,11 @@
-<div class="min-h-screen w-full flex-1 relative">
+<div class="flex-1 w-full min-h-screen">
   <div [ngClass]="[isDarkModeEnabled ? 'dark' : '']">           
     <!--Nav-->
-    <nav class="w-full mt-0 bg-white border-b-2 border-gray-200 shadow-sm dark:border-black md:mt-0 dark:bg-stone-800 ">
+    <nav class="w-full mt-0 bg-white border-b-2 border-gray-200 shadow-sm dark:border-black md:mt-0 dark:bg-stone-800">
 
         <!-- Sidebar Menu Button -->
         <div class="flex flex-wrap items-center">        
-            <button (click)="toggleSideMenu()" class="m-1 ml-2 rounded-md md:ml-12 bg-white-100 dark:text-slate-100 active:animate-ping">
+            <button (click)="toggleSideMenu()" class="m-1 ml-2 rounded-md md:ml-12 bg-white-100 dark:text-slate-100 active:animate-ping md:invisible">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-10 hover:scale-125" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -13,11 +13,11 @@
             <div class="flex mx-auto mt-1 mb-1 text-center">
                 <div class="flex">
                     <div class="flex-col">
-                        <span class="flex-row text-lg tracking-tight text-center text-gray-500  dark:text-white font-qs" >COMMITMENT OF APES</span>
+                        <span class="flex-row text-lg tracking-tight text-center text-gray-500 dark:text-white font-qs" >COMMITMENT OF APES</span>
                         <div class="flex-row pt-0 mt-0 text-sm font-semibold tracking-tighter text-center dark:text-white font-qs"> apes together strong</div>
                     </div>
                     <div class="flex-col ">
-                        <div class="mt-1 bg-cover  bg-gorilla-light dark:bg-gorilla-dark w-11 h-11"></div>
+                        <div class="mt-1 bg-cover bg-gorilla-light dark:bg-gorilla-dark w-11 h-11"></div>
                     </div>
                 </div>
             </div>
