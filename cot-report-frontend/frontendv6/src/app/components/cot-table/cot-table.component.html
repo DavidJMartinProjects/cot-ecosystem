@@ -26,42 +26,54 @@
                         <th
                             class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-900">
                             Net</th>
-                    </tr>
+                        <th
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-900">
+                            Chg</th>  
+                        </tr>
                 </thead>
 
-                <tbody class="bg-white dark:bg-stone-800 dark:text-white">
+                <tbody class="text-center bg-white dark:bg-stone-800 dark:text-white">
                     <tr *ngFor="let report of data" class="table-row border-b border-gray-200 dark:border-stone-700">
                         <td class="">
-                            <div class="text-sm text-gray-500 dark:text-white md:px-6 md:py-4">
+                            <div class="pl-0.5 text-xs text-gray-500 dark:text-white">
                                 {{ report.reportDate }}
                             </div>
                         </td>
 
                         <td class="hidden px-6 py-4 whitespace-no-wrap md:table-cell">
-                            <div class="text-sm text-gray-500 dark:text-white">
+                            <div class="text-xs text-gray-500 dark:text-white">
                                 {{ report.longPositions }}
                             </div>
                         </td>
                         <td class="hidden px-6 py-4 whitespace-no-wrap md:table-cell">
-                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                            <div class="text-xs leading-3 text-gray-500 dark:text-white">
                                 {{ report.shortPositions }} 
                             </div>
                         </td>
 
-                        <td class="px-6 py-4 whitespace-no-wrap">
-                            <div class="text-sm leading-5 text-center text-gray-500 dark:text-white">
-                                {{ report.percentageLong }}<span>%</span>
+                        <td class="whitespace-no-wrap">
+                            <div class="text-xs leading-3 text-center text-gray-500 dark:text-white">
+                                {{ report.percentageLong }}<span>%</span> 
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap ">
-                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
-                                {{ report.percentageShort }}<span>%</span>
+                        <td class="whitespace-no-wrap ">
+                            <div class="text-xs leading-3 text-gray-500 dark:text-white">
+                                {{ report.percentageShort }}<span>%</span> 
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap ">
-                            <div class="text-sm leading-5 text-gray-500 dark:text-white">
+                        <td class="py-4 whitespace-no-wrap ">
+                            <div class="text-xs leading-3 text-gray-500 dark:text-white">
                                 {{ report.netPositions }}
                             </div>
+                        </td>
+                        <td class="whitespace-no-wrap ">
+                            <div class="pr-1 text-xs leading-3 text-center text-gray-500 dark:texto-white"
+                                [ngClass]="report.netPositionsChange > 0 ? 'text-green-700 dark:text-green-300 text-center' : 'text-red-700 dark:text-red-300'">
+                                {{ report.netPositionsChange }} 
+                            </div>
+                            <span *ngIf="report.netPositionsChange < 0"><span class='arrow-down'></span></span>
+                            <span *ngIf="report.netPositionsChange > 0"><span class='arrow-up'></span></span>
+                            <span *ngIf="report.netPositionsChange == 0"><span class='arrow-up'></span></span>
                         </td>
                     </tr>
                 </tbody>
