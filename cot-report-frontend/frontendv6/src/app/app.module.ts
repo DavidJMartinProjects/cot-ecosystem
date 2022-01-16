@@ -19,6 +19,7 @@ import { CountUpModule } from 'ngx-countup';
 import { SwapsComponent } from './components/swaps/swaps.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { NewsComponent } from './components/news/news.component';
+import { SwapBackendService } from './services/swap-backend.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { NewsComponent } from './components/news/news.component';
     GoogleChartsModule,    
     CountUpModule   
   ],
-  providers: [CotReportService, SideNavService, DarkModeService],
+  providers: [CotReportService, SwapBackendService, SideNavService, DarkModeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

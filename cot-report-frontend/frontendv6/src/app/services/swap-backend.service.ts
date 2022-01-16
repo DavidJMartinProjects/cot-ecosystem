@@ -27,7 +27,8 @@ export class SwapBackendService {
     this.http
       .get<any>(swaps_api_url)
       .subscribe((response) => {
-        console.log('GET: ' + swaps_api_url);        
+        console.log('GET: ' + swaps_api_url);  
+        this.data = response      
         this.dataSource.next(this.data);
       }, error => {
         console.log(error);

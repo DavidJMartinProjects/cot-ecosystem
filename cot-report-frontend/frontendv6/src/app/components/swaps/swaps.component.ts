@@ -20,6 +20,7 @@ export class SwapsComponent implements OnInit {
 
   handleChange(theSymbol: string, filterPositiveSwaps: string) {    
     this.swapBackendService.updateSwapData(theSymbol, filterPositiveSwaps);
+    console.log(this.data.length);
   }
   
 }
