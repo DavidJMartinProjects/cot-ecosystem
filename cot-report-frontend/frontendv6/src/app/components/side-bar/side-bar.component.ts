@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SideNavService } from 'src/app/services/side-bar.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class SideBarComponent implements OnInit {
     this.sideNavService.isMenuShowing.subscribe(isMenuEnabled => this.isSideMenuEnabled = isMenuEnabled);
   }
 
-  constructor(private sideNavService: SideNavService) { }
+  constructor(private sideNavService: SideNavService, private router: Router ) {
+    this.router.navigate([ '/home' ])
+  }
   
   toggle() {
     console.log("isSideMenuEnabled" + this.isSideMenuEnabled);

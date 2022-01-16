@@ -8,12 +8,13 @@ import { SideNavService } from './services/side-bar.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  
   title = 'apes together strong';
-
-  constructor(private darkMode: DarkModeService, private sidebar: SideNavService) {}
-
   isDarkModeEnabled: any;
   isSideMenuEnabled: any;
+
+  constructor(private darkMode: DarkModeService, private sidebar: SideNavService) {    
+  }
   
   ngOnInit(): void {
     this.darkMode.isDarkMode.subscribe(isDarkMode => this.isDarkModeEnabled = isDarkMode)  
