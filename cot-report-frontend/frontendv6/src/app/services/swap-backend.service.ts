@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SwapBackendService {
 
-
   data: any[] = [];
   public dataSource = new BehaviorSubject<string[]>(new Array);
 
@@ -22,12 +21,13 @@ export class SwapBackendService {
     this.getSwapData(symbol, filterPositiveSwaps);
   }
 
-  swaps_api_url: string = "/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}";
+  // swaps_api_url: string = "/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}";
   getSwapData(symbol: string, filterPositiveSwaps: string) {
+    var swaps_api_url = `/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}`;
     this.http
-      .get<any>(this.swaps_api_url)
+      .get<any>(swaps_api_url)
       .subscribe((response) => {
-        console.log('GET: ' + this.swaps_api_url);        
+        console.log('GET: ' + swaps_api_url);        
         this.dataSource.next(this.data);
       }, error => {
         console.log(error);
