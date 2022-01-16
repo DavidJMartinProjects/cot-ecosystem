@@ -1,7 +1,7 @@
 <div class="flex justify-around mt-2">
     <div class="hidden md:block"></div>
     <div class="flex w-full text-center md:w-7/12 ">
-        <div class="flex overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+        <div class="flex overflow-hidden align-middle shadow sm:rounded-lg">
             <table class="w-full font-medium table-fixed font-qs">
                 <thead class="table-header-group">
                     <tr class="w-full">
@@ -18,19 +18,19 @@
                                 Shorts</th>
                         
                         <th
-                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-900">
                             Long</th>
                         <th
-                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-900">
                             Short</th>
                         <th
-                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-800">
+                            class="m-3 text-xs leading-4 tracking-wider text-center text-gray-800 uppercase border-b border-gray-200 bg-gray-50 dark:bg-stone-900 dark:text-white dark:border-stone-900">
                             Net</th>
                     </tr>
                 </thead>
 
                 <tbody class="bg-white dark:bg-stone-800 dark:text-white">
-                    <tr *ngFor="let report of data" class="table-row border-b border-gray-200 dark:border-stone-800">
+                    <tr *ngFor="let report of data" class="table-row border-b border-gray-200 dark:border-stone-700">
                         <td class="">
                             <div class="text-sm text-gray-500 dark:text-white md:px-6 md:py-4">
                                 {{ report.reportDate }}
