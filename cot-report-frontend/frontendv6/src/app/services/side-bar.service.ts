@@ -6,9 +6,10 @@ export class SideNavService {
 
   constructor() { }
 
-  public isMenuShowing: BehaviorSubject<any> = new BehaviorSubject(false);
+  public isMenuShowing: BehaviorSubject<any> = new BehaviorSubject(true);
 
-  showMenu: boolean = false;
+  showMenu: boolean = true;
+
   public toggle() {
     this.showMenu = !this.showMenu; 
     return this.isMenuShowing.next(this.showMenu);
