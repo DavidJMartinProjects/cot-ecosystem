@@ -12,25 +12,22 @@ export class SwapBackendService {
   public dataSource = new BehaviorSubject<string[]>(new Array);
 
   constructor(private http : HttpClient) {
-    this.updateSymbolData('USD');
+    this.updateSwapData('USD', 'false');
   }
 
   ngOnInit(): void {
   }
 
-  updateSymbolData(symbol: string) {
-    this.getSymbolData(symbol);
+  updateSwapData(symbol: string, filterPositiveSwaps: string) {
+    this.getSwapData(symbol, filterPositiveSwaps);
   }
 
-  // host: string = "my-example.com"
-  // report_api_url: string = "http://"+ this.host +"/api/reports?symbol=";
-  report_api_url: string = "/api/swaps";
-  getSymbolData(symbol: string) {
+  swaps_api_url: string = "/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}";
+  getSwapData(symbol: string, filterPositiveSwaps: string) {
     this.http
-      .get<any>(this.report_api_url + symbol)
+      .get<any>(this.swaps_api_url)
       .subscribe((response) => {
-        console.log('GET: ' + this.report_api_url + symbol);
-        this.data = response.slice(0, 6);
+        console.log('GET: ' + this.swaps_api_url);        
         this.dataSource.next(this.data);
       }, error => {
         console.log(error);

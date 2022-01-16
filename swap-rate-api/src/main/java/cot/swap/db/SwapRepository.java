@@ -13,4 +13,6 @@ public interface SwapRepository extends JpaRepository<SwapEntity, Long> {
     List<SwapEntity> findBySymbolContainingIgnoreCase(String symbol);
     List<SwapEntity> findByShortSwapGreaterThan(double num);
     List<SwapEntity> findByLongSwapGreaterThan(double num);
+    List<SwapEntity> findBySymbolContainingIgnoreCaseAndShortSwapGreaterThan(String symbol, double num);
+    List<SwapEntity> findBySymbolContainingIgnoreCaseAndLongSwapGreaterThan(String symbol, double num);
 }

@@ -41,4 +41,14 @@ public class SwapDao {
         return entityMapper.toList(swapRepository.findBySymbolContainingIgnoreCase(symbol), SwapDto.class);
     }
 
+    public List<SwapDto> fetchSwapsBySymbol(String symbol, boolean filterPositiveSwaps) {
+        if(filterPositiveSwaps) {
+            Set<SwapEntity> totalPositiveSwaps = new HashSet<SwapEntity>();
+            totalPositiveSwaps.addAll(swapRepository.findBySymbolContainingIgnoreCaseAndShortSwapGreaterThan(symbol,0));
+            totalPositiveSwaps.addAll(swapRepository.findBySymbolContainingIgnoreCaseAndLongSwapGreaterThan(symbol, 0));
+            return entityMapper.toList(Arrays.asList(totalPositiveSwaps.toArray()), SwapDto.class);
+        }
+        return entityMapper.toList(swapRepository.findBySymbolContainingIgnoreCase(symbol), SwapDto.class);
+    }
+
 }

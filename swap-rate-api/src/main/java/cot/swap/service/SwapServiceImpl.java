@@ -31,5 +31,10 @@ public class SwapServiceImpl implements SwapService {
         return swapDao.fetchSwapsBySymbol(symbol);
     }
 
+    @Override
+    public List<SwapDto> fetchSwapsBySymbol(String symbol, boolean filterPositiveSwaps) {
+        return swapDao.fetchSwapsBySymbol(symbol, filterPositiveSwaps);
+    }
+
 }
 
