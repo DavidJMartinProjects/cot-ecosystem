@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CotReportService } from 'src/app/services/cot-report-backend.service';
 
 @Component({
   selector: 'app-swaps',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SwapsComponent implements OnInit {
 
-  constructor() { }
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR', 'GOLD', 'BTC'];
 
-  ngOnInit(): void {
+  constructor(private cotReportService: CotReportService) {   
   }
 
+  ngOnInit(): void {    
+  }
+
+  handleChange(theSymbol: any) {    
+    this.cotReportService.updateSymbolData(theSymbol) ;
+  }
+  
 }
