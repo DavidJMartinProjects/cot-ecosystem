@@ -16,7 +16,7 @@ export class SideBarComponent implements OnInit {
   }
 
   constructor(private sideNavService: SideNavService, private router: Router ) {
-    this.router.navigate([ '/home' ])
+    this.router.navigate([ '/cot-report' ])
   }
   
   toggle() {

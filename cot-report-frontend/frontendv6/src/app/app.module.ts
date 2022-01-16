@@ -16,6 +16,9 @@ import { CotTableComponent } from './components/cot-table/cot-table.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { Chart } from "chart.js";
 import { CountUpModule } from 'ngx-countup';
+import { SwapsComponent } from './components/swaps/swaps.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { CountUpModule } from 'ngx-countup';
     SideBarComponent,
     CotReportComponent,
     CotChartsComponent,
-    CotTableComponent
+    CotTableComponent,
+    SwapsComponent,
+    CalendarComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
