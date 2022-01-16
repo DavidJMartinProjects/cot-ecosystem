@@ -9,7 +9,7 @@ import { Chart, ChartType } from 'chart.js';
 })
 export class CotReportComponent implements OnInit {
   
-  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR', 'GOLD', 'BTC'];
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR'];
 
   constructor(private cotReportService: CotReportService) {   
   }

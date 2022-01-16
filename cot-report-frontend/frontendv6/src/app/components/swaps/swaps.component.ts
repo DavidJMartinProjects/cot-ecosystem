@@ -8,7 +8,7 @@ import { SwapBackendService } from 'src/app/services/swap-backend.service';
 })
 export class SwapsComponent implements OnInit {
 
-  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR', 'GOLD', 'BTC'];
+  symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR'];
   data: any;
 
   constructor(private swapBackendService: SwapBackendService) {   
