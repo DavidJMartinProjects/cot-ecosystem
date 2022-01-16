@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CotReportService } from 'src/app/services/cot-report-backend.service';
 
 @Component({
   selector: 'app-cot-table',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CotTableComponent implements OnInit {
 
-  constructor() { }
+  data: any;
+
+  constructor(private cotReportService: CotReportService) {}
 
   ngOnInit(): void {
+    this.cotReportService.dataSource.subscribe(data => this.data = data)
   }
+
+  displayedColumns =
+  [
+    'reportDate',
+    'longPositions',
+    'shortPositions',
+    'percentageLong',
+    'percentageShort',
+    'netPositions'
+  ];
 
 }
