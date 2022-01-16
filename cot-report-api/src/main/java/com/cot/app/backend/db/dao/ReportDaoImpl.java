@@ -10,6 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +45,7 @@ public class ReportDaoImpl implements ReportDao<ReportDto> {
         return reportRepository.findByInstrument(instrument)
             .stream()
             .map(entity -> mapper.toDto(entity, ReportDto.class))
+            .sorted(Comparator.comparing(ReportDto::getId))
             .collect(Collectors.toList());
     }
 

@@ -16,6 +16,9 @@ import java.io.IOException;
 @Slf4j
 public class ScheduledTask {
 
+    public static final String LAST_YEARS_REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_2021.zip";
+    public static final String THIS_YEARS_REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_2022.zip";
+
     @Autowired
     private ExcelFileUtils excelFileUtils;
 
@@ -25,14 +28,21 @@ public class ScheduledTask {
     @Autowired
     private DataUtil dataUtil;
 
-    public void importReport() throws IOException {
+    public void downloadCotReports() {
+        try {
+            downloadAndSaveReport(THIS_YEARS_REPORT_DOWNLOAD_URL);
+            downloadAndSaveReport(LAST_YEARS_REPORT_DOWNLOAD_URL);
+        } catch (Exception exception) {
+            log.error("failed to download report. Error: {}", exception.getMessage());
+        }
+    }
+
+    private void downloadAndSaveReport(String reportUrl) throws IOException {
         log.info("retrieving latest cot report");
-        reportDownloader.downloadFile();
+        reportDownloader.downloadFile(reportUrl);
         ZipFileUtils.unzip();
         excelFileUtils.saveReportToDb();
         dataUtil.process();
-//        log.info("cleaning work directory files.");
-//        org.apache.commons.io.FileUtils.cleanDirectory(new File(REPORT_DOWNLOAD_LOCATION));
         log.info("cot-report retrieved successfully.");
     }
 

@@ -28,7 +28,7 @@ public class BackendApplication {
 	 @Bean
 	 public CommandLineRunner CommandLineRunnerBean() {
 	 	return (args) -> {
-	 		scheduledTask.importReport();
+	 		scheduledTask.downloadCotReports();
 	 	};
 	 }
 

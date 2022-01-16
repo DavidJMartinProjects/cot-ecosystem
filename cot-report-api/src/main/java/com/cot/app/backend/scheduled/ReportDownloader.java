@@ -32,14 +32,14 @@ public class ReportDownloader {
     @Autowired
     private RestTemplate restTemplate;
 
-    public void downloadFile() {
+    public void downloadFile(String reportUrl) {
         try {
             // ToDo: implement restTemplateFacade here
             log.info("making GET request to retrieve latest COT report.");
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
             HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<byte[]> response = restTemplate.exchange(REPORT_DOWNLOAD_URL, HttpMethod.GET, entity, byte[].class);
+            ResponseEntity<byte[]> response = restTemplate.exchange(reportUrl, HttpMethod.GET, entity, byte[].class);
             log.info("success: downloaded.");
 
             Files.write(Paths.get(REPORT_DOWNLOAD_LOCATION + REPORT_ZIPPED_FILENAME), Objects.requireNonNull(response.getBody()));
