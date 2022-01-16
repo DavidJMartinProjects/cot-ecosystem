@@ -63,13 +63,13 @@
                         </td>
                         <td class="py-4 whitespace-no-wrap ">
                             <div class="text-xs leading-3 text-gray-500 dark:text-white">
-                                {{ report.netPositions }}
+                                {{ report.netPositions | number}}
                             </div>
                         </td>
                         <td class="whitespace-no-wrap ">
                             <div class="pr-1 text-xs leading-3 text-center text-gray-500 dark:texto-white"
                                 [ngClass]="report.netPositionsChange > 0 ? 'text-green-700 dark:text-green-300 text-center' : 'text-red-700 dark:text-red-300'">
-                                {{ report.netPositionsChange }} 
+                                {{ report.netPositionsChange | number}} 
                             </div>
                             <span *ngIf="report.netPositionsChange < 0"><span class='arrow-down'></span></span>
                             <span *ngIf="report.netPositionsChange > 0"><span class='arrow-up'></span></span>
