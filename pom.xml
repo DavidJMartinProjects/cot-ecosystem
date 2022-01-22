@@ -5,7 +5,8 @@
 
     <modules>
         <module>api-gateway</module>
-        <module>swap-rate-api</module>
+        <module>swap-rates-api</module>
+        <module>live-rates-api</module>
         <module>cot-report-api</module>
         <module>twitter-crawler-api</module>
     </modules>

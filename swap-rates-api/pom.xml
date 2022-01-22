@@ -9,9 +9,9 @@
 	</parent>
 
 	<groupId>cot</groupId>
-	<artifactId>swap-rate-api</artifactId>
+	<artifactId>swap-rates-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>swap-rate-api</name>
+	<name>swap-rates-api</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
