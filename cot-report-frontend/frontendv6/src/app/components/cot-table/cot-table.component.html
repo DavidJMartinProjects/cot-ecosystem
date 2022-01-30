@@ -35,39 +35,39 @@
                 <tbody class="text-center bg-white dark:bg-stone-800 dark:text-white">
                     <tr *ngFor="let report of data" class="table-row border-b border-gray-200 dark:border-stone-700">
                         <td class="">
-                            <div class="text-xs text-gray-500 whitespace-nowrap dark:text-white">
+                            <div class="text-xs text-gray-800 whitespace-nowrap dark:text-white">
                                 {{ report.reportDate }}
                             </div>
                         </td>
 
                         <td class="hidden px-6 py-4 whitespace-no-wrap md:table-cell">
-                            <div class="text-xs text-gray-500 dark:text-white">
+                            <div class="text-xs text-gray-800 dark:text-white">
                                 {{ report.longPositions }}
                             </div>
                         </td>
                         <td class="hidden px-6 py-4 whitespace-no-wrap md:table-cell">
-                            <div class="text-xs leading-3 text-gray-500 dark:text-white">
+                            <div class="text-xs leading-3 text-gray-800 dark:text-white">
                                 {{ report.shortPositions }} 
                             </div>
                         </td>
 
                         <td class="whitespace-no-wrap">
-                            <div class="text-xs leading-3 text-center text-gray-500 dark:text-white">
+                            <div class="text-xs leading-3 text-center text-gray-800 dark:text-white">
                                 {{ report.percentageLong }}<span>%</span> 
                             </div>
                         </td>
                         <td class="whitespace-no-wrap ">
-                            <div class="text-xs leading-3 text-gray-500 dark:text-white">
+                            <div class="text-xs leading-3 text-gray-800 dark:text-white">
                                 {{ report.percentageShort }}<span>%</span> 
                             </div>
                         </td>
                         <td class="py-4 whitespace-no-wrap ">
-                            <div class="text-xs leading-3 text-gray-500 dark:text-white">
+                            <div class="text-xs leading-3 text-gray-800 dark:text-white">
                                 {{ report.netPositions | number}}
                             </div>
                         </td>
                         <td class="whitespace-no-wrap ">
-                            <div class="pr-1 text-xs leading-3 text-center text-gray-500 dark:texto-white"
+                            <div class="pr-1 text-xs leading-3 text-center text-gray-800 dark:texto-white"
                                 [ngClass]="report.netPositionsChange > 0 ? 'text-green-700 dark:text-green-300 text-center' : 'text-red-700 dark:text-red-300'">
                                 {{ report.netPositionsChange | number}} 
                             </div>
