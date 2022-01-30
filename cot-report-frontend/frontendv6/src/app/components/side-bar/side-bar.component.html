@@ -1,12 +1,12 @@
 <!-- side-bar -->
 <div class="flex justify-around">
     <div [ngClass]="{'-translate-x-full': isSideMenuEnabled}"
-        class="absolute top-0 left-0 block w-32 h-screen text-black transition duration-200 ease-in-out transform bg-white shadow-lg md:absolute md:top-0 dark:bg-stone-800 dark:text-white md:hidden">
+        class="absolute top-0 left-0 block w-32 h-screen text-black transition duration-200 ease-in-out transform bg-white shadow-lg md:top-0 dark:bg-stone-800 dark:text-white">
 
         <!-- nav  -->
         <nav class="flex justify-center space-x-5 ">
             <div class="flex-col items-center justify-center h-3/4 dark:text-slate-100">
-                <div class="flex-1 mt-1 text-center rounded-md hover:scale-110 md:hidden ">
+                <div class="flex-1 mt-1 text-center rounded-md hover:scale-110">
                     <button (click)="toggle()"
                         class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-stone-700 bg-white-100 dark:text-slate-100 active:animate-ping">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-10 hover:scale-125" fill="none"
