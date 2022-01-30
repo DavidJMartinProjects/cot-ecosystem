@@ -23,7 +23,9 @@
   <div [ngClass]="{'border-green-500': (swap.longSwap > 0 && swap.shortSwap < 0) && showPositiveSwapsOnly, 'border-red-500' : (swap.longSwap < 0 && swap.shortSwap > 0) && showPositiveSwapsOnly }" 
     *ngFor="let swap of data" class="text-sm text-center bg-white border-2 rounded-lg shadow-sm card dark:bg-stone-800 ">
         <p class="text-lg"> {{ swap.symbol }} </p>
+        <img src="../../../assets/images/flags/{{swap.symbol | slice:0:3}}.svg" class="flag-image">
         <p>Long: {{ swap.longSwap }}</p>
         <p>Short: {{ swap.shortSwap }} </p>
+        <img src="../../../assets/images/flags/{{swap.symbol | slice:3:6}}.svg" class="flag-image">
     </div>          
 </div>

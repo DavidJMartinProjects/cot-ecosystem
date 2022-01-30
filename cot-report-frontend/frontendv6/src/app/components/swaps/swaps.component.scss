@@ -15,3 +15,7 @@ input:checked + .toggle-bg {
 .positive-border {
     @apply dark:border-orange-500 dark:font-semibold;
 }
+
+.flag-image {
+    height: 2em;
+}

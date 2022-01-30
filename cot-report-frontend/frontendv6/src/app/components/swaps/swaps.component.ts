@@ -32,5 +32,7 @@ export class SwapsComponent implements OnInit {
     console.log("positive swap only: " + this.showPositiveSwapsOnly)
     this.handleChange(this.currentSymbol);
   }
+
+  
   
 }
