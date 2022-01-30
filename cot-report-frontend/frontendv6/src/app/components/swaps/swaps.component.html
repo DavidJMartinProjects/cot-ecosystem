@@ -19,9 +19,11 @@
 </div>
 
 <div class="grid justify-center grid-cols-3 gap-4 p-1 ">
-  <div *ngFor="let swap of data" class="text-sm text-center bg-white rounded-lg shadow-sm dark:bg-stone-800">
+  <div [ngClass]="{'border-green-500': (swap.longSwap > 0 && swap.shortSwap < 0) && showPositiveSwapsOnly, 'border-red-500' : (swap.longSwap < 0 && swap.shortSwap > 0) && showPositiveSwapsOnly }"
+ 
+    *ngFor="let swap of data" class="text-sm text-center bg-white border-2 rounded-lg shadow-sm dark:bg-stone-800 ">
         <p class="text-lg"> {{ swap.symbol }} </p>
         <p>Long: {{ swap.longSwap }}</p>
         <p>Short: {{ swap.shortSwap }} </p>
-    </div>  
+    </div>      
 </div>
