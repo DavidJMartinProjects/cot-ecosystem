@@ -16,13 +16,13 @@
                             </div>
                             <div class="flex justify-center text-center">
                                 <div class="grid grid-cols-2">
-                                    <div class="relative content-center p-1 pr-2 border-l-8 border-red-800 row">
+                                    <div class="relative content-center p-1 pr-2 border-l-8 border-red-600 row">
                                         <span [countUp]="data[0].shortPositions" [options]="myCountUpOpts"></span>
                                         <p class="font-semibold text-md">shorts</p>
                                         <span [countUp]="data[0].percentageShort" [options]="myCountUpOpts"></span>
                                         <span class="ml-0">%</span>
                                     </div>
-                                    <div class="p-1 mr-2 border-l-8 border-green-800 ">
+                                    <div class="p-1 mr-2 border-l-8 border-green-600 ">
                                         <span [countUp]="data[0].longPositions" [options]="myCountUpOpts"></span>
                                         <p class="font-semibold text-md">longs</p>
                                         <span [countUp]="data[0].percentageLong" [options]="myCountUpOpts"></span>

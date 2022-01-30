@@ -23,6 +23,7 @@
     "@types/chart.js": "^2.9.35",
     "angular-google-charts": "^2.2.2",
     "chart.js": "^3.7.0",
+    "currency-flags": "^3.3.0",
     "ngx-countup": "^7.3.3",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

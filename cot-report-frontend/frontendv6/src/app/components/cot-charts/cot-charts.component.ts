@@ -38,7 +38,7 @@ export class CotChartsComponent implements OnInit {
       type: 'pie',
       data: {
         datasets: [{
-          backgroundColor: ['rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 0.1)'],
+          backgroundColor: ['green', 'red'],
           label: 'Interesting Data',
           data: [this.data[0].longPositions, this.data[0].shortPositions]          
         }]
