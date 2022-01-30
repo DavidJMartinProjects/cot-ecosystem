@@ -21,7 +21,7 @@ export class CotReportService implements OnInit {
 
   // host: string = "my-example.com"
   // report_api_url: string = "http://"+ this.host +"/api/reports?symbol=";
-  report_api_url: string = "/api/reports?symbol=";
+  report_api_url: string = "http://localhost:8080/api/reports?symbol=";
   getSymbolData(symbol: string) {
     this.http
       .get<any>(this.report_api_url + symbol)
