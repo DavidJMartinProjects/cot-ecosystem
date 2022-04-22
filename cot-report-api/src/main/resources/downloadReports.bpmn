@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0zr778z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:collaboration id="Collaboration_0td2p5n">
+    <bpmn:participant id="Participant_1mo3g4i" name="Download COT Reports" processRef="downloadReports" />
+    <bpmn:textAnnotation id="TextAnnotation_09s2uv5" />
+  </bpmn:collaboration>
+  <bpmn:process id="downloadReports" name="downloadReports" isExecutable="true">
+    <bpmn:subProcess id="Activity_0d7tins" name="GetReports">
+      <bpmn:incoming>Flow_01qfeh3</bpmn:incoming>
+      <bpmn:multiInstanceLoopCharacteristics camunda:collection="${years}" camunda:elementVariable="year" />
+      <bpmn:startEvent id="Event_1t7k98g">
+        <bpmn:outgoing>Flow_0edjoqj</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:serviceTask id="Activity_1x4o3jw" name="Download &#38; save report" camunda:class="com.cot.app.backend.scheduled.ScheduledTask">
+        <bpmn:incoming>Flow_0edjoqj</bpmn:incoming>
+        <bpmn:outgoing>Flow_1u9ejrd</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:endEvent id="Event_0jwxdzr" name="End">
+        <bpmn:incoming>Flow_1u9ejrd</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0edjoqj" sourceRef="Event_1t7k98g" targetRef="Activity_1x4o3jw" />
+      <bpmn:sequenceFlow id="Flow_1u9ejrd" sourceRef="Activity_1x4o3jw" targetRef="Event_0jwxdzr" />
+    </bpmn:subProcess>
+    <bpmn:startEvent id="Event_0as23s9" name="Start">
+      <bpmn:outgoing>Flow_01qfeh3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_01qfeh3" sourceRef="Event_0as23s9" targetRef="Activity_0d7tins" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0td2p5n">
+      <bpmndi:BPMNShape id="Participant_1mo3g4i_di" bpmnElement="Participant_1mo3g4i" isHorizontal="true">
+        <dc:Bounds x="160" y="124" width="790" height="286" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_01qfeh3_di" bpmnElement="Flow_01qfeh3">
+        <di:waypoint x="308" y="270" />
+        <di:waypoint x="431" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0as23s9_di" bpmnElement="Event_0as23s9">
+        <dc:Bounds x="272" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="278" y="295" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0d7tins_di" bpmnElement="Activity_0d7tins" isExpanded="true">
+        <dc:Bounds x="431" y="170" width="410" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0edjoqj_di" bpmnElement="Flow_0edjoqj">
+        <di:waypoint x="489" y="270" />
+        <di:waypoint x="581" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u9ejrd_di" bpmnElement="Flow_1u9ejrd">
+        <di:waypoint x="681" y="270" />
+        <di:waypoint x="753" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1ij3ntl_di" bpmnElement="Activity_1x4o3jw">
+        <dc:Bounds x="581" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1t7k98g_di" bpmnElement="Event_1t7k98g">
+        <dc:Bounds x="453" y="252" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jwxdzr_di" bpmnElement="Event_0jwxdzr">
+        <dc:Bounds x="753" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="761" y="295" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_09s2uv5_di" bpmnElement="TextAnnotation_09s2uv5">
+        <dc:Bounds x="1320" y="80" width="100" height="30" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

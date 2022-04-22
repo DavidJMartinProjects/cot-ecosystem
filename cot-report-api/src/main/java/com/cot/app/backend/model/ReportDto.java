@@ -45,6 +45,7 @@ public class ReportDto implements Serializable {
             .replace("CANADIAN DOLLAR", "CAD")
             .replace("SWISS FRANC", "CHF")
             .replace("BRITISH POUND STERLING", "GBP")
+            .replace("BRITISH POUND", "GBP")
             .replace("JAPANESE YEN", "JPY")
             .replace("AUSTRALIAN DOLLAR", "AUD")
             .replace("RUSSIAN RUBLE", "RUB")
@@ -52,6 +53,7 @@ public class ReportDto implements Serializable {
             .replace("SOUTH AFRICAN RAND", "ZAR")
             .replace("BITCOIN", "BTC")
             .replace("NEW ZEALAND DOLLAR", "NZD")
+            .replace("NZ DOLLAR", "NZD")
             .replace("USD INDEX", "USD")
             .replace("U.S. DOLLAR INDEX", "USD");            
     }

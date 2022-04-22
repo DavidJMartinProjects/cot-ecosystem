@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,7 +26,7 @@ public class FileUtil {
         String fileName = String.format(REPORT_ZIP_FILENAME, cotReportYear);
         try {
             Files.write(Paths.get(fileName), Objects.requireNonNull(reportResponse.getBody()));
-        } catch (IOException exception) {
+        } catch (Exception exception) {
             log.info("Encountered error writing to file: {} {}", exception, exception.getMessage());
         }
         log.info("Saved file to disk: {}", fileName);

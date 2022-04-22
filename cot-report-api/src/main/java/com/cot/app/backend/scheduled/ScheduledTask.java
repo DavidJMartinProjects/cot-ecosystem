@@ -5,30 +5,28 @@ import com.cot.app.backend.scheduled.service.DownloadService;
 import com.cot.app.backend.scheduled.utils.ExcelUtil;
 import com.cot.app.backend.scheduled.utils.FileUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.camunda.bpm.engine.ProcessEngine;
+import org.camunda.bpm.engine.ProcessEngineException;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import static com.cot.app.backend.scheduled.utils.FileUtil.REPORT_ZIP_FILENAME;
 
 /**
  * @author DavidJMartin
  */
 @Service
 @Slf4j
-public class ScheduledTask {
-
-    private final static String YR_2021 = "2021";
-    private final static String YR_2022 = "2022";
-
-    private final String[] cotReportYears = { YR_2022, YR_2021 };
-
-    public static final String REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_%s.zip";
+public class ScheduledTask implements JavaDelegate {
 
     @Autowired
     private FileUtil fileUtil;
 
     @Autowired
-    private ExcelUtil spreadsheetUtil;
+    private ExcelUtil spreadSheetUtil;
 
     @Autowired
     private DownloadService downloadService;
@@ -36,22 +34,35 @@ public class ScheduledTask {
     @Autowired
     private AnalysisService analysisService;
 
-    public void downloadCotReports() {
-        for (String cotReportYear : cotReportYears) {
-            String url = String.format(REPORT_DOWNLOAD_URL, cotReportYear);
-            downloadReport(url, cotReportYear);
-        }
-        log.info("--- Scheduled task complete. ---");
-    }
+    @Autowired
+    private RuntimeService runtimeService;
 
+    @Autowired
+    private ProcessEngine processEngine;
+
+    @Override
+    public void execute(DelegateExecution delegateExecution) throws Exception {
+        log.info("delegate executing: {}", delegateExecution.getVariable("years"));
+        try {
+            String reportUrl = (String) delegateExecution.getVariable("reportUrl");
+            String cotReportYear = (String) delegateExecution.getVariable("year");
+            String url = String.format(reportUrl, cotReportYear);
+
+            downloadReport(url, cotReportYear);
+        } catch (ProcessEngineException exception) {
+            log.info("ProcessEngineException: {}", exception.getMessage());
+        }
+    }
     private void downloadReport(String reportUrl, String cotReportYear) {
         // download report
         log.info("Retrieving report Year: {}", cotReportYear);
-        String fileName = downloadService.downloadReport(reportUrl, cotReportYear);
+        downloadService.downloadReport(reportUrl, cotReportYear);
+
+        String fileName = String.format(REPORT_ZIP_FILENAME, cotReportYear);
+        fileUtil.unzip(fileName, cotReportYear);
 
         // save file
-        fileUtil.unzip(fileName, cotReportYear);
-        spreadsheetUtil.processSheet(cotReportYear);
+        spreadSheetUtil.processSheet(cotReportYear);
 
         // perform calculations and save
         analysisService.calcWeeklyChange();
