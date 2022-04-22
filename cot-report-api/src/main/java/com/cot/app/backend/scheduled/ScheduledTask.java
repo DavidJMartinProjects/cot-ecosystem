@@ -19,7 +19,7 @@ public class ScheduledTask {
     private final static String YR_2021 = "2021";
     private final static String YR_2022 = "2022";
 
-    private String[] cotReportYears = {YR_2021, YR_2022};
+    private String[] cotReportYears = { YR_2022, YR_2021 };
 
     public static final String REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_%s.zip";
     
