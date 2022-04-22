@@ -58,7 +58,7 @@ public class ReportDto implements Serializable {
             .replace("SOUTH AFRICAN RAND", "ZAR")
             .replace("BITCOIN", "BTC")
             .replace("NEW ZEALAND DOLLAR", "NZD")
-            .replace("U.S. DOLLAR INDEX - ICE FUTURES U.S.", "USD")
+            .replace("USD INDEX", "USD")
             .replace("U.S. DOLLAR INDEX", "USD");            
     }
 
