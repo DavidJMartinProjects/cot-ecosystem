@@ -30,7 +30,7 @@ public class ReportHttpClient {
         } catch (Exception exception) {
             log.info("Encountered error while retrieving report: {} {}", exception, exception.getMessage());
         }
-        log.info("Success: report downloaded.");
+        log.info("Response status code: {}.", response.getStatusCode());
         return response;
     }
 

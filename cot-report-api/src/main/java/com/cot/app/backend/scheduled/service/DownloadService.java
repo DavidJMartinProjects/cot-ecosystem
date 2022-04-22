@@ -12,17 +12,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class ReportDownloadService {
+public class DownloadService {
 
     @Autowired
     private ReportHttpClient httpClient;
 
     @Autowired
     private FileUtil fileUtil;
-    private ResponseEntity<byte[]> report;
 
     public String retrieveReport(String reportUrl, String cotReportYear) {
-        report = httpClient.downloadReport(reportUrl);
+        ResponseEntity<byte[]> report = httpClient.downloadReport(reportUrl);
         return fileUtil.writeToFile(report, cotReportYear);
     }
 
