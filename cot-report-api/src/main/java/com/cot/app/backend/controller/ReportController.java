@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import static com.cot.app.backend.controller.ReportController.API_BASE_PATH;
-import static com.cot.app.backend.controller.ReportController.REPORTS_URL;
 
 /**
  * @author DavidJMartin
@@ -36,7 +35,7 @@ public class ReportController {
     @ResponseStatus(HttpStatus.OK)
     public List<ReportDto> getReports(@RequestParam String symbol) {
         log.info("GET: {}?symbol={}", API_BASE_PATH + REPORTS_URL, symbol);
-        return reportService.getReportsByInstrument(symbol);
+        return reportService.getReportBySymbol(symbol);
     }
 
 }

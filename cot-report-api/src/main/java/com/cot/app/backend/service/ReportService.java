@@ -17,8 +17,8 @@ public class ReportService {
     @Autowired
     private ReportDao<ReportDto> reportDao;
 
-    public List<ReportDto> getReportsByInstrument(String instrument) {
-        return reportDao.findAll(instrument);
+    public List<ReportDto> getReportBySymbol(String symbol) {
+        return reportDao.findAll(symbol);
     }
 
 }

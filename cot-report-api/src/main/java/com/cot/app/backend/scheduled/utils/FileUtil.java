@@ -20,13 +20,13 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 @Slf4j
 public class FileUtil {
 
-    public static final String REPORT_DOWNLOAD_LOCATION = "./";
+    public static final String REPORT_DOWNLOAD_LOCATION = "./downloaded-reports";
     public static final String REPORT_ZIP_FILENAME = "cot_report_yr_%s.zip";
 
     public String writeToFile(ResponseEntity<byte[]> reportResponse, String cotReportYear) {
         String fileName = String.format(REPORT_ZIP_FILENAME, cotReportYear);
         try {
-            Files.write(Paths.get(REPORT_DOWNLOAD_LOCATION + fileName), Objects.requireNonNull(reportResponse.getBody()));
+            Files.write(Paths.get(fileName), Objects.requireNonNull(reportResponse.getBody()));
         } catch (IOException exception) {
             log.info("Encountered error writing to file: {} {}", exception, exception.getMessage());
         }
@@ -34,9 +34,9 @@ public class FileUtil {
         return fileName;
     }
 
-    public void unzip(String fileName) throws IOException {
-        try (ZipInputStream inputStream = new ZipInputStream(new FileInputStream(REPORT_DOWNLOAD_LOCATION + fileName))) {
-            Path path = Paths.get(REPORT_DOWNLOAD_LOCATION);
+    public void unzip(String fileName, String cotReportYear) {
+        try (ZipInputStream inputStream = new ZipInputStream(new FileInputStream(fileName))) {
+            Path path = Paths.get(REPORT_DOWNLOAD_LOCATION + "/"+ cotReportYear);
             for (ZipEntry entry; (entry = inputStream.getNextEntry()) != null; ) {
                 Path resolvedPath = path.resolve(entry.getName());
                 if (!entry.isDirectory()) {
@@ -47,6 +47,8 @@ public class FileUtil {
                 }
             }
             log.info("Completed unzipping file.");
+        } catch (Exception exception) {
+            log.info("Encountered error unzipping file: {} {}", exception, exception.getMessage());
         }
     }
 

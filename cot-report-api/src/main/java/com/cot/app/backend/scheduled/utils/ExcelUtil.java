@@ -23,7 +23,7 @@ import static com.cot.app.backend.scheduled.utils.FileUtil.REPORT_DOWNLOAD_LOCAT
  */
 @Component
 @Slf4j
-public class ExcelFileUtil {
+public class ExcelUtil {
 
     private static final String DEFAULT_FIELD_VALUE = "0.0";
 
@@ -35,7 +35,6 @@ public class ExcelFileUtil {
     private static final int PERCENT_SHORT_CELL = 59;
     private static final int LONG_POSITIONS_CELL = 38;
     private static final int SHORT_POSITIONS_CELL = 39;
-
     private static final int FIRST_SHEET_POSITION = 0;
 
    public static final String REPORT_UNZIPPED_FILENAME = "annual.xls";
@@ -43,15 +42,22 @@ public class ExcelFileUtil {
     @Autowired
     private ReportDao<ReportDto> reportDao;
 
-    public void saveReportToDb() throws IOException {
+    public void processSheet(String cotReportYear) {
         List<ReportDto> reportDtos = new ArrayList<>();
 
-        HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(new File(REPORT_DOWNLOAD_LOCATION + REPORT_UNZIPPED_FILENAME)));
+        HSSFWorkbook workbook = null;
+        try {
+            workbook = new HSSFWorkbook(new FileInputStream(new File(REPORT_DOWNLOAD_LOCATION + "/" + cotReportYear + "/" + REPORT_UNZIPPED_FILENAME)));
+        } catch (IOException exception) {
+            log.info("Encountered error attempting to open workbook: {} {}", exception, exception.getMessage());
+        }
+
         HSSFSheet worksheet = workbook.getSheetAt(FIRST_SHEET_POSITION);
 
         for (int rowIndex = 1; rowIndex < worksheet.getPhysicalNumberOfRows(); rowIndex++) {
             ReportDto reportDto = new ReportDto();
 
+            // get report figures
             Optional<String> optLongPositions = Optional.empty();
             if(!ObjectUtils.isEmpty(worksheet.getRow(rowIndex).getCell(LONG_POSITIONS_CELL))){
                 optLongPositions = Optional.ofNullable(worksheet.getRow(rowIndex).getCell(LONG_POSITIONS_CELL).toString());
@@ -71,7 +77,7 @@ public class ExcelFileUtil {
             if(!ObjectUtils.isEmpty(worksheet.getRow(rowIndex).getCell(PERCENT_LONG_CELL))){
                 optPercentageLong = Optional.ofNullable(worksheet.getRow(rowIndex).getCell(PERCENT_LONG_CELL).toString());
             }
-///
+
             Optional<String> optInstrument = Optional.empty();
             if(!ObjectUtils.isEmpty(worksheet.getRow(rowIndex).getCell(INSTRUMENT_CELL))){
                 optInstrument = Optional.ofNullable(worksheet.getRow(rowIndex).getCell(INSTRUMENT_CELL).toString());
@@ -92,12 +98,14 @@ public class ExcelFileUtil {
                 optShorts = Optional.ofNullable(worksheet.getRow(rowIndex).getCell(SHORTS_CELL).toString());
             }
 
+            // set net change
             reportDto.setChangeLong(optLongPositions.orElseGet(() -> DEFAULT_FIELD_VALUE));
             reportDto.setChangeShort(optShortPositions.orElseGet(() -> DEFAULT_FIELD_VALUE));
             reportDto.setPercentageLong(optPercentageLong.orElseGet(() -> DEFAULT_FIELD_VALUE));
             reportDto.setPercentageShort(optPercentageShort.orElseGet(() -> DEFAULT_FIELD_VALUE));
 
-            reportDto.setInstrument(optInstrument.orElseGet(() -> DEFAULT_FIELD_VALUE));
+            // set weekly change
+            reportDto.translateSymbol(optInstrument.orElseGet(() -> DEFAULT_FIELD_VALUE));
             reportDto.setReportDate(worksheet.getRow(rowIndex).getCell(REPORT_DATE_CELL).toString());
             reportDto.setLongPositions(worksheet.getRow(rowIndex).getCell(LONGS_CELL).getNumericCellValue());
             reportDto.setShortPositions(worksheet.getRow(rowIndex).getCell(SHORTS_CELL).getNumericCellValue());

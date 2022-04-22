@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  * @author DavidJMartin
@@ -22,7 +20,7 @@ public class ReportDto implements Serializable {
     private long id;
 
     private String instrument;
-    private String  reportDate;
+    private String reportDate;
 
     private double longPositions;
     private double shortPositions;
@@ -37,11 +35,7 @@ public class ReportDto implements Serializable {
     private double netPositions;
     private double netPositionsChange;
 
-    public void setInstrument(String instrument) {
-        extractBlacklistedFields(instrument);
-    }
-
-    private void extractBlacklistedFields(String instrument) {
+    public void translateSymbol(String instrument) {
         this.instrument = instrument
             .replace(" - CHICAGO MERCANTILE EXCHANGE", "")
             .replace(" - COMMODITY EXCHANGE INC.", "")

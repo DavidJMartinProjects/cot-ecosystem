@@ -20,7 +20,7 @@ public class DownloadService {
     @Autowired
     private FileUtil fileUtil;
 
-    public String retrieveReport(String reportUrl, String cotReportYear) {
+    public String downloadReport(String reportUrl, String cotReportYear) {
         ResponseEntity<byte[]> report = httpClient.downloadReport(reportUrl);
         return fileUtil.writeToFile(report, cotReportYear);
     }
