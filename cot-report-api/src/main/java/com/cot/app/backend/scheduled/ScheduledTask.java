@@ -1,8 +1,9 @@
 package com.cot.app.backend.scheduled;
 
+import com.cot.app.backend.scheduled.service.ReportDownloadService;
 import com.cot.app.backend.scheduled.utils.DataUtil;
-import com.cot.app.backend.scheduled.utils.ExcelFileUtils;
-import com.cot.app.backend.scheduled.utils.ZipFileUtils;
+import com.cot.app.backend.scheduled.utils.ExcelFileUtil;
+import com.cot.app.backend.scheduled.utils.ZipFileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,10 @@ public class ScheduledTask {
     
 
     @Autowired
-    private ExcelFileUtils excelFileUtils;
+    private ExcelFileUtil excelFileUtil;
 
     @Autowired
-    private ReportDownloader reportDownloader;
+    private ReportDownloadService reportDownloadService;
 
     @Autowired
     private DataUtil dataUtil;
@@ -46,9 +47,9 @@ public class ScheduledTask {
 
     private void downloadAndSaveReport(String reportUrl, String cotReportYear) throws IOException {
         log.info("retrieving report yr: {}, url: {}", cotReportYear, reportUrl);
-        String fileName = reportDownloader.downloadFile(reportUrl, cotReportYear);
-        ZipFileUtils.unzip(fileName);
-        excelFileUtils.saveReportToDb();
+        String fileName = reportDownloadService.retrieveReport(reportUrl, cotReportYear);
+        ZipFileUtil.unzip(fileName);
+        excelFileUtil.saveReportToDb();
         dataUtil.process();
         log.info("cot-report retrieved successfully.");
     }

@@ -1,6 +1,6 @@
 package com.cot.app.backend.db;
 
-import com.cot.app.backend.model.SupportedSymbol;
+import com.cot.app.backend.model.enums.Symbols;
 
 import java.util.List;
 
@@ -48,6 +48,6 @@ public interface ReportDao<T> {
      *
      * @return the list of found entity
      */
-    void deleteBySymbol(SupportedSymbol symbol);
+    void deleteBySymbol(Symbols symbol);
 
 }

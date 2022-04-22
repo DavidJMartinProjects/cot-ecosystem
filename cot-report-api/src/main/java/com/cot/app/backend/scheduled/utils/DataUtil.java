@@ -3,7 +3,7 @@ package com.cot.app.backend.scheduled.utils;
 import com.cot.app.backend.db.ReportDao;
 import com.cot.app.backend.db.dao.repository.ReportRepository;
 import com.cot.app.backend.model.ReportDto;
-import com.cot.app.backend.model.SupportedSymbol;
+import com.cot.app.backend.model.enums.Symbols;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ public class DataUtil {
 
     public void process() {
         List<ReportDto> reportDtos;
-        for (SupportedSymbol symbol : SupportedSymbol.values()) {
+        for (Symbols symbol : Symbols.values()) {
             reportDtos = reportDao.findAll(symbol.name());
 
             for (int index = reportDtos.size()-2; index > 0; index --) {

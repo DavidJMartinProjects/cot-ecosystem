@@ -5,14 +5,11 @@ import com.cot.app.backend.db.dao.entity.ReportEntity;
 import com.cot.app.backend.db.dao.mapper.ReportMapper;
 import com.cot.app.backend.db.dao.repository.ReportRepository;
 import com.cot.app.backend.model.ReportDto;
-import com.cot.app.backend.model.SupportedSymbol;
+import com.cot.app.backend.model.enums.Symbols;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,7 +53,7 @@ public class ReportDaoImpl implements ReportDao<ReportDto> {
     }
 
     @Override
-    public void deleteBySymbol(SupportedSymbol symbol) {
+    public void deleteBySymbol(Symbols symbol) {
         log.debug("deleting records by symbol: {}", symbol);
         reportRepository.deleteByInstrument(symbol.name());
     }
