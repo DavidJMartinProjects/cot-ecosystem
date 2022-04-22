@@ -27,8 +27,8 @@ public class ZipFileUtils {
 
     private ZipFileUtils() {}
 
-    public static void unzip() throws IOException {
-        try (ZipInputStream inputStream = new ZipInputStream(new FileInputStream(REPORT_ZIP_FILE))) {
+    public static void unzip(String fileName) throws IOException {
+        try (ZipInputStream inputStream = new ZipInputStream(new FileInputStream(REPORT_DOWNLOAD_LOCATION + fileName))) {
             Path path = Paths.get(REPORT_DOWNLOAD_LOCATION);
             for (ZipEntry entry; (entry = inputStream.getNextEntry()) != null; ) {
                 Path resolvedPath = path.resolve(entry.getName());

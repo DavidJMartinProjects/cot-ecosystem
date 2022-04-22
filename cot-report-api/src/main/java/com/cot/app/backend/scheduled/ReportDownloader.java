@@ -26,13 +26,13 @@ public class ReportDownloader {
     public static final String REPORT_DOWNLOAD_LOCATION = "./";
     public static final String REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_2021.zip";
 
-    public static final String REPORT_ZIPPED_FILENAME = "dea_fut_xls_2021.zip";
+    public static final String REPORT_ZIPPED_FILENAME = "cot_report_yr_%s.zip";
     public static final String REPORT_UNZIPPED_FILENAME = "annual.xls";
 
     @Autowired
     private RestTemplate restTemplate;
-
-    public void downloadFile(String reportUrl) {
+    
+    public String downloadFile(String reportUrl, String cotReportYear) {
         try {
             // ToDo: implement restTemplateFacade here
             log.info("making GET request to retrieve latest COT report.");
@@ -42,12 +42,15 @@ public class ReportDownloader {
             ResponseEntity<byte[]> response = restTemplate.exchange(reportUrl, HttpMethod.GET, entity, byte[].class);
             log.info("success: downloaded.");
 
-            Files.write(Paths.get(REPORT_DOWNLOAD_LOCATION + REPORT_ZIPPED_FILENAME), Objects.requireNonNull(response.getBody()));
+            String fileName = String.format(REPORT_ZIPPED_FILENAME, cotReportYear);
+            Files.write(Paths.get(REPORT_DOWNLOAD_LOCATION + fileName), Objects.requireNonNull(response.getBody()));
+            log.info("fileName: {}", fileName);
+            return fileName;
         } catch (Exception e) {
-
             log.info("encountered error downloading cot report file.", e.getMessage(), e);
             e.printStackTrace();
         }
+        return "";
     }
 
 }

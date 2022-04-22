@@ -16,8 +16,13 @@ import java.io.IOException;
 @Slf4j
 public class ScheduledTask {
 
-    public static final String LAST_YEARS_REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_2021.zip";
-    public static final String THIS_YEARS_REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_2022.zip";
+    private final static String YR_2021 = "2021";
+    private final static String YR_2022 = "2022";
+
+    private String[] cotReportYears = {YR_2021, YR_2022};
+
+    public static final String REPORT_DOWNLOAD_URL = "https://www.cftc.gov/files/dea/history/dea_fut_xls_%s.zip";
+    
 
     @Autowired
     private ExcelFileUtils excelFileUtils;
@@ -30,17 +35,19 @@ public class ScheduledTask {
 
     public void downloadCotReports() {
         try {
-            downloadAndSaveReport(THIS_YEARS_REPORT_DOWNLOAD_URL);
-            downloadAndSaveReport(LAST_YEARS_REPORT_DOWNLOAD_URL);
+            for (String cotReportYear : cotReportYears) {
+                String url = String.format(REPORT_DOWNLOAD_URL, cotReportYear);
+                downloadAndSaveReport(url, cotReportYear);
+            }
         } catch (Exception exception) {
             log.error("failed to download report. Error: {}", exception.getMessage());
         }
     }
 
-    private void downloadAndSaveReport(String reportUrl) throws IOException {
-        log.info("retrieving latest cot report");
-        reportDownloader.downloadFile(reportUrl);
-        ZipFileUtils.unzip();
+    private void downloadAndSaveReport(String reportUrl, String cotReportYear) throws IOException {
+        log.info("retrieving report yr: {}, url: {}", cotReportYear, reportUrl);
+        String fileName = reportDownloader.downloadFile(reportUrl, cotReportYear);
+        ZipFileUtils.unzip(fileName);
         excelFileUtils.saveReportToDb();
         dataUtil.process();
         log.info("cot-report retrieved successfully.");

@@ -47,7 +47,6 @@ public class ReportDto implements Serializable {
             .replace(" - COMMODITY EXCHANGE INC.", "")
             .replace(" - CHICAGO BOARD OF TRADE", "")
             .replace(" - ICE FUTURES U.S.", "")
-
             .replace("EURO FX", "EUR")
             .replace("CANADIAN DOLLAR", "CAD")
             .replace("SWISS FRANC", "CHF")
@@ -59,7 +58,8 @@ public class ReportDto implements Serializable {
             .replace("SOUTH AFRICAN RAND", "ZAR")
             .replace("BITCOIN", "BTC")
             .replace("NEW ZEALAND DOLLAR", "NZD")
-            .replace("U.S. DOLLAR INDEX", "USD");
+            .replace("U.S. DOLLAR INDEX - ICE FUTURES U.S.", "USD")
+            .replace("U.S. DOLLAR INDEX", "USD");            
     }
 
 }
