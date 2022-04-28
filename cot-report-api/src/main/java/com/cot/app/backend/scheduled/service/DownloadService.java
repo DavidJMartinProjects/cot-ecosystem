@@ -26,9 +26,7 @@ public class DownloadService {
 
     public String downloadReport(String reportUrl, String cotReportYear) {
         ResponseEntity<byte[]> report = httpClient.downloadReport(reportUrl);
-        fileUtil.writeToFile(report, cotReportYear);
-        spreadSheetUtil.processSheet(cotReportYear);
-        return "";
+        return fileUtil.writeToFile(report, cotReportYear);
     }
 
 }
