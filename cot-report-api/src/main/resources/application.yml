@@ -1,2 +1,8 @@
 server:
   port: 80
+
+cot-report:
+  url: https://www.cftc.gov/files/dea/history/dea_fut_xls_%s.zip
+  years:
+  - 2021
+  - 2022

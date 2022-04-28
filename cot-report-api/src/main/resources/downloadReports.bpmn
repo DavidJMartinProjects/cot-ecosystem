@@ -11,7 +11,7 @@
       <bpmn:startEvent id="Event_1t7k98g">
         <bpmn:outgoing>Flow_0edjoqj</bpmn:outgoing>
       </bpmn:startEvent>
-      <bpmn:serviceTask id="Activity_1x4o3jw" name="Download &#38; save report" camunda:class="com.cot.app.backend.scheduled.ScheduledTask">
+      <bpmn:serviceTask id="Activity_1x4o3jw" name="Download &#38; save report" camunda:class="com.cot.app.backend.scheduled.downloadReportDelegate">
         <bpmn:incoming>Flow_0edjoqj</bpmn:incoming>
         <bpmn:outgoing>Flow_1u9ejrd</bpmn:outgoing>
       </bpmn:serviceTask>
