@@ -1,8 +1,8 @@
 package com.twitter.app.controller;
 
-import com.twitter.app.message.DestinationInfo;
-import com.twitter.app.message.DestinationsConfig;
-import com.twitter.app.message.MessageListenerContainerFactory;
+import com.twitter.app.message.listener.DestinationInfo;
+import com.twitter.app.message.listener.DestinationsConfig;
+import com.twitter.app.message.listener.MessageListenerContainerFactory;
 import com.twitter.app.service.TweetService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;

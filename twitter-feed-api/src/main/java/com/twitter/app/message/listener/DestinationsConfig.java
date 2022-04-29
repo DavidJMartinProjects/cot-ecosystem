@@ -1,4 +1,4 @@
-package com.twitter.app.message;
+package com.twitter.app.message.listener;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
