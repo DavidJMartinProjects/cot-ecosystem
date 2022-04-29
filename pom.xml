@@ -8,6 +8,7 @@
         <module>cot-report-api</module>
         <module>swap-rates-api</module>
         <module>live-quotes-api</module>
+        <module>twitter-feed-api</module>
     </modules>
 
     <parent>
