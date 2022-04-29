@@ -21,6 +21,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { NewsComponent } from './components/news/news.component';
 import { SwapBackendService } from './services/swap-backend.service';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:5673', options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +41,9 @@ import { SwapBackendService } from './services/swap-backend.service';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    GoogleChartsModule,    
-    CountUpModule   
+    GoogleChartsModule,
+    CountUpModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [CotReportService, SwapBackendService, SideNavService, DarkModeService],
   bootstrap: [AppComponent]
