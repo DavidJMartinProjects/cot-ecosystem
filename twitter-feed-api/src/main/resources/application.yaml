@@ -1,0 +1,10 @@
+twitter-listener-service:
+  event:
+    queue:
+      name: "tweetQueue"
+
+  tweet-keywords:
+    - news
+    - latestnews
+    - euronews
+    - breaking news
