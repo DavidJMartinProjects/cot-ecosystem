@@ -10,10 +10,10 @@
 	</parent>
 
 	<groupId>cot.com</groupId>
-	<artifactId>live-rates-api</artifactId>
+	<artifactId>llive-quotes-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>live-rates-api</name>
-	<description>live-rates-api spring-boot microservice</description>
+	<name>live-quotes-api</name>
+	<description>live-quotes-api spring-boot microservice</description>
 
 	<properties>
 		<java.version>1.8</java.version>
