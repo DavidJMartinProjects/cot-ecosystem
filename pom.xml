@@ -5,12 +5,11 @@
 
     <modules>
         <module>api-gateway</module>
+        <module>cot-report-api</module>
         <module>swap-rates-api</module>
         <module>live-rates-api</module>
-        <module>cot-report-api</module>
-        <module>twitter-crawler-api</module>
+        <module>twitter-live-feed-api</module>
     </modules>
-
 
     <parent>
         <groupId>org.springframework.boot</groupId>
