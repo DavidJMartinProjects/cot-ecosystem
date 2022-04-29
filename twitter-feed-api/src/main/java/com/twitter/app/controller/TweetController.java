@@ -2,10 +2,8 @@ package com.twitter.app.controller;
 
 import com.twitter.app.message.listener.DestinationInfo;
 import com.twitter.app.message.listener.DestinationsConfig;
-import com.twitter.app.message.listener.MessageListenerContainerFactory;
-import com.twitter.app.service.TweetService;
+import com.twitter.app.message.listener.MessageListenerFactory;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +25,8 @@ import reactor.core.publisher.Flux;
 public class TweetController {
     public static final String TWEET_BASE_PATH = "/tweets";
     public static final String QUEUE_PATH = "/queue/{name}";
-
     @Autowired
-    private TweetService tweetService;
-
-    @Autowired
-    private AmqpTemplate amqpTemplate;
-
-    @Autowired
-    private MessageListenerContainerFactory messageListenerContainerFactory;
+    private MessageListenerFactory messageListenerFactory;
 
     @Autowired
     private DestinationsConfig destinationsConfig;
@@ -49,22 +40,18 @@ public class TweetController {
             return Flux.just(ResponseEntity.notFound().build());
         }
 
-        MessageListenerContainer mlc = messageListenerContainerFactory
-            .createMessageListenerContainer(d.getRouteKey());
+        MessageListenerContainer mlc = messageListenerFactory
+            .createListener(d.getRouteKey());
 
         Flux<String> f = Flux.<String> create(emitter -> {
             mlc.setupMessageListener((MessageListener) m -> {
                 String payload = new String(m.getBody());
                 emitter.next(payload);
             });
-
             emitter.onRequest(v -> {
                 mlc.start();
             });
-
-            emitter.onDispose(() -> {
-                mlc.stop();
-            });
+            emitter.onDispose(mlc::stop);
         });
 
         return f;
