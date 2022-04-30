@@ -21,7 +21,7 @@ spring:
           predicates:
             - Path=/api/swaps**, /api/swaps**/*
         - id: twitter-crawler-api
-          uri: http://twitter-crawler-api:80
+          uri: http://twitter-feed-api:80
           predicates:
             - Path=/api/tweets**, /api/tweets**/*
         - id: cot-report-frontend

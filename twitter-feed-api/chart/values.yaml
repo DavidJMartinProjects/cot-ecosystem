@@ -11,8 +11,8 @@ image:
   tag: "latest"
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "twitter-feed-api"
+fullnameOverride: "twitter-feed-api"
 
 serviceAccount:
   # Specifies whether a service account should be created

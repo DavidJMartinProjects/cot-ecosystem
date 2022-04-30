@@ -10,6 +10,7 @@ const httpOptions = {
 export class LiveFeedService {
 
   private baseUrl = 'http://localhost:8080/tweets/queue/tweetQueue';
+  // "/api/swaps"
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +20,6 @@ export class LiveFeedService {
 
       let eventSource = new EventSource(this.baseUrl);
       eventSource.onmessage = (event) => {
-        let json = JSON.parse(event.data);
         let tweet = JSON.parse(event.data);
         observer.next(new Tweet(tweet['id'], tweet['createdAt'], tweet['text']));
         observer.next(event.data);

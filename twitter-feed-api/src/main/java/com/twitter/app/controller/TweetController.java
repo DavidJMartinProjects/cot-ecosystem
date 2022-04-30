@@ -25,7 +25,7 @@ import twitter4j.JSONObject;
 @RequestMapping(TweetController.TWEET_BASE_PATH)
 @Slf4j
 public class TweetController {
-    public static final String TWEET_BASE_PATH = "/tweets";
+    public static final String TWEET_BASE_PATH = "/api/tweets";
     public static final String QUEUE_PATH = "/queue/{name}";
     @Autowired
     private MessageListenerFactory messageListenerFactory;
