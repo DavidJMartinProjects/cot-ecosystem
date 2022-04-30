@@ -31,7 +31,7 @@ public class MessageProducer {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setUsername("user");
         connectionFactory.setPassword("PASSWORD");
-        connectionFactory.setHost("rabbit-mq-rabbitmq");
+        connectionFactory.setHost("localhost");
         connectionFactory.setPort(5672);
         return connectionFactory;
     }
