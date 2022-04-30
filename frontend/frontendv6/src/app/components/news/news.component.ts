@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 export class NewsComponent implements OnInit {
 
   tweets : any[] = [];
-
   sub!: Subscription;
 
   constructor(public service: LiveFeedService, private cd: ChangeDetectorRef) {
@@ -26,8 +25,7 @@ export class NewsComponent implements OnInit {
     console.log("calling api")
     this.sub = this.service.getTweets()
     .subscribe( data => {
-      this.tweets.push(data);
-      console.log('data', data);
+      this.tweets.unshift(data);
       this.cd.detectChanges();
     });
   }
