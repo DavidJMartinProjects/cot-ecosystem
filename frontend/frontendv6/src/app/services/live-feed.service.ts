@@ -9,7 +9,7 @@ const httpOptions = {
 @Injectable()
 export class LiveFeedService {
 
-  private baseUrl = 'http://localhost:8080/tweets/queue/tweetQueue';
+  private baseUrl = '/api/tweets/queue/tweetQueue';
   // "/api/swaps"
 
   constructor(private http: HttpClient) { }

@@ -23,7 +23,7 @@ spring:
         - id: twitter-crawler-api
           uri: http://twitter-feed-api:80
           predicates:
-            - Path=/api/tweets**, /api/tweets**/*
+            - Path=/api/tweets**, /api/tweets**/*, /api/tweets/queues**/*
         - id: cot-report-frontend
           uri: http://cot-report-frontend:80
           predicates:
