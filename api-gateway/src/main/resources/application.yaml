@@ -20,10 +20,10 @@ spring:
           uri: http://swap-rate-api:80
           predicates:
             - Path=/api/swaps**, /api/swaps**/*
-        - id: twitter-crawler-api
+        - id: twitter-feed-api
           uri: http://twitter-feed-api:80
           predicates:
-            - Path=/api/tweets**, /api/tweets**/*, /api/tweets/queues**/*
+            - Path=/api/tweets**, /api/tweets**/*, /api/tweets/queues**/*, /api/tweets/queue/tweetQueue
         - id: cot-report-frontend
           uri: http://cot-report-frontend:80
           predicates:
