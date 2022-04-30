@@ -26,11 +26,11 @@ export class SwapBackendService {
     var swaps_api_url = `/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}`;
     this.http
       .get<any>(swaps_api_url)
-      .subscribe((response) => {
+      .subscribe((response: any[]) => {
         console.log('GET: ' + swaps_api_url);
         this.data = response
         this.dataSource.next(this.data);
-      }, error => {
+      }, (error: any) => {
         console.log(error);
       })
   }

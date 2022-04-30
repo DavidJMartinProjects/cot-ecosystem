@@ -1,3 +1,4 @@
+import { LiveFeedService } from 'src/app/services/live-feed.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,9 +22,6 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { NewsComponent } from './components/news/news.component';
 import { SwapBackendService } from './services/swap-backend.service';
 
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:5673', options: {} };
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,10 +40,9 @@ const config: SocketIoConfig = { url: 'http://localhost:5673', options: {} };
     FormsModule,
     BrowserAnimationsModule,
     GoogleChartsModule,
-    CountUpModule,
-    SocketIoModule.forRoot(config)
+    CountUpModule
   ],
-  providers: [CotReportService, SwapBackendService, SideNavService, DarkModeService],
+  providers: [CotReportService, SwapBackendService, SideNavService, DarkModeService, LiveFeedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

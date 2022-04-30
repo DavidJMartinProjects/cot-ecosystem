@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
 /**
@@ -31,19 +28,24 @@ public class TweetController {
     @Autowired
     private DestinationsConfig destinationsConfig;
 
+//    @GetMapping(value = QUEUE_PATH, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping(value = QUEUE_PATH, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @CrossOrigin
     public Flux<?> receiveMessagesFromQueue(@PathVariable String name) {
-
         DestinationInfo d = destinationsConfig.getQueues().get(name);
+        log.info("GET request.");
 
         if (ObjectUtils.isEmpty(d)) {
-            return Flux.just(ResponseEntity.notFound().build());
+            log.info("Encountered error: the specified topic was not found");
+            return Flux.just(
+                ResponseEntity.notFound().build()
+            );
         }
 
         MessageListenerContainer mlc = messageListenerFactory
             .createListener(d.getRouteKey());
 
-        Flux<String> f = Flux.<String> create(emitter -> {
+        Flux<String> response = Flux.<String> create(emitter -> {
             mlc.setupMessageListener((MessageListener) m -> {
                 String payload = new String(m.getBody());
                 emitter.next(payload);
@@ -54,7 +56,7 @@ public class TweetController {
             emitter.onDispose(mlc::stop);
         });
 
-        return f;
+        return response;
     }
 
 }

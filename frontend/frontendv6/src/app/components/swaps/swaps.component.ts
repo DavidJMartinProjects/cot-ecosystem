@@ -14,25 +14,26 @@ export class SwapsComponent implements OnInit {
   showPositiveSwapsOnly: boolean = false;
   currentSymbol: string = 'USD'
 
-  constructor(private swapBackendService: SwapBackendService) {   
+  constructor(private swapBackendService: SwapBackendService) {
+
+  }
+
+  ngOnInit(): void {
     this.swapBackendService.dataSource.subscribe(data => this.data = data)
   }
 
-  ngOnInit(): void {    
-  }
-
-  handleChange(theSymbol: string) {  
-    this.currentSymbol = theSymbol  
+  handleChange(theSymbol: string) {
+    this.currentSymbol = theSymbol
     this.swapBackendService.updateSwapData(theSymbol, this.showPositiveSwapsOnly.toString());
     console.log(this.data.length);
   }
 
-  toggle() {  
+  toggle() {
     this.showPositiveSwapsOnly = !this.showPositiveSwapsOnly;
     console.log("positive swap only: " + this.showPositiveSwapsOnly)
     this.handleChange(this.currentSymbol);
   }
 
-  
-  
+
+
 }
