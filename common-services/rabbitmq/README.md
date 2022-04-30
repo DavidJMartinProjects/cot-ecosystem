@@ -1,5 +1,9 @@
 # RabbitMQ
 
+//
+// @rabbit-mq-rabbitmq-0:/opt/bitnami/rabbitmq/sbin$ rabbitmqctl change_password user PASSWORD
+//
+
 [RabbitMQ](https://www.rabbitmq.com/) is an open source message broker software that implements the Advanced Message Queuing Protocol (AMQP).
 
 ## TL;DR
