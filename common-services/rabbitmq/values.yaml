@@ -255,7 +255,7 @@ configuration: |-
   ## Username and password
   ##
   default_user = {{ .Values.auth.username }}
-  default_pass = "PASSWORD"
+  default_pass = PASSWORD
   {{- end }}
   {{- if .Values.clustering.enabled }}
   ## Clustering
