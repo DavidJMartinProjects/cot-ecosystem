@@ -17,13 +17,10 @@ public class MessageListenerFactory {
     }
 
     public MessageListenerContainer createListener(String queueName) {
-
-        SimpleMessageListenerContainer mlc = new SimpleMessageListenerContainer(connectionFactory);
-
-        mlc.addQueueNames(queueName);
-        mlc.setAcknowledgeMode(AcknowledgeMode.AUTO);
-
-        return mlc;
+        SimpleMessageListenerContainer listener = new SimpleMessageListenerContainer(connectionFactory);
+        listener.addQueueNames(queueName);
+        listener.setAcknowledgeMode(AcknowledgeMode.AUTO);
+        return listener;
     }
 
 }

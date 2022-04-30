@@ -21,4 +21,14 @@ public class TweetDto {
     private String place;
     private String user;
 
+    @Override
+    public String toString() {
+        return "{" +
+                    "id=" + id +
+                    ", createdAt='" + createdAt + '\'' +
+                    ", text='" + text + '\'' +
+                    ", place='" + place + '\'' +
+                    ", user='" + user + '\'' +
+                '}';
+    }
 }

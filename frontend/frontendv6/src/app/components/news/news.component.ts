@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LiveFeedService } from 'src/app/services/live-feed.service';
-import { Tweet } from './Tweet';
 import { Subscription } from 'rxjs';
 
 
@@ -14,19 +13,23 @@ export class NewsComponent implements OnInit {
   tweets : any[] = [];
   sub!: Subscription;
 
-  constructor(public service: LiveFeedService, private cd: ChangeDetectorRef) {
-  }
+  constructor(public service: LiveFeedService, private cd: ChangeDetectorRef) {}
 
 	ngOnInit() {
-    this.search()
+    this.loadTweets()
 	}
 
-  search() {
-    console.log("calling api")
+  loadTweets() {
+    console.log("initialising connection to live twitter feed.")
     this.sub = this.service.getTweets()
     .subscribe( data => {
-      this.tweets.unshift(data);
-      this.cd.detectChanges();
+      if(data.id === "" || data.id.length <= 0 ) {
+        // remove empty messages
+      } else {
+        this.tweets.push(data);
+        this.tweets.reverse();
+        this.cd.detectChanges();
+      }
     });
   }
 

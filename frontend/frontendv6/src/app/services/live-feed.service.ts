@@ -14,14 +14,14 @@ export class LiveFeedService {
   constructor(private http: HttpClient) { }
 
   // /** GET tweets asynch feed */
-  getTweets(): Observable<any> {
-    return new Observable<any>((observer) => {
+  getTweets(): Observable<Tweet> {
+    return new Observable<Tweet>((observer) => {
 
       let eventSource = new EventSource(this.baseUrl);
       eventSource.onmessage = (event) => {
-        // let json = JSON.parse(event.data);
-        // let tweet = JSON.parse(event.data);
-        // observer.next(new Tweet(tweet['id'], tweet['createdAt'], tweet['text']));
+        let json = JSON.parse(event.data);
+        let tweet = JSON.parse(event.data);
+        observer.next(new Tweet(tweet['id'], tweet['createdAt'], tweet['text']));
         observer.next(event.data);
       };
 

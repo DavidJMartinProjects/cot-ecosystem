@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.twitter.app.model.dto.TweetDto;
 import lombok.extern.slf4j.Slf4j;
+import twitter4j.JSONObject;
 
 /**
  * @author davidjmartin
@@ -45,7 +46,7 @@ public class MessageProducer {
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void sendMessage(TweetDto tweet) {
         try {
-            this.template.convertAndSend(queue.getName(), tweet.toString());
+            this.template.convertAndSend(queue.getName(), new JSONObject(tweet.toString()).toString());
             log.info("[x] Sent tweet to queue.");
         } catch (Exception exception) {
             log.error("unable to send message to topic. {}", exception.getMessage());
