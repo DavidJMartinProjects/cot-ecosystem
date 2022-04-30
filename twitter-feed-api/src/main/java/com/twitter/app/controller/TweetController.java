@@ -28,13 +28,12 @@ public class TweetController {
     @Autowired
     private DestinationsConfig destinationsConfig;
 
-//    @GetMapping(value = QUEUE_PATH, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping(value = QUEUE_PATH, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @CrossOrigin
     public Flux<?> receiveMessagesFromQueue(@PathVariable String name) {
-        DestinationInfo d = destinationsConfig.getQueues().get(name);
-        log.info("GET request.");
+        log.info("GET: {}", QUEUE_PATH);
 
+        DestinationInfo d = destinationsConfig.getQueues().get(name);
         if (ObjectUtils.isEmpty(d)) {
             log.info("Encountered error: the specified topic was not found");
             return Flux.just(
@@ -42,20 +41,17 @@ public class TweetController {
             );
         }
 
-        MessageListenerContainer mlc = messageListenerFactory
-            .createListener(d.getRouteKey());
-
+        MessageListenerContainer listener = messageListenerFactory.createListener(d.getRouteKey());
         Flux<String> response = Flux.<String> create(emitter -> {
-            mlc.setupMessageListener((MessageListener) m -> {
+            listener.setupMessageListener((MessageListener) m -> {
                 String payload = new String(m.getBody());
                 emitter.next(payload);
             });
             emitter.onRequest(v -> {
-                mlc.start();
+                listener.start();
             });
-            emitter.onDispose(mlc::stop);
+            emitter.onDispose(listener::stop);
         });
-
         return response;
     }
 
