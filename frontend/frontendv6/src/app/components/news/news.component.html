@@ -1,7 +1,7 @@
-<div class="flex justify-around w-full p-8 font-sans bg-blue">
+<div class="grid justify-around w-full grid-cols-6 gap-8 p-8 font-sans bg-blue">
   <div *ngFor="let tweet of tweets">
     <div ng-if=tweet.text class="w-64 p-2 rounded bg-grey-light">
-      <div class="p-2 mt-1 bg-white border-b rounded cursor-pointer border-grey hover:bg-grey-lighter">
+      <div class="p-2 mt-1 bg-white border-b rounded cursor-pointer dark:bg-stone-800 dark:border-black border-grey hover:bg-grey-lighter">
         {{ tweet.text }}
           <div class="flex items-start justify-between mt-2 ml-2 text-grey-darker">
               <span class="flex items-center text-xs">
