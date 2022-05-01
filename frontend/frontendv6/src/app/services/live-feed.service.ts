@@ -10,8 +10,8 @@ const httpOptions = {
 export class LiveFeedService implements OnDestroy {
 
   private baseUrl = '/api/tweets/queue/tweetQueue';
-  // static eventSource: EventSource = new EventSource('/api/tweets/queue/tweetQueue');
-  static eventSource: EventSource = new EventSource('http://localhost:80/api/tweets/queue/tweetQueue');
+  static eventSource: EventSource = new EventSource('/api/tweets/queue/tweetQueue');
+  // static eventSource: EventSource = new EventSource('http://localhost:80/api/tweets/queue/tweetQueue');
 
   constructor(private http: HttpClient) {
     console.log("initialising connection to live twitter feed.")

@@ -37,6 +37,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     console.log("closing event stream.")
     NewsComponent.sub.unsubscribe();
+
   }
 
 }
