@@ -8,3 +8,10 @@ twitter-listener-service:
     - latestnews
     - euronews
     - breaking news
+
+
+destinations:
+  topics:
+    tweetQueue:
+      exchange: tweetQueue
+      routing-key: tweetQueue

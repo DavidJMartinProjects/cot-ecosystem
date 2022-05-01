@@ -1,4 +1,4 @@
-package com.twitter.app.message.listener;
+package com.twitter.app.controller;
 
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -8,19 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessageListenerFactory {
+public class MessageListenerContainerFactory {
 
     @Autowired
     private ConnectionFactory connectionFactory;
 
-    public MessageListenerFactory() {
+    public MessageListenerContainerFactory() {
     }
 
-    public MessageListenerContainer createListener(String queueName) {
-        SimpleMessageListenerContainer listener = new SimpleMessageListenerContainer(connectionFactory);
-        listener.addQueueNames(queueName);
-        listener.setAcknowledgeMode(AcknowledgeMode.AUTO);
-        return listener;
+    public MessageListenerContainer createMessageListenerContainer(String queueName) {
+
+        SimpleMessageListenerContainer mlc = new SimpleMessageListenerContainer(connectionFactory);
+
+        mlc.addQueueNames(queueName);
+        mlc.setAcknowledgeMode(AcknowledgeMode.AUTO);
+
+        return mlc;
     }
 
 }

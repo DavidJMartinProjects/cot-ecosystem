@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class NewsComponent implements OnInit, OnDestroy {
 
   tweets : any[] = [];
-  sub: Subscription;
+  static sub: Subscription;
 
   constructor(public service: LiveFeedService, private cd: ChangeDetectorRef) {}
 
@@ -21,7 +21,8 @@ export class NewsComponent implements OnInit, OnDestroy {
 	}
 
   loadTweets() {
-    this.sub = this.service.getTweets()
+    console.log("initialising connection to live twitter feed.")
+    NewsComponent.sub = this.service.getTweets()
     .subscribe( data => {
       if(data.id === "" || data.id.length <= 0 ) {
         // remove empty messages
@@ -34,8 +35,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("un-subscribing from tweet feed.")
-    this.sub.unsubscribe();
+    console.log("closing event stream.")
+    NewsComponent.sub.unsubscribe();
   }
 
 }

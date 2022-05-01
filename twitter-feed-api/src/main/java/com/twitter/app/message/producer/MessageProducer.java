@@ -1,16 +1,12 @@
 package com.twitter.app.message.producer;
 
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
 import com.twitter.app.model.dto.TweetDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import twitter4j.JSONObject;
 
 /**
@@ -26,27 +22,10 @@ public class MessageProducer {
     @Autowired
     private RabbitTemplate template;
 
-    @Bean
-    public ConnectionFactory connectionFactory() {
-        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setUsername("user");
-        connectionFactory.setPassword("PASSWORD");
-        connectionFactory.setHost("rabbit-mq-rabbitmq");
-        connectionFactory.setPort(5672);
-        return connectionFactory;
-    }
-
-    @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate();
-        rabbitTemplate.setConnectionFactory(connectionFactory);
-        return rabbitTemplate;
-    }
-
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void sendMessage(TweetDto tweet) {
         try {
-            this.template.convertAndSend(queue.getName(), new JSONObject(tweet.toString()).toString());
+            this.template.convertAndSend("tweetQueue", "tweetQueue", new JSONObject(tweet.toString()).toString());
             log.info("[x] Sent tweet to queue.");
         } catch (Exception exception) {
             log.error("unable to send message to topic. {}", exception.getMessage());

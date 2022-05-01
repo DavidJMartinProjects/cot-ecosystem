@@ -42,7 +42,7 @@ import { SwapBackendService } from './services/swap-backend.service';
     GoogleChartsModule,
     CountUpModule
   ],
-  providers: [CotReportService, SwapBackendService, SideNavService, DarkModeService, LiveFeedService],
+  providers: [CotReportService, SwapBackendService, SideNavService, DarkModeService, LiveFeedService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
