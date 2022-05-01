@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { LiveFeedService } from 'src/app/services/live-feed.service';
 import { Subscription } from 'rxjs';
 
@@ -8,19 +8,19 @@ import { Subscription } from 'rxjs';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, OnDestroy {
 
   tweets : any[] = [];
-  sub!: Subscription;
+  sub: Subscription;
 
   constructor(public service: LiveFeedService, private cd: ChangeDetectorRef) {}
 
 	ngOnInit() {
+    console.log("subscribing to tweet feed.")
     this.loadTweets()
 	}
 
   loadTweets() {
-    console.log("initialising connection to live twitter feed.")
     this.sub = this.service.getTweets()
     .subscribe( data => {
       if(data.id === "" || data.id.length <= 0 ) {
@@ -31,6 +31,11 @@ export class NewsComponent implements OnInit {
         this.cd.detectChanges();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    console.log("un-subscribing from tweet feed.")
+    this.sub.unsubscribe();
   }
 
 }
