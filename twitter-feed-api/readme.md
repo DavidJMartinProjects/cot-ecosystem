@@ -38,3 +38,4 @@ add testcases for controller
 Write a proper readme.md to explain the project -->
 
 // @rabbit-mq-rabbitmq-0:/opt/bitnami/rabbitmq/sbin$ rabbitmqctl change_password user PASSWORD
+// https://github.com/eugenp/tutorials/blob/master/spring-webflux-amqp/src/main/java/com/baeldung/spring/amqp/AmqpReactiveController.java

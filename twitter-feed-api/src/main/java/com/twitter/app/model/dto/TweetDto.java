@@ -16,6 +16,7 @@ public class TweetDto {
 
     private long id;
 
+    private String source;
     private String createdAt;
     private String text;
     private String place;

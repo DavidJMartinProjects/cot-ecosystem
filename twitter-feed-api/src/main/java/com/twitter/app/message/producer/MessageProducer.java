@@ -23,7 +23,7 @@ public class MessageProducer {
     private RabbitTemplate template;
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
-    public void sendMessage(TweetDto tweet) {
+    public void sendMessage(Object tweet) {
         try {
             this.template.convertAndSend("tweetQueue", "tweetQueue", new JSONObject(tweet.toString()).toString());
             log.info("[x] Sent tweet to queue.");

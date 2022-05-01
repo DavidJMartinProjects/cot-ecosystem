@@ -1,15 +1,23 @@
 <div class="grid justify-center w-full font-sans sm:p-0 lg:p-4 lg:grid-cols-6 lg:gap-8 bg-blue">
   <div *ngFor="let tweet of tweets">
+
     <div ng-if=tweet.text class="p-2 rounded lg:w-64 sm:w-70 bg-grey-light">
       <div class="p-2 m-3 mt-2 mb-1 bg-gray-100 border-b rounded cursor-pointer dark:bg-stone-800 dark:border-black border-grey hover:bg-grey-lighter">
+        <span class="flex text-xs justify-items-end right-8">
+          <!-- <svg class="h-4 mr-1 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M11 4c-3.855 0-7 3.145-7 7v28c0 3.855 3.145 7 7 7h28c3.855 0 7-3.145 7-7V11c0-3.855-3.145-7-7-7zm0 2h28c2.773 0 5 2.227 5 5v28c0 2.773-2.227 5-5 5H11c-2.773 0-5-2.227-5-5V11c0-2.773 2.227-5 5-5zm25.234 9.832l-13.32 15.723-8.133-7.586-1.363 1.465 9.664 9.015 14.684-17.324z"/></svg> -->
+              {{ tweet.user.name}} <br>
+              @{{ tweet.user.screenName}}<br>
+              {{ tweet.user.url}}
+              <img src= "{{ tweet.user.profileImageURL }}" class="rounded-full"  style="height: 47px;"/>
+          </span>
+
         {{ tweet.text }}
-          <div class="flex items-start justify-between mt-2 ml-2 text-grey-darker">
-              <span class="flex items-center text-xs">
-              <svg class="h-4 mr-1 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M11 4c-3.855 0-7 3.145-7 7v28c0 3.855 3.145 7 7 7h28c3.855 0 7-3.145 7-7V11c0-3.855-3.145-7-7-7zm0 2h28c2.773 0 5 2.227 5 5v28c0 2.773-2.227 5-5 5H11c-2.773 0-5-2.227-5-5V11c0-2.773 2.227-5 5-5zm25.234 9.832l-13.32 15.723-8.133-7.586-1.363 1.465 9.664 9.015 14.684-17.324z"/></svg>
-                  3/5
-              </span>
-              <img src="https://i.imgur.com/OZaT7jl.png" class="rounded-full" />
-          </div>
+        <!-- {{ tweet.user.profileImageURL }}
+        {{ tweet.text }}
+        {{ tweet.source }}
+        {{ tweet.user }}
+        {{ tweet.place }} -->
+
       </div>
   </div>
 </div>

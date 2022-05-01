@@ -1,5 +1,8 @@
 package com.twitter.app.twitter.listener;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.twitter.app.message.producer.MessageProducer;
 import com.twitter.app.model.dto.TweetDto;
 import com.twitter.app.service.impl.TweetServiceImpl;
@@ -27,6 +30,8 @@ public class TweetListener extends StatusAdapter {
     @Override
     public void onStatus(Status status) {
         TweetDto tweet = TweetDto.builder()
+                .source(status.getSource())
+                .id(status.getId())
                 .createdAt(String.valueOf(status.getCreatedAt().getTime()))
                 .user(status.getUser().getScreenName())
                 .text(status.getText())
@@ -36,8 +41,9 @@ public class TweetListener extends StatusAdapter {
         log.info("[x] received tweet");
         
         try {
-            tweetService.saveTweet(tweet);  
-            messageProducer.sendMessage(tweet);
+            tweetService.saveTweet(tweet);
+            JsonNode node = new ObjectMapper().valueToTree(status);
+            messageProducer.sendMessage(node);
         } catch (Exception exception) {
             log.debug("encountered exception handling tweet: {}", exception.getMessage(), exception);
         }

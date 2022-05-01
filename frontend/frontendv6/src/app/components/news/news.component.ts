@@ -16,7 +16,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   constructor(public service: LiveFeedService, private cd: ChangeDetectorRef) {}
 
 	ngOnInit() {
-    console.log("subscribing to tweet feed.")
+    console.log("subscribing to tweet")
     this.loadTweets()
 	}
 
@@ -24,13 +24,13 @@ export class NewsComponent implements OnInit, OnDestroy {
     console.log("initialising connection to live twitter feed.")
     NewsComponent.sub = this.service.getTweets()
     .subscribe( data => {
-      if(data.id === "" || data.id.length <= 0 ) {
-        // remove empty messages
-      } else {
+      // if(data.id === "" || data.id.length <= 0 ) {
+      //   // remove empty messages
+      // } else {
         this.tweets.push(data);
         this.tweets.reverse();
         this.cd.detectChanges();
-      }
+      // }
     });
   }
 
