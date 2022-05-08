@@ -1,7 +1,7 @@
 package com.twitter.app.model.mapper;
 
 import com.twitter.app.model.dto.TweetDto;
-import com.twitter.app.model.entity.TweetEntity;
+import com.twitter.app.repository.entity.TweetEntity;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

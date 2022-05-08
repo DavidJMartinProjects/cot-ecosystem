@@ -1,4 +1,4 @@
-package com.twitter.app.model.entity;
+package com.twitter.app.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

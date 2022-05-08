@@ -8,6 +8,7 @@ twitter-listener-service:
     - latestnews
     - euronews
     - breaking news
+    - elonmusk
 
 
 destinations:

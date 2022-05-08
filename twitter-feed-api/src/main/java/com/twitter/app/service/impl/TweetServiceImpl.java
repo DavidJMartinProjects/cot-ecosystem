@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.twitter.app.model.dto.TweetDto;
-import com.twitter.app.model.entity.TweetEntity;
+import com.twitter.app.repository.entity.TweetEntity;
 import com.twitter.app.model.mapper.TweetMapper;
 import com.twitter.app.repository.TweetRepository;
 import com.twitter.app.service.TweetService;
