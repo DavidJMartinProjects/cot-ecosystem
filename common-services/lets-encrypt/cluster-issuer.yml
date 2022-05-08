@@ -1,13 +1,15 @@
 apiVersion: cert-manager.io/v1
-kind: Certificate
+kind: ClusterIssuer
 metadata:
-  name: cloud-projectz.xyz
-  namespace: default
+  name: letsencrypt-prod
 spec:
-  secretName: cot-report-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  commonName: cloud-projectz.xyz
-  dnsNames:
-    - cloud-projectz.xyz
+  acme:
+    email: davidjmartin@hotmail.com # replace this
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+        selector: {}
