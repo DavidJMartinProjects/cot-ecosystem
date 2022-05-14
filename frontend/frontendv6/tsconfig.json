@@ -2,15 +2,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true, // 👈️ if you have this
+    "strictPropertyInitialization": false, // 👈️ add this below
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "strictPropertyInitialization": false,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

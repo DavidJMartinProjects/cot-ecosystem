@@ -208,7 +208,6 @@
   }
 
   export interface QuotedStatusPermalink {
-
       start: number;
       end: number;
       url: string;
@@ -217,8 +216,7 @@
       text: string;
   }
 
-  export interface Tweet {
-
+  export class Tweet {
       rateLimitStatus?: any;
       accessLevel: number;
       createdAt: number;
