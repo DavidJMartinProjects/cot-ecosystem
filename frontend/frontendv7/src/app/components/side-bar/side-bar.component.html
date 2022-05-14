@@ -1,0 +1,76 @@
+<!-- side-bar -->
+<div class="flex justify-around">
+    <div [ngClass]="{'-translate-x-full': isSideMenuEnabled}"
+        class="absolute top-0 left-0 block w-32 h-screen text-black transition duration-200 ease-in-out transform bg-white shadow-lg md:top-0 dark:bg-stone-800 dark:text-white">
+
+        <!-- nav  -->
+        <nav class="flex justify-center space-x-5 ">
+            <div class="flex-col items-center justify-center h-3/4 dark:text-slate-100">
+                <div class="flex-1 mt-1 text-center rounded-md hover:scale-110">
+                    <button (click)="toggle()"
+                        class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-stone-700 bg-white-100 dark:text-slate-100 active:animate-ping">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-10 hover:scale-125" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-1 p-5 rounded-md mt-7 hover:scale-110 hover:bg-slate-100 dark:hover:bg-stone-700">
+                    <a routerLink="/cot-report">
+                        <button class="hover:animate-none " (click)="toggle()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-10 mx-auto " fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                            </svg>
+                        </button>
+                        <p class="text-sm text-center text-black font-qs dark:text-white">Report</p>
+                    </a>
+                </div>
+                <div class="flex-1 p-5 rounded-md hover:scale-110 hover:bg-slate-100 dark:hover:bg-stone-700">
+                    <a routerLink="/swaps">
+                        <button class="hover:animate-none " (click)="toggle()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-10 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </button>
+                        <p class="text-sm text-center text-black font-qs dark:text-white">Swaps</p>
+                    </a>
+                </div>
+                <div class="flex-1 p-5 rounded-md hover:scale-110 hover:bg-slate-100 dark:hover:bg-stone-700">
+                    <a routerLink="/calendar">
+                        <button class="hover:animate-none " (click)="toggle()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-10 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </button>
+                        <p class="text-sm text-center text-black font-qs dark:text-white">Calendar</p>
+                    </a>
+                </div>
+                <div class="flex-1 p-5 rounded-md hover:scale-110 hover:bg-slate-100 dark:hover:bg-stone-700">
+                    <a routerLink="/news">
+                        <button class="hover:animate-none " (click)="toggle()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-10 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                            </svg>
+                        </button>
+                        <p class="text-sm text-center text-black font-qs dark:text-white">News</p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- main content  -->
+    <div class="flex-1 bg-inherit dark:text-white">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
