@@ -72,7 +72,6 @@ export class CotChartsComponent implements OnInit {
     this.longPositions = [];
     this.shortPositions = [];
     for (let i = 0; i < this.data.length; i++) {
-      console.log ("Block statement execution no." + i);
       this.longPositions[i] = this.data[i].longPositions
       this.shortPositions[i] = this.data[i].shortPositions
     }
@@ -82,8 +81,7 @@ export class CotChartsComponent implements OnInit {
     // calculate lineChart labels
     this.labels = [];
     for (let i = 0; i < this.data.length; i++) {
-      console.log ("Block statement execution no." + i);
-      this.labels[i] = this.data[i].reportDate
+      this.labels[i] = this.data[i].reportDate.slice(0,-5)
     }
     this.labels.reverse()
 
