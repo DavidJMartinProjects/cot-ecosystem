@@ -1,6 +1,12 @@
-canvas {
-    width:7em !important;
-    height:7em !important;  
+// .lineChartCanvas {
+//     width:95% !important;
+//     height:90% !important;
+
+// }
+
+.pieChartCanvas{
+  height:90px !important;
+  width: 100% !important;
 }
 
 .currency-flag {
@@ -10,3 +16,10 @@ canvas {
   background-size: cover;
   background-image:url('https://wise.com/public-resources/assets/flags/rectangle_fallback.png');
 }
+
+#graph{
+  position: relative;
+  height: 100%;
+  width: 100% !important;
+}
+

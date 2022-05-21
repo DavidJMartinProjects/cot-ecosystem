@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartType } from 'angular-google-charts';
 import { CotReportService } from 'src/app/services/cot-report-backend.service';
+import 'tw-elements';
 
 import Chart from 'chart.js/auto'
 
@@ -12,20 +12,26 @@ import Chart from 'chart.js/auto'
 export class CotChartsComponent implements OnInit {
 
   public pieChartData: any[] = []
-  pieChart: any = [];
+  public pieChart: any = [];
+  public lineChart: any = []
 
   @ViewChild('chart')
-  private chartRef: any;
+  public chartRef: any;
   public data: any[] = [];
+
+  @ViewChild('chartLine')
+  public lineChartRef: any;
+
 
   constructor(private cotReportService: CotReportService) { }
 
   ngOnInit(): void {
     this.cotReportService.dataSource.subscribe(data => {
       this.data = data
-      this.pieChart.data.datasets.data = [this.data[0].longPositions, this.data[0].shortPositions] 
-      this.pieChart.destroy(); 
-      this.buildChart();  
+      this.pieChart.data.datasets.data = [this.data[0].longPositions, this.data[0].shortPositions]
+      this.pieChart.destroy();
+      this.lineChart.destroy();
+      this.buildChart();
     });
   }
 
@@ -33,14 +39,14 @@ export class CotChartsComponent implements OnInit {
     duration: .3
   }
 
-  buildChart() {
+  public buildChart() {
     this.pieChart = new Chart(this.chartRef.nativeElement, {
       type: 'pie',
       data: {
         datasets: [{
           backgroundColor: ['green', 'red'],
           label: 'Interesting Data',
-          data: [this.data[0].longPositions, this.data[0].shortPositions]          
+          data: [this.data[0].longPositions, this.data[0].shortPositions]
         }]
       },
       options: {
@@ -49,12 +55,55 @@ export class CotChartsComponent implements OnInit {
         scales: {
         }
       }
-    });    
+    });
     this.pieChart.update();
+
+    const labels = ["January", "February", "March", "April", "May", "June"];
+    this.lineChart = new Chart(this.lineChartRef.nativeElement, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "My First dataset",
+          backgroundColor: "inherit",
+          borderColor: "inherit",
+          data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        color: 'inherit',
+        scales: {
+          yAxes: {
+              ticks: {
+                  color: "inherit"
+              },
+          },
+          xAxes: {
+              ticks: {
+                  color: "inherit"
+              },
+          }
+      },
+      },
+
+    });
+    Chart.defaults.backgroundColor = 'inherit';
+    this.lineChart.update();
+
   }
 
   ngAfterViewInit(): void {
     this.buildChart();
-  }  
+  }
+
+  private lineChartOptions:any = {
+    legend : {
+        labels : {
+          fontColor : '#ffffff'
+        }
+    }
+};
 
 }

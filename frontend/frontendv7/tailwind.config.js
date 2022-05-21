@@ -21,9 +21,10 @@ module.exports = {
       backgroundImage: ['dark'],
     }
   },
+  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
   purge: {
     enabled: true,
     content: ['./src/**/*.{html,ts}']
   },
-  plugins: [require('@tailwindcss/forms'), require('@themesberg/flowbite/plugin')],
+  plugins: [require('@tailwindcss/forms'), require('@themesberg/flowbite/plugin'), require('tw-elements/dist/plugin')],
 }
