@@ -93,16 +93,21 @@ export class CotChartsComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            backgroundColor: 'bg-stone-800',
-            borderColor: 'green',
-            label: 'Dataset 1',
+            label: 'Buys',
             data: this.longPositions,
+            backgroundColor: 'green',
+            borderColor: 'green',
+            fill: false,
+            borderWidth: 2,
+            borderCapStyle: 'round'
           },
           {
-            backgroundColor: 'bg-stone-800',
-            borderColor: 'red',
-            label: 'Dataset 2',
+            label: 'Sells',
             data: this.shortPositions,
+            backgroundColor: 'red',
+            borderColor: 'red',
+            fill: false,
+            borderWidth: 2
           },
         ],
       },
@@ -116,32 +121,39 @@ export class CotChartsComponent implements OnInit {
         },
         elements: {
           line: {
-              tension: 0.8
+              tension: 0.4
           }
         },
         animations: {
           tension: {
             duration: 400,
-            easing: 'easeInQuad',
-            from: 1,
-            to: 0,
-            loop: false,
+            easing: 'easeInOutQuad',
+            loop: true,
           },
         },
         scales: {
-          yAxes: {
-            // type: 'linear',
-            display: true,
-            position: 'left',
-          },
-          xAxes: {
-            // type: 'linear',
+          y: {
             display: true,
             position: 'right',
-
+            title: {
+              color: 'blue'
+            },
+            grid: {
+              drawBorder: false,
+            },
+            ticks: {
+              color: 'white'
+            },
+          },
+          x: {
+            display: true,
+            position: 'bottom',
             // grid line settings
             grid: {
               drawOnChartArea: false, // only want the grid lines for one axis to show up
+            },
+            ticks: {
+              color: 'white'
             },
           },
         },
