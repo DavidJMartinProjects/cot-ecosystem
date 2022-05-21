@@ -24,6 +24,7 @@ export class SwapBackendService {
   // swaps_api_url: string = "/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}";
   getSwapData(symbol: string, filterPositiveSwaps: string) {
     var swaps_api_url = `/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}`;
+    // var swaps_api_url = `http://localhost:8081/api/swaps?symbol=${symbol}&filterPositiveSwaps=${filterPositiveSwaps}`;
     this.http
       .get<any>(swaps_api_url)
       .subscribe((response: any[]) => {
