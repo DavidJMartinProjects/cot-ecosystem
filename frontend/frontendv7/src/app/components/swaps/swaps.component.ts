@@ -14,23 +14,24 @@ export class SwapsComponent implements OnInit {
 
   showPositiveSwapsOnly: boolean = false;
   currentSymbol: string = 'USD'
-  symbolFullName: string= ''
+  thesymbolFullName: string= 'United States Dollar'
 
   constructor(private swapBackendService: SwapBackendService, private cotReportService: CotReportService) {
-
   }
 
   ngOnInit(): void {
     this.swapBackendService.dataSource.subscribe(data => this.data = data)
-    this.cotReportService.symbolFullName.subscribe((fullname) => {
-      this.symbolFullName = fullname;
-    });
+    this.cotReportService.symbolFullName.subscribe(data =>
+      this.thesymbolFullName = data
+    );
+    this.cotReportService.updateSymbolData(this.currentSymbol);
   }
 
   handleChange(theSymbol: string) {
     this.currentSymbol = theSymbol
     this.swapBackendService.updateSwapData(theSymbol, this.showPositiveSwapsOnly.toString());
-    console.log(this.data.length);
+    this.cotReportService.updateSymbolData(theSymbol);
+    console.log(this.thesymbolFullName);
   }
 
   toggle() {
