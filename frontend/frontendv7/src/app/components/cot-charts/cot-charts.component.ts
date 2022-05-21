@@ -92,7 +92,7 @@ export class CotChartsComponent implements OnInit {
       },
 
     });
-    Chart.defaults.backgroundColor = 'inherit';
+
     this.lineChart.update();
 
   }
