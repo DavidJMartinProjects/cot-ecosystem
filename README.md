@@ -1,6 +1,6 @@
 - # COT Ecosystem
 
-<img width="674" alt="image" src="https://user-images.githubusercontent.com/13181300/167304678-3834658a-0446-48a0-8197-24cda29f55f0.png">
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/13181300/169669139-d2ffcc02-fd11-4789-8dda-f532b267a883.png">
 
 
 - build the frontend image
