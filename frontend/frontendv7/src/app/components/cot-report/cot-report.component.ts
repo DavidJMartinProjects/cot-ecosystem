@@ -8,16 +8,16 @@ import { Chart, ChartType } from 'chart.js';
   styleUrls: ['./cot-report.component.scss']
 })
 export class CotReportComponent implements OnInit {
-  
+
   symbols: string[] = ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'JPY', 'CHF', 'CAD', 'MXN', 'ZAR'];
 
-  constructor(private cotReportService: CotReportService) {   
+  constructor(private cotReportService: CotReportService) {
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
   }
 
-  handleChange(theSymbol: any) {    
+  handleChange(theSymbol: any) {
     this.cotReportService.updateSymbolData(theSymbol) ;
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CotReportService } from 'src/app/services/cot-report-backend.service';
 import { SwapBackendService } from 'src/app/services/swap-backend.service';
 
 @Component({
@@ -13,13 +14,17 @@ export class SwapsComponent implements OnInit {
 
   showPositiveSwapsOnly: boolean = false;
   currentSymbol: string = 'USD'
+  symbolFullName: string= ''
 
-  constructor(private swapBackendService: SwapBackendService) {
+  constructor(private swapBackendService: SwapBackendService, private cotReportService: CotReportService) {
 
   }
 
   ngOnInit(): void {
     this.swapBackendService.dataSource.subscribe(data => this.data = data)
+    this.cotReportService.symbolFullName.subscribe((fullname) => {
+      this.symbolFullName = fullname;
+    });
   }
 
   handleChange(theSymbol: string) {

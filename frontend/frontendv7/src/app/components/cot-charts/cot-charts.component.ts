@@ -28,6 +28,8 @@ export class CotChartsComponent implements OnInit {
   @ViewChild('chartLine')
   public lineChartRef: any;
 
+  symbolFullName: string = "";
+
   constructor(private cotReportService: CotReportService, private swapBackendService: SwapBackendService) {}
 
   ngOnInit(): void {
@@ -42,6 +44,12 @@ export class CotChartsComponent implements OnInit {
       this.lineChart.data.datasets.data = this.data;
       this.lineChart.destroy();
       this.buildChart();
+
+
+    });
+
+    this.cotReportService.symbolFullName.subscribe((fullname) => {
+      this.symbolFullName = fullname;
     });
   }
 
@@ -164,6 +172,8 @@ export class CotChartsComponent implements OnInit {
   ngAfterViewInit(): void {
     this.buildChart();
   }
+
+
 
 
 }

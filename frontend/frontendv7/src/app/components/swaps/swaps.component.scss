@@ -16,6 +16,12 @@ input:checked + .toggle-bg {
     @apply dark:border-orange-500 dark:font-semibold;
 }
 
-.flag-image {
-    height: 2em;
+
+
+.currency-flag {
+  display: inline-block;
+  width: 24px;
+  height: 16px;
+  background-size: cover;
+  background-image:url('https://wise.com/public-resources/assets/flags/rectangle_fallback.png');
 }
