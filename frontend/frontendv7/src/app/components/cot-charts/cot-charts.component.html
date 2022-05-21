@@ -1,19 +1,19 @@
 <div class="flex items-center justify-center">
-  <div class="grid grid-cols-3 rounded-lg md:gap-2 md:grid-cols-3 place-items-center sm:grid-cols-3 md:w-7/12">
+  <div class="grid w-11/12 grid-cols-3 gap-1 rounded-lg md:gap-2 md:grid-cols-3 place-items-center sm:grid-cols-3 md:w-11/12 lg:w-7/12">
     <div class="w-full font-qs">
 
-    <div class="rounded-lg dark:bg-stone-800 dark:text-white">
+    <div class="text-xs rounded-lg md:text-base dark:bg-stone-800 dark:text-white">
 
-        <div class="self-center justify-center flex-none w-full p-2 mx-auto shadow-xl md:flex-none card">
+        <div class="self-center justify-center w-full p-2 mx-auto shadow-xl">
           <div class="p-2 m-auto ml-2 mr-2 md:w-5/12" style="margin: auto;">
             <canvas #chart class="pieChartCanvas"></canvas>
           </div>
           <div class="flex-col flex-1">
             <div class="row">
               <div class="text-center row">
-                <span class="text-lg">Total: </span>
-                <span class="text-xl font-semibold" [countUp]="data[0].shortPositions + data[0].longPositions"
-                  [options]="myCountUpOpts"></span>
+                <span class="text-base ">Net: </span>
+                <span class="text-base font-semibold" [countUp]="data[0].netPositions"
+                [options]="myCountUpOpts"></span>
               </div>
             </div>
             <div class="flex justify-center text-center">
@@ -35,10 +35,10 @@
             <div class="flex justify-around text-center">
               <div class="p-1 mt-1 text-center">
                 <div class="flex text-center row">
-                  <span class="text-sm font-semibold text-center">net positions:
+                  <span class="text-sm font-semibold text-center">Total:
                   </span>
-                  <span class="ml-1 text-sm font-semibold text-center" [countUp]="data[0].netPositions"
-                    [options]="myCountUpOpts"></span>
+                  <span class="ml-1 text-sm font-semibold text-center" [countUp]="data[0].shortPositions + data[0].longPositions"
+                  [options]="myCountUpOpts"></span>
                 </div>
               </div>
             </div>
