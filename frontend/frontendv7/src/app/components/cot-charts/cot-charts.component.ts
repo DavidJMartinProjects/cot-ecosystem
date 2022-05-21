@@ -3,6 +3,7 @@ import { CotReportService } from 'src/app/services/cot-report-backend.service';
 import 'tw-elements';
 
 import Chart from 'chart.js/auto';
+import { SwapBackendService } from 'src/app/services/swap-backend.service';
 
 @Component({
   selector: 'app-cot-charts',
@@ -27,7 +28,7 @@ export class CotChartsComponent implements OnInit {
   @ViewChild('chartLine')
   public lineChartRef: any;
 
-  constructor(private cotReportService: CotReportService) {}
+  constructor(private cotReportService: CotReportService, private swapBackendService: SwapBackendService) {}
 
   ngOnInit(): void {
     this.cotReportService.dataSource.subscribe((data) => {

@@ -19,14 +19,14 @@ export class CotReportService implements OnInit {
     this.getSymbolData(symbol);
   }
 
-  report_api_url: string = "/api/reports?symbol=";
-  // report_api_url: string = "http://localhost:8080/api/reports?symbol=";
+  // report_api_url: string = "/api/reports?symbol=";
+  report_api_url: string = "http://localhost:8080/api/reports?symbol=";
   getSymbolData(symbol: string) {
     this.http
       .get<any>(this.report_api_url + symbol)
       .subscribe((response) => {
         console.log('GET: ' + this.report_api_url + symbol);
-        this.data = response.slice(0, 7);
+        this.data = response.slice(0, 10);
         this.dataSource.next(this.data);
       }, error => {
         console.log(error);
