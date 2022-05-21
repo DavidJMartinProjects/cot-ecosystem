@@ -1,13 +1,4 @@
-<div class="flex justify-center">
-  <div
-    class="flex items-center justify-center w-11/12 p-1 m-2 text-xs rounded-lg md:text-base bg-stone-800 dark:text-white md:w-11/12 lg:w-2/12">
-    <img src="../../../assets/images/flags/{{ currentSymbol | slice: 0:3 }}.svg"
-    class="rounded shadow-md w-14 m-13 flag-image mr-9" />
-    <div class="">
-      <p> {{ thesymbolFullName }} </p>
-    </div>
-  </div>
-</div>
+
 
   <div class="flex flex-wrap justify-center  p-2.5 pb-0">
     <div *ngFor="let symbol of symbols" class="flex items-center mb-4 mr-4 ">
@@ -28,6 +19,17 @@
     <div class="h-6 border-2 border-gray-300 rounded-full bg-gray-50 dark:bg-stone-700 toggle-bg w-11"></div>
   </label>
   <span class="ml-3 text-sm text-gray-900 font-sm dark:text-white">Positive</span>
+</div>
+
+<div class="flex justify-center">
+  <div
+    class="flex items-center justify-center w-11/12 p-1 m-2 text-xs rounded-lg md:text-base bg-stone-800 dark:text-white md:w-11/12 lg:w-2/12">
+    <img src="../../../assets/images/flags/{{ currentSymbol | slice: 0:3 }}.svg"
+    class="rounded shadow-md w-14 m-13 flag-image mr-9" />
+    <div class="">
+      <p> {{ thesymbolFullName }} </p>
+    </div>
+  </div>
 </div>
 
 <div class="flex justify-center">
