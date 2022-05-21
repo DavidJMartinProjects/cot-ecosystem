@@ -11,11 +11,14 @@ import Chart from 'chart.js/auto';
 })
 export class CotChartsComponent implements OnInit {
   public pieChartData: any[] = [];
-  public lineChartData: any[] = [];
   public pieChart: any = [];
+
+  public lineChartData: any[] = [];
   public lineChart: any = [];
   public longPositions: any = [];
   public shortPositions: any = [];
+
+  public labels: any = [];
 
   @ViewChild('chart')
   public chartRef: any;
@@ -65,6 +68,7 @@ export class CotChartsComponent implements OnInit {
     });
     this.pieChart.update();
 
+    // calculate lineChart data
     this.longPositions = [];
     this.shortPositions = [];
     for (let i = 0; i < this.data.length; i++) {
@@ -72,16 +76,25 @@ export class CotChartsComponent implements OnInit {
       this.longPositions[i] = this.data[i].longPositions
       this.shortPositions[i] = this.data[i].shortPositions
     }
+    this.longPositions.reverse()
+    this.shortPositions.reverse()
 
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+    // calculate lineChart labels
+    this.labels = [];
+    for (let i = 0; i < this.data.length; i++) {
+      console.log ("Block statement execution no." + i);
+      this.labels[i] = this.data[i].reportDate
+    }
+    this.labels.reverse()
+
     this.lineChart = new Chart(this.lineChartRef.nativeElement, {
       type: 'line',
       data: {
-        labels: labels,
+        labels: this.labels,
         datasets: [
           {
             backgroundColor: 'bg-stone-800',
-            borderColor: 'white',
+            borderColor: 'green',
             label: 'Dataset 1',
             data: this.longPositions,
           },
@@ -101,6 +114,11 @@ export class CotChartsComponent implements OnInit {
           mode: 'index',
           intersect: false,
         },
+        elements: {
+          line: {
+              tension: 0.8
+          }
+        },
         animations: {
           tension: {
             duration: 400,
@@ -112,12 +130,12 @@ export class CotChartsComponent implements OnInit {
         },
         scales: {
           yAxes: {
-            type: 'linear',
+            // type: 'linear',
             display: true,
             position: 'left',
           },
           xAxes: {
-            type: 'linear',
+            // type: 'linear',
             display: true,
             position: 'right',
 

@@ -26,7 +26,7 @@ export class CotReportService implements OnInit {
       .get<any>(this.report_api_url + symbol)
       .subscribe((response) => {
         console.log('GET: ' + this.report_api_url + symbol);
-        this.data = response.slice(0, 15);
+        this.data = response.slice(0, 7);
         this.dataSource.next(this.data);
       }, error => {
         console.log(error);
