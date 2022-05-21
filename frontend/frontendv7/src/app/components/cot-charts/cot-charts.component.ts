@@ -65,26 +65,29 @@ export class CotChartsComponent implements OnInit {
         labels: labels,
         datasets: [{
           label: "My First dataset",
-          backgroundColor: "inherit",
-          borderColor: "inherit",
+          backgroundColor: "bg-stone-800",
+          borderColor: "white",
           data: [0, 10, 5, 2, 20, 30, 45],
         }]
       },
       options: {
         maintainAspectRatio: false,
         responsive: true,
-        color: 'inherit',
+        color: 'white',
         scales: {
           yAxes: {
               ticks: {
-                  color: "inherit"
+                  color: "white"
               },
           },
           xAxes: {
               ticks: {
-                  color: "inherit"
+                  color: "white"
               },
+              suggestedMin: -10,
+              suggestedMax: 200
           }
+
       },
       },
 
