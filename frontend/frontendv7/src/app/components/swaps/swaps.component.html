@@ -1,3 +1,13 @@
+<div class="flex justify-center">
+  <div
+    class="flex items-center justify-center w-11/12 p-1 m-2 text-xs rounded-lg md:text-base bg-stone-800 dark:text-white md:w-11/12 lg:w-2/12">
+    <img src="../../../assets/images/flags/{{ currentSymbol | slice: 0:3 }}.svg"
+    class="rounded shadow-md w-14 m-13 flag-image mr-9" />
+    <div class="">
+      <p> {{ symbolFullName }} </p>
+    </div>
+  </div>
+</div>
 
   <div class="flex flex-wrap justify-center  p-2.5 pb-0">
     <div *ngFor="let symbol of symbols" class="flex items-center mb-4 mr-4 ">
@@ -9,57 +19,48 @@
       </label>
     </div>
   </div>
+<div class="mt-0 md:mt-0">
 
-  <div class="flex justify-center">
-    <span class="mr-3 text-sm text-gray-900 dark:text-white font-sm">All</span>
-    <label for="toggle-example" class="relative flex items-center mb-4 cursor-pointer">
-      <input type="checkbox" id="toggle-example" class="sr-only" (click)="toggle()">
-      <div class="h-6 border-2 border-gray-300 rounded-full bg-gray-50 dark:bg-stone-700 toggle-bg w-11"></div>
-    </label>
-    <span class="ml-3 text-sm text-gray-900 font-sm dark:text-white">Positive</span>
-  </div>
-<!--
-  <div class="flex justify-center">
-    <div
-      class="flex items-center justify-center w-11/12 p-1 m-2 text-xs rounded-lg md:text-base bg-stone-800 dark:text-white md:w-11/12 lg:w-2/12">
-      <div><img src="../../../assets/images/flags/{{currentSymbol | slice:0:3}}.svg"
-          class="rounded shadow-md w-14 m-13 flag-image mr-9"></div>
-      <div class="">
-        {{ symbolFullName }}
-      </div>
-    </div>
-  </div> -->
-  <div class="flex justify-center">
-    <div
-      class="flex items-center justify-center w-11/12 p-1 m-2 text-xs rounded-lg md:text-base bg-stone-800 dark:text-white md:w-11/12 lg:w-2/12">
-      <div><img src="../../../assets/images/flags/{{currentSymbol | slice:0:3}}.svg"
-        class="rounded shadow-md w-14 m-13 flag-image mr-9"></div>
-      <div class="">
-        <p> {{ symbolFullName }} </p>
-      </div>
-    </div>
-  </div>
+<div class="flex justify-center">
+  <span class="mr-3 text-sm text-gray-900 dark:text-white font-sm">All</span>
+  <label for="toggle-example" class="relative flex items-center mb-4 cursor-pointer">
+    <input type="checkbox" id="toggle-example" class="sr-only" (click)="toggle()" />
+    <div class="h-6 border-2 border-gray-300 rounded-full bg-gray-50 dark:bg-stone-700 toggle-bg w-11"></div>
+  </label>
+  <span class="ml-3 text-sm text-gray-900 font-sm dark:text-white">Positive</span>
+</div>
 
-
-  <div class="flex justify-center">
-  <div class="flex self-center justify-center md:w-3/5 ">
-  <div class="grid justify-center grid-cols-2 gap-1 p-1 md:grid-cols-4 md:gap-3">
-    <div
-      [ngClass]="{'border-green-500': (swap.longSwap > 0 && swap.shortSwap < 0) && showPositiveSwapsOnly, 'border-red-500' : (swap.longSwap < 0 && swap.shortSwap > 0) && showPositiveSwapsOnly, 'dark:border-stone-700' : !showPositiveSwapsOnly }"
-      *ngFor="let swap of data"
-      class="text-sm text-center bg-white border-2 rounded-lg shadow-sm card dark:bg-stone-800 ">
-      <div class="flex justify-between">
-        <div><img src="../../../assets/images/flags/{{swap.symbol | slice:0:3}}.svg"
-            class="m-1 rounded shadow-md flag-image "></div>
-        <div>
-          <p class="text-lg"> {{ swap.symbol }} </p>
+<div class="flex justify-center">
+  <div class="flex self-center justify-center md:w-3/5">
+    <div class="grid justify-center grid-cols-2 gap-1 p-1 md:grid-cols-4 md:gap-3">
+      <div [ngClass]="{
+          'border-green-500':
+            swap.longSwap > 0 && swap.shortSwap < 0 && showPositiveSwapsOnly,
+          'border-red-500':
+            swap.longSwap < 0 && swap.shortSwap > 0 && showPositiveSwapsOnly,
+          'dark:border-stone-700': !showPositiveSwapsOnly
+        }" *ngFor="let swap of data"
+        class="text-sm text-center bg-white border-2 rounded-lg shadow-sm card dark:bg-stone-800">
+        <div class="flex justify-between">
+          <div>
+            <img src="../../../assets/images/flags/{{
+                swap.symbol | slice: 0:3
+              }}.svg" class="m-1 rounded shadow-md flag-image" />
+          </div>
+          <div>
+            <p class="text-lg">{{ swap.symbol }}</p>
+          </div>
+          <div>
+            <img src="../../../assets/images/flags/{{
+                swap.symbol | slice: 3:6
+              }}.svg" class="m-1 rounded shadow-md flag-image" />
+          </div>
         </div>
-        <div><img src="../../../assets/images/flags/{{swap.symbol | slice:3:6}}.svg"
-            class="m-1 rounded shadow-md flag-image"></div>
-      </div>
-      <div class="m-1">
-        <span class="mr-2 text-xs leading-3 text-gray-800 dark:text-white">Long: {{ swap.longSwap }}</span>
-        <span class="text-xs leading-3 text-gray-800 dark:text-white">Short: {{ swap.shortSwap }} </span>
+        <div class="m-1">
+          <span class="mr-2 text-xs leading-3 text-gray-800 dark:text-white">Long: {{ swap.longSwap }}</span>
+          <span class="text-xs leading-3 text-gray-800 dark:text-white">Short: {{ swap.shortSwap }}
+          </span>
+        </div>
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CotReportService implements OnInit {
   data: any[] = [];
   public dataSource = new BehaviorSubject<string[]>(new Array());
-  public symbolFullName = new BehaviorSubject<string>('USD');
+  public symbolFullName = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {
     this.updateSymbolData('USD');
@@ -18,8 +18,8 @@ export class CotReportService implements OnInit {
     this.getSymbolData(symbol);
   }
 
-  report_api_url: string = "/api/reports?symbol=";
-  // report_api_url: string = 'http://localhost:8080/api/reports?symbol=';
+  // report_api_url: string = "/api/reports?symbol=";
+  report_api_url: string = 'http://localhost:8080/api/reports?symbol=';
   getSymbolData(symbol: string) {
     this.http.get<any>(this.report_api_url + symbol).subscribe(
       (response) => {
