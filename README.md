@@ -17,13 +17,5 @@
 - access front end via
 - ```cot.com:3000```
 
-
-## example screenshot
-![Screenshot](readme/Capture.PNG)
-
-# Confluent Kafka
-https://docs.confluent.io/operator/current/co-quickstart.html
-https://stackoverflow.com/questions/59565537/how-to-query-directly-from-a-kafka-topic
-
 # Deploy
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
