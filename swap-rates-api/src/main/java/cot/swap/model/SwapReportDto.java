@@ -27,5 +27,4 @@ public class SwapReportDto {
     @Column(name = "short_swap")
     private String shortSwap;
 
-
 }

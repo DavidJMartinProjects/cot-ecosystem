@@ -29,6 +29,10 @@ public class SwapDao {
         swapRepository.saveAll(swapEntities);
     }
 
+    public void deleteAllSwaps() {
+        swapRepository.deleteAll();
+    }
+
     public List<SwapDto> fetchPositiveSwaps() {
         Set<SwapEntity> totalPositiveSwaps = new HashSet<SwapEntity>();
         totalPositiveSwaps.addAll(swapRepository.findByShortSwapGreaterThan(0));
