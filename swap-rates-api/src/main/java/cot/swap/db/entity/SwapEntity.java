@@ -1,4 +1,4 @@
-package cot.swap.db;
+package cot.swap.db.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

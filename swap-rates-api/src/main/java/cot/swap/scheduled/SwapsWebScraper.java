@@ -10,10 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author davidjmartin
@@ -30,10 +28,7 @@ public class SwapsWebScraper {
     private static final int LONG_SWAP_INDEX = 1;
     private static final int SHORT_SWAP_INDEX = 2;
 
-    @Autowired
-    private SwapDao swapDao;
-
-    public void scrape() {
+    public List<SwapDto> scrape() {
         Set<SwapDto> swaps = new HashSet<>();
         try {
             Document webPage = Jsoup.connect(REMOTE_SWAP_SERVICE_URL).get();            
@@ -58,8 +53,7 @@ public class SwapsWebScraper {
             exception.printStackTrace();
             throw exception;
         }
-        List swapDtos = Arrays.asList(swaps.toArray());
-        swapDao.saveSwaps(swapDtos);
+        return new ArrayList<>(swaps);
     }
 
     private String getTextByIndex(Elements elements, int elementId) {

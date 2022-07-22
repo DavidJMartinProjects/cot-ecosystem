@@ -1,5 +1,6 @@
-package cot.swap.db;
+package cot.swap.db.repository;
 
+import cot.swap.db.entity.SwapEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

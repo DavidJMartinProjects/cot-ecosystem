@@ -1,4 +1,4 @@
-package cot.swap.db;
+package cot.swap.db.entity;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -23,7 +23,7 @@ public class SwapServiceApplication {
 	@Bean
 	public CommandLineRunner CommandLineRunnerBean() {
 		return (args) -> {
-			scheduledTask.importReport();
+			scheduledTask.fetchAndSaveSwaps();
 		};
 	}
 

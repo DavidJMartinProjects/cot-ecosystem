@@ -1,5 +1,8 @@
 package cot.swap.db;
 
+import cot.swap.db.entity.EntityMapper;
+import cot.swap.db.entity.SwapEntity;
+import cot.swap.db.repository.SwapRepository;
 import cot.swap.model.SwapDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
